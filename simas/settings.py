@@ -1,4 +1,4 @@
-# Django settings for django_simas project.
+# Django settings for simas project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'django_simas.urls'
+ROOT_URLCONF = 'simas.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

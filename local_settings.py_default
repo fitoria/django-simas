@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+
+import os 
+
+SITE_URL = 'localhost'
+SITE_ROOT= os.path.dirname(__file__)
+ADMINS = (('Tu nombre', 'nombre@foo.org'),)
+EMAIL_HOST = 'localhost'
+DATABASE_NAME = 'nombreDB'          
+DATABASE_USER = 'userdb'           
+DATABASE_PASSWORD = 'passdb'       
+DATABASE_HOST = ''           
+DATABASE_PORT = ''       
+TIME_ZONE = 'America/Managua'
+LANGUAGE_CODE = 'es-ni'
+MEDIA_URL = 'http://localhost/'
+SECRET_KEY = 'x7ujk2&#sy@y53*^r#)l3m7goj%glvbr5i#e(aflh-lkf3wsfl'

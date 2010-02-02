@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Categorias(models.Model):
@@ -18,12 +19,11 @@ class Area(models.Model):
         
     def __unicode__(self):
         return self.nombre
-      
-PESO_CHOICES=((1,"Alto"),(2,"Medio"),(3,"Bajo"))  
 
 class Links(models.Model):
-    nombre = models.URLField()
-    peso = models.IntegerField(choices=PESO_CHOICES)
+    nombre = models.CharField(max_length=50, unique=True)
+    direccion = models.URLField()
+    peso = models.IntegerField()
     categoria = models.ForeignKey(Categorias)
 
     class Meta:
@@ -66,6 +66,7 @@ class Noticias(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField()
     Destacado = models.BooleanField()
+    usuario = models.ForeignKey(User)
     
     class Meta:
         verbose_name_plural = "Noticias"
@@ -83,7 +84,4 @@ class Actividades(models.Model):
         verbose_name_plural = "Actividades diarias"
         
     def __unicode__(self):
-        return self.evento
-    
-
-    
+        return self.evento    

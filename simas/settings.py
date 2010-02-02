@@ -33,6 +33,7 @@ TEMPLATE_DIRS = (
 SITE_ROOT+"/templates",
 )
 ROOT_URLCONF = 'urls'
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,4 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'profiles',
 ) 
+

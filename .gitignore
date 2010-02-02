@@ -1,6 +1,6 @@
 *.pyc
 *.pyo
 *.py~
-settings_local.py
+local_settings.py
 *.sqlite3
 *.swp

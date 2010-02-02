@@ -42,5 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'profiles',
+    'django_evolution',
+    'pagina',
 ) 
 

@@ -1,9 +1,18 @@
 from django.db import models
-from django.contrib.auth.models import User
+from profiles.models import UserProfile 
 
-
-class Categorias(models.Model):
+class Area(models.Model):
     nombre = models.CharField(max_length=25, unique=True)
+    
+    class Meta:
+        verbose_name_plural = "Areas"
+        
+    def __unicode__(self):
+        return self.nombre
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=25)
+    slug = models.SlugField(unique=True)
     
     class Meta:
         verbose_name_plural = "Categorias"
@@ -11,20 +20,11 @@ class Categorias(models.Model):
     def __unicode__(self):
         return self.nombre
         
-class Area(models.Model):
-    nombre = models.CharField(max_length=25, unique=True)
-    
-    class Meta:
-        verbose_name_plural = "Area"
-        
-    def __unicode__(self):
-        return self.nombre
-
-class Links(models.Model):
+class Link(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     direccion = models.URLField()
     peso = models.IntegerField()
-    categoria = models.ForeignKey(Categorias)
+    categoria = models.ForeignKey(Categoria)
 
     class Meta:
         verbose_name_plural = "Links"
@@ -32,12 +32,13 @@ class Links(models.Model):
     def __unicode__(self):
         return self.nombre
 
-class Subir_archivos(models.Model):
+class Archivo(models.Model):
     titulo = models.CharField(max_length=200)
     fecha = models.DateField()
     descripcion = models.TextField(blank=True, null=True)
     adjunto = models.FileField(upload_to='attachments/documentos')
-    categoria = models.ForeignKey(Categorias)
+    categoria = models.ForeignKey(Categoria)
+    usuario = models.ForeignKey(UserProfile)
 	
     def get_absolute_url(self):
     	return '%s%s/%s' % (settings.MEDIA_URL, settings.ATTACHMENT_FOLDER, self.id)
@@ -51,7 +52,7 @@ class Subir_archivos(models.Model):
     def __unicode__(self):
     	return self.titulo
 		
-class Dias_feriados(models.Model):
+class DiasFeriados(models.Model):
     fecha = models.DateField()
     descripcion = models.CharField(max_length=50)
     
@@ -61,12 +62,12 @@ class Dias_feriados(models.Model):
     def __unicode__(self):
         return self.descripcion
         
-class Noticias(models.Model):
+class Noticia(models.Model):
     fecha = models.DateField()
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField()
     Destacado = models.BooleanField()
-    usuario = models.ForeignKey(User)
+    autor = models.ForeignKey(UserProfile)
     
     class Meta:
         verbose_name_plural = "Noticias"
@@ -74,11 +75,13 @@ class Noticias(models.Model):
     def __unicode__(self):
         return self.titulo
         
-class Actividades(models.Model):
+class Actividad(models.Model):
     fecha = models.DateTimeField()
-    evento = models.TextField()
+    titulo = models.CharField(max_length=150)
+    descripcion = models.TextField()
     lugar = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
+    participantes = models.ManyToManyField(UserProfile)
     
     class Meta:
         verbose_name_plural = "Actividades diarias"

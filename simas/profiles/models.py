@@ -1,12 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from simas.pagina.models import Area
 from thumbs import ImageWithThumbsField
-
-AREA_CHOICES = (('administracion', 'administracion'),
-                ('comunicacion', 'comunicacion'),
-                ('informatica', 'informatica'),
-                ('CIDOC', 'CIDOC'),
-               )
 
 SIZES = ((100, 100),
          (150, 150),
@@ -17,7 +12,7 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User, verbose_name = "Usuario")
     cargo = models.CharField(max_length = 50)
     extension = models.PositiveIntegerField(max_length=3)
-    area = models.CharField(max_length=50, choices = AREA_CHOICES)
+    area = models.ForeignKey(Area)
     celular = models.CharField(max_length=20, blank=True) 
     skype = models.CharField(max_length=25, blank=True) 
     casa = models.CharField(max_length=20, blank=True) 

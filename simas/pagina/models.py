@@ -92,8 +92,8 @@ class DiasFeriados(models.Model):
 class Noticia(models.Model):
     fecha = models.DateField()
     titulo = models.CharField(max_length=50)
-    descripcion = models.TextField()
-    Destacado = models.BooleanField()
+    texto = models.TextField(default=" ")
+    destacado = models.BooleanField()
     autor = models.ForeignKey(UserProfile)
     
     class Meta:

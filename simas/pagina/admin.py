@@ -1,27 +1,37 @@
 from django.contrib import admin
 from pagina.models import *
 
-class CategoriasAdmin(admin.ModelAdmin):
+class CategoriaAdmin(admin.ModelAdmin):
 	pass
 
-class LinksAdmin(admin.ModelAdmin):
+class LinkAdmin(admin.ModelAdmin):
 	pass
 
-class SubirAdmin(admin.ModelAdmin):
+class ArchivoAdmin(admin.ModelAdmin):
 	pass
 
-class NoticiasAdmin(admin.ModelAdmin):
+class NoticiaAdmin(admin.ModelAdmin):
     pass
     
-class ActividadesAdmin(admin.ModelAdmin):
+class ActividadAdmin(admin.ModelAdmin):
     pass
     
 class AreaAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Categorias, CategoriasAdmin)
-admin.site.register(Links, LinksAdmin)
-admin.site.register(Subir_archivos, SubirAdmin)
-admin.site.register(Noticias, NoticiasAdmin)
-admin.site.register(Actividades, ActividadesAdmin)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'skype', 'cargo', 'area', 'celular']
+    list_filter = ['area']
+    ordering = ['user', 'area']
+
+class DiasFeriadosAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Categoria, CategoriaAdmin)
+admin.site.register(Link, LinkAdmin)
+admin.site.register(DiasFeriados, DiasFeriadosAdmin)
+admin.site.register(Archivo, ArchivoAdmin)
+admin.site.register(Noticia, NoticiaAdmin)
+admin.site.register(Actividad, ActividadAdmin)
 admin.site.register(Area, AreaAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)

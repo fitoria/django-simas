@@ -4,7 +4,7 @@ from local_settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-AUTH_PROFILE_MODULE = "profiles.UserProfile"
+AUTH_PROFILE_MODULE = "pagina.UserProfile"
 DEFAULT_CHARSET = 'utf-8'
 MANAGERS = ADMINS
 DATABASE_ENGINE = 'mysql'

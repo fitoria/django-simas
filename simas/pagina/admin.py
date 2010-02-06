@@ -8,7 +8,9 @@ class LinkAdmin(admin.ModelAdmin):
 	pass
 
 class ArchivoAdmin(admin.ModelAdmin):
-	pass
+    class Media:
+        js = ('../archivos/js/tiny_mce/tiny_mce.js',
+              '../archivos/js/editores/textareas.js')
 
 class NoticiaAdmin(admin.ModelAdmin):
     class Media:
@@ -16,7 +18,9 @@ class NoticiaAdmin(admin.ModelAdmin):
               '../archivos/js/editores/textareas.js')
     
 class ActividadAdmin(admin.ModelAdmin):
-    pass
+    class Media:
+        js = ('../archivos/js/tiny_mce/tiny_mce.js',
+              '../archivos/js/editores/textareas.js')
     
 class AreaAdmin(admin.ModelAdmin):
     pass

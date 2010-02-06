@@ -105,7 +105,7 @@ class Noticia(models.Model):
 class Actividad(models.Model):
     fecha = models.DateTimeField()
     titulo = models.CharField(max_length=150)
-    descripcion = models.TextField()
+    descripcion = models.TextField(default="")
     lugar = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
     participantes = models.ManyToManyField(UserProfile)

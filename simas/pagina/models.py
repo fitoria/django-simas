@@ -1,3 +1,4 @@
+ # -*- coding: UTF-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 from thumbs import ImageWithThumbsField
@@ -30,7 +31,7 @@ class UserProfile(models.Model):
     def get_absolute_url(self):
         return '/perfiles/%s/' % self.user.username
 
-    def __str__(self):
+    def __unicode__(self):
         return '%s %s' % (self.user.first_name, self.user.last_name)
 
     class Meta:
@@ -39,7 +40,7 @@ class UserProfile(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=25)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=25, unique=True, help_text='Unico valor')
     
     class Meta:
         verbose_name_plural = "Categorias"
@@ -105,7 +106,7 @@ class Noticia(models.Model):
 class Actividad(models.Model):
     fecha = models.DateTimeField()
     titulo = models.CharField(max_length=150)
-    descripcion = models.TextField()
+    descripcion = models.TextField(default="")
     lugar = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
     participantes = models.ManyToManyField(UserProfile)
@@ -114,4 +115,4 @@ class Actividad(models.Model):
         verbose_name_plural = "Actividades diarias"
         
     def __unicode__(self):
-        return self.evento    
+        return self.titulo  

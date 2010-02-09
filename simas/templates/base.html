@@ -3,9 +3,10 @@
 <head>
      <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/estilo.css" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-     <title>Intranet SIMAS</title>
+     <title>Intranet SIMAS - {%block title%}{%endblock%}</title>
+     {%block extrahead%}{%endblock%}
 </head>
 <body>
-     {% block sitio %}{% endblock %}
+     {% block content%}{% endblock %}
 </body>
 </html>

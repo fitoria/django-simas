@@ -1,0 +1,83 @@
+<style type="text/css">
+
+.pagination { padding:.5em .75em; float:left; font:normal .8em arial; }
+ 
+.pagination .prev,
+.pagination .next {
+	padding:.3em;
+	font:bold .875em arial;
+}
+ 
+.pagination .prev,
+.pagination .next {
+	border:0px solid #fff;
+	background-color:#fff;
+	color:#aaa;
+	font-weight:normal;
+}
+ 
+.pagination .prev a, .pagination .prev a:visited,
+.pagination .next a, .pagination .next a:visited {
+	border:1px solid #c2ee62;
+	background-color:#edfdd0;
+	color:#234f32;
+	padding:.3em;
+	font:bold .875em arial;
+}
+ 
+.pagination .prev, .pagination .prev { margin-right:.5em; }
+.pagination .next, .pagination .next { margin-left:.5em; }
+ 
+.pagination .page a, .pagination .page a:visited, .pagination .current page {
+	padding:.25em;
+	font:normal .875em verdana;
+	border:1px solid #C2EE62;
+	background-color:#EDFDD0;
+	margin:0em .25em;	
+	color:#006000;
+}
+ 
+.pagination .current page { 
+	background-color:#234f32;
+	color:#fff;
+	border:1px solid #234f32;
+	font-weight:bold;
+	font-size:1em;
+}
+ 
+.pagination .page a:hover,
+.pagination .current page a:hover,
+.pagination .prev a:hover,
+.pagination .next a:hover {
+	color:#fff;
+	background-color:#234f32;
+	border:1px solid #234f32;
+}
+</style>
+
+{% if is_paginated %}
+{% load i18n %}
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo;&lsaquo; {% trans "anterior" %}</a>
+    {% else %}
+        <span class="disabled prev">&lsaquo;&lsaquo; {% trans "anterior" %}</span>
+    {% endif %}
+    {% for page in pages %}
+        {% if page %}
+            {% ifequal page page_obj.number %}
+                <span class="current pageent page">{{ page }}</span>
+            {% else %}
+                <a href="?page={{ page }}{{ getvars }}" class="page">{{ page }}</a>
+            {% endifequal %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">{% trans "proximo" %} &rsaquo;&rsaquo;</a>
+    {% else %}
+        <span class="disabled next">{% trans "proximo" %} &rsaquo;&rsaquo;</span>
+    {% endif %}
+</div>
+{% endif %}

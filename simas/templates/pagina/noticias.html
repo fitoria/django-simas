@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% block content %}
+{% autopaginate noti 3 %}
+    {% for n in noti %}
+        <li>{{n.titulo}}</li>
+        <li>{{n.texto|truncatewords:4|safe}}</li>
+    {% endfor %}
+{% paginate %}
+
+{% endblock %}

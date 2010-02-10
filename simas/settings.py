@@ -26,11 +26,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 
 MEDIA_ROOT = os.path.join(SITE_ROOT,'media')
-MEDIA_URL = '/media'
+MEDIA_URL = '/archivos/'
 TEMPLATE_DIRS = (
 SITE_ROOT+"/templates",
 )
@@ -54,7 +55,7 @@ INSTALLED_APPS = (
     'django_evolution',
     'pagina',
     'pagination',
+    'debug_toolbar',
 )
 
-
-
+INTERNAL_IPS = ('127.0.0.1',)

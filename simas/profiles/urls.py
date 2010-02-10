@@ -28,10 +28,10 @@ from profiles import views
 
 
 urlpatterns = patterns('',
-                       url(r'^create/$',
+                       url(r'^crear/$',
                            views.create_profile,
                            name='profiles_create_profile'),
-                       url(r'^edit/$',
+                       url(r'^editar/$',
                            views.edit_profile,
                            name='profiles_edit_profile'),
                        url(r'^(?P<username>\w+)/$',

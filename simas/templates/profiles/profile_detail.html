@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+{%block title%}Perfiles{%endblock%}
+{%block left_column%}
+<div id="actividades_lista" >
+        <div id="titulo_tasa">Equipo Simas</div>
+        <div id="resultado_actividades">
+            <div class="contenido_actividad">
+                <h1>{{profile.user.first_name}} {{profile.user.last_name}}</h1>
+                <img src="{{profile.avatar.url_300x200}}"/>
+                <p>
+                    <b>Cargo:</b> {{profile.cargo}}<br>
+                    <b>Área:</b> {{profile.area}}<br>
+                </p>
+                <span class="participantes"><b>Participan:</b> Martha, Falguni, Carlos, Mercedes, Amanda, Martin </span><div class="leermas der"><a href="#"> Leer +</a>
+            </div>
+        </div>
+        </div>
+</div>
+{%endblock%}

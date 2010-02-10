@@ -26,7 +26,7 @@ class UserProfile(models.Model):
     celular = models.CharField(max_length=20, blank=True) 
     skype = models.CharField(max_length=25, blank=True) 
     casa = models.CharField(max_length=20, blank=True) 
-    avatar = ImageWithThumbsField(upload_to='images/profile', sizes=PROFILE_SIZES)
+    avatar = ImageWithThumbsField(upload_to='profile/', sizes=PROFILE_SIZES)
 
     def get_absolute_url(self):
         return '/perfiles/%s/' % self.user.username

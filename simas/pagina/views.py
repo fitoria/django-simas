@@ -16,4 +16,8 @@ def ver_noticia(request):
     noti=Noticia.objects.all()
     return render_to_response('pagina/noticias.html',locals())
     
+def test(request):
+    return render_to_response('pagina/test.html')
 
+def test_dos(request):
+    return render_to_response('pagina/test_dos.html')

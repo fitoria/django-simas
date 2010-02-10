@@ -1,0 +1,68 @@
+{%extends "base.html"%}
+{%block title%}Prueba{%endblock%}
+{%block left_column%}
+<div id="colum_izq" class="izq">
+            <div id="actividades_lista" >
+				    <div id="titulo_tasa">Listado de Actividades</div>
+				    <div id="filtros_actividades">
+				         <div class="boton_filtro">Ano</div><div class="boton_filtro">Mes</div><div class="boton_filtro">Dia</div><div class="boton_filtro">Participante</div>
+				    </div>
+			        <div id="seleccion_actividades">
+				        <FORM ACTION="" METHOD="POST">
+						<INPUT TYPE="text" NAME="nombre" >
+						<INPUT TYPE="submit" >
+						</FORM> 
+				    </div>
+			        <div id="resultado_actividades">
+									<div class="contenido_actividad">
+										<h1>Reunion planificacion zona seca</h1>
+										<div class="calendario">
+											<div class="mes">Mar</div>
+											<div class="dia">13</div>
+										</div>
+										<p>
+											<b>Lugar:</b>SIMAS<br>
+											<b>hora:</b>3:30 pm
+										</p>
+										<span class="participantes"><b>Participan:</b> Martha, Falguni, Carlos, Mercedes, Amanda, Martin </span><div class="leermas der"><a href="#"> Leer +</a></div>
+									</div>
+									<div class="contenido_actividad">
+										<h1>Capacitacion Wordpress</h1>
+										<div class="calendario">
+											<div class="mes">Mar</div>
+											<div class="dia">3</div>
+										</div>
+										<p>
+											<b>Lugar:</b>Chinandega, ASODEL<br>
+											<b>hora:</b>3:30 pm
+										</p>
+										<span class="participantes"><b>Participan:</b> Martha </span><div class="leermasder"><a href="#"> Leer +</a></div>
+									</div>
+									<div class="contenido_actividad">
+										<h1>Reunion planificacion zona seca</h1>
+										<div class="calendario">
+											<div class="mes">Mar</div>
+											<div class="dia">6</div>
+										</div>
+										<p>
+											<b>Lugar:</b>Matagalpa, ADDAC<br>
+											<b>hora:</b>3:30 pm
+										</p>
+										<span class="participantes"><b>Participan:</b> Martha, Falguni, Carlos, Mercedes, Amanda, Martin, Denis, ... <a href="#">ver todos</a> </span><div class="leermas der"><a href="#"> Leer +</a></div>
+									</div>
+									<div class="contenido_actividad">
+										<h1>Reunion de equipo</h1>
+										<div class="calendario">
+											<div class="mes">Mar</div>
+											<div class="dia">7</div>
+										</div>
+										<p>
+											<b>Lugar:</b>SIMAS<br>
+											<b>hora:</b>3:30 pm
+										</p>
+										<span class="participantes"><b>Participan:</b> Martha, Vanessa, Fitoria ... <a href="#">Ver todos</a> </span><div class="leermas der"><a href="#"> Leer +</a></div>
+									</div>
+				    </div>
+				    </div>
+               </div>
+{%endblock%}

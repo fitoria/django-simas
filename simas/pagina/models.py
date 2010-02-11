@@ -114,6 +114,7 @@ class Noticia(models.Model):
     
     class Meta:
         verbose_name_plural = "Noticias"
+        ordering = ('-fecha', 'titulo')
         
     def __unicode__(self):
         return self.titulo
@@ -128,6 +129,7 @@ class Actividad(models.Model):
     
     class Meta:
         verbose_name_plural = "Actividades diarias"
+        ordering = ('fecha', 'titulo')
         
     def __unicode__(self):
         return self.titulo  

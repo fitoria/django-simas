@@ -1,6 +1,42 @@
 {%extends "clean_base.html"%}
 {%block title%}Inicio{%endblock%}
 {% block content %}
-{%block left_colunm%}{% include "pagina/noticias_izq.html" %}{%endblock%}
-{%block right_colunm%}{% include "pagina/actividad_der.html" %}{%endblock%}
+{%block left_colunm%}
+<!-- Esta es la parte de la noticias-->
+<div id="colum_izq" class="izq">
+            <div id="bloque_index_noticia" class="izq" >
+            <div id="titulo_noticia">Noticias</div>    
+                {% for noticia in noticias %}
+                <div class="contenido_noticia">
+                    <h1>{{noticia.titulo}}</h1>
+                    <p>{{noticia.texto|truncatewords:10|safe}}</p>
+                    <span class="autor"><b>Autor:</b> {{noticia.autor}}</span>
+                    <div class="leermas der"><a href="#"> Leer +</a></div>
+                </div>
+                {% endfor %}
+</div>
+{%endblock%}
+{%block right_colunm%}
+<!--Esta es la parte de las actividades -->
+            <div id="bloque_index_actividad" class="izq">
+            <div id="titulo_actividad">Actividades</div>
+
+                {% for actividad in actividades %}
+                <div class="contenido_actividad">
+                    <h1>{{actividad.titulo}}</h1>
+                    <div class="calendario">
+                        <div class="mes">{{actividad.fecha|date:'N'}}</div>
+                        <div class="dia">{{actividad.fecha|date:'j'}}</div>
+                    </div>
+                    <p>
+                        <b>Lugar:</b>{{actividad.lugar}}<br>
+                        <b>hora:</b>{{actividad.fecha|time:'P'}}
+                    </p>
+                    <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="#"> Leer +</a></div>
+                </div>
+                {% endfor %}
+
+</div>
+</div>
+{%endblock%}
 {% endblock %}

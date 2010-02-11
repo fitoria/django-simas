@@ -13,24 +13,21 @@ def handles_uploaded_file(f):
 
 
 def index(request):
-    return render_to_response('pagina/index.html')
+    noticias = Noticia.objects.all()[:3]
+    actividades = Actividad.objects.all()[:3]
+    dict = {'noticias': noticias, 'actividades': actividades}
+    return render_to_response('pagina/index.html', dict)
     	
-def ver_noticia(request):
-    noti=Noticia.objects.all()
-    return render_to_response('pagina/noticias_izq.html',locals())
+def noticias(request):
+    noticias = Noticia.objects.all()
+    dict = {'noticias': noticias}
+    return render_to_response('pagina/noticias.html', dict)
 
-def ver_actividad(request):
-    activ=Actividad.objects.all()
-    render_to_response('pagina/actividad_der.html',locals()) 
-    
+def actividades(request):
+    actividades = Actividad.objects.all()
+    dict = {'actividades': actividades}
+    render_to_response('pagina/actividades.html', dict) 
       
 def ver_documento(request):
     docu=Archivo.objects.filter(subcategoria__nombre__icontains='formatos')
-#    nada = docu.
     return render_to_response('pagina/documentos.html',locals())
- 
-def test(request):
-    return render_to_response('pagina/test.html')
-
-def test_dos(request):
-    return render_to_response('pagina/test_dos.html')

@@ -49,6 +49,9 @@ class UserProfileAdmin(admin.ModelAdmin):
 class DiasFeriadosAdmin(admin.ModelAdmin):
     pass
     
+class SeccionAdmin(admin.ModelAdmin):
+    pass
+
 class SubseccionAdmin(admin.ModelAdmin):
     pass
 
@@ -60,4 +63,5 @@ admin.site.register(Noticia, NoticiaAdmin)
 admin.site.register(Actividad, ActividadAdmin)
 admin.site.register(Area, AreaAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(Seccion, SeccionAdmin)
 admin.site.register(Subseccion, SubseccionAdmin)

@@ -1,0 +1,11 @@
+{%extends "clean_base.html"%}
+{%block title%}Documentos{%endblock%}
+{% block content %}
+    {% for k in docu %}
+        <li>{{k.titulo}}</li>
+        <li>{{k.fecha}}</li>
+        <li>{{k.descripcion|safe}}</li>
+        <li>{{k.titulo}}</li>
+        <li>{{k.usuario}}</li>
+    {% endfor %}
+{% endblock %}

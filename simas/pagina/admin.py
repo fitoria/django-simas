@@ -11,7 +11,7 @@ class LinkAdmin(admin.ModelAdmin):
     search_fields = ['nombre']
     
 class ArchivoAdmin(admin.ModelAdmin):
-    list_display = ['titulo','fecha','categoria','usuario','subcategoria']
+    list_display = ['titulo','fecha','categoria','usuario']
     list_filter = ['titulo','usuario']
     search_fields = ['titulo']
     

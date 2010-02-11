@@ -109,12 +109,11 @@ class Noticia(models.Model):
     fecha = models.DateField()
     titulo = models.CharField(max_length=50)
     texto = models.TextField(default=" ")
-    destacado = models.BooleanField()
     autor = models.ForeignKey(UserProfile)
     
     class Meta:
         verbose_name_plural = "Noticias"
-        ordering = ('-fecha', 'titulo')
+        ordering = ('-fecha',)
         
     def __unicode__(self):
         return self.titulo

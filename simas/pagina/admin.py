@@ -11,7 +11,7 @@ class LinkAdmin(admin.ModelAdmin):
     search_fields = ['nombre']
     
 class ArchivoAdmin(admin.ModelAdmin):
-    list_display = ['titulo','fecha','categoria','usuario']
+    list_display = ['titulo','fecha','categoria','usuario','subcategoria']
     list_filter = ['titulo','usuario']
     search_fields = ['titulo']
     
@@ -48,6 +48,9 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 class DiasFeriadosAdmin(admin.ModelAdmin):
     pass
+    
+class SubseccionAdmin(admin.ModelAdmin):
+    pass
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Link, LinkAdmin)
@@ -57,3 +60,4 @@ admin.site.register(Noticia, NoticiaAdmin)
 admin.site.register(Actividad, ActividadAdmin)
 admin.site.register(Area, AreaAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(Subseccion, SubseccionAdmin)

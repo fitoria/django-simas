@@ -48,15 +48,20 @@ class Categoria(models.Model):
     def __unicode__(self):
         return self.nombre
 
+class Seccion(models.Model):
+    nombre = models.CharField(max_length=25, blank=True, null=True)
+    slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
+
 class Subseccion(models.Model):
     nombre = models.CharField(max_length=25, blank=True, null=True)
     slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
+    seccion = models.ForeignKey(Seccion)
     
     class Meta:
         verbose_name_plural = "Subsecciones"
         
     def __unicode__(self):
-        return self.nombre
+        return "%s (%s)"% (self.nombre, self.seccion.nombre)
        
 class Link(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
@@ -75,8 +80,7 @@ class Archivo(models.Model):
     fecha = models.DateField()
     descripcion = models.TextField(blank=True, null=True)
     adjunto = models.FileField(upload_to='attachments/documentos')
-    categoria = models.ForeignKey(Categoria)
-    subcategoria = models.ForeignKey(Subseccion)
+    subseccion = models.ForeignKey(Subseccion) 
     usuario = models.ForeignKey(UserProfile)
 	
     def get_absolute_url(self):

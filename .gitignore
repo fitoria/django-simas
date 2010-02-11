@@ -5,3 +5,7 @@ local_settings.py
 *.sqlite3
 *.swp
 /media/profile/*.*
+*.pdf
+*.xls
+*.doc
+*.odt

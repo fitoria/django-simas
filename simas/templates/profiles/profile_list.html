@@ -1,21 +1,22 @@
-{%extends "base.html"%}
+{%extends "clean_base.html"%}
 {%block title%}Perfiles{%endblock%}
-{%block left_column%}
-<div id="actividades_lista" >
-        <div id="titulo_tasa">Equipo Simas</div>
-        <div id="resultado_actividades">
+{%block content%}
+<div id="content_lista" >
+        <div id="titulo_content_lista">Equipo Simas</div>
+        <div id="resultado">
         {% for profile in object_list%}
-            <div class="contenido_actividad">
+            <div class="contenido_detalle">
                 <h1>{{profile.user.first_name}} {{profile.user.last_name}}</h1>
-                <div class="calendario">
-                    <div class="mes">Mar</div>
-                    <div class="dia">13</div>
-                </div>
+                    <div class="avatar_lista">
+                    <a href="/perfiles/{{profile.user}}"><img src="{{profile.avatar.url_75x75}}"/></a>
+                    </div>
                 <p>
                     <b>Cargo:</b> {{profile.cargo}}<br>
                     <b>Área:</b> {{profile.area}}<br>
                 </p>
-                <span class="participantes"><b>Participan:</b> Martha, Falguni, Carlos, Mercedes, Amanda, Martin </span><div class="leermas der"><a href="#"> Leer +</a>
+                <br clear="both">
+                <div class="leermas"><a href="/perfiles/{{profile.user}}"> Leer +</a>
+                
             </div>
         {%endfor%}
         </div>

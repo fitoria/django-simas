@@ -113,7 +113,7 @@ class Noticia(models.Model):
     
     class Meta:
         verbose_name_plural = "Noticias"
-        ordering = ('-fecha',)
+        ordering = ('-fecha','-id',)
         
     def __unicode__(self):
         return self.titulo

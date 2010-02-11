@@ -46,7 +46,7 @@
            <div id="logo">INTRANET <small><small><em>beta</em></small></small></div>
            <div id="menu" class="izq">
            <ul>
-                <li>Noticias</li>
+                <li><a href=/noticia>Noticias</a></li>
                 <li>Actividades</li>
                 <li>Documentos</li>
                 <li>Funcionarios</li>
@@ -59,10 +59,114 @@
         <!-- Termina el header -->
           <!-- Comienza Contenido-->
         <div id="contenido">
-            {%block content%}{%endblock%} 
+            {%block content%}
+  
+            <div id="colum_izq" class="izq">
+            {%block left_colunm%}{%endblock%}          
+         </div>
+            <div id="bloque_index_actividad" class="izq">
+            {%block right_colunm%}{%endblock%}
+            </div>
+            {%endblock%} 
+
+<!--         Comienza acordion-->
+          <div id="colum_der" class="der">
+		           <div id="titulo_documento">Documentos</div>
+						<div id="accordion">
+								<div>
+									<h3><a href="#">Formatos</a></h3>
+									<div>
+									     <ul>
+									        <a href=/documentos><li>formato de contrato</li></a>
+									         <li><a href="#">formato de convenios</a></li>
+									         <li><a href="#">formato de carta</a></li>
+									         <li><a href="#">formato de informe mensual</a></li>
+									         <li><a href="#">formato de reporte de viaje</a></li>
+									         <li><a href="#">formato de memorandum</a></li>
+									     </ul>
+									</div>
+								</div>
+								<div>
+									<h3><a href="#">Recursos</a></h3>
+									 <div>
+									   <ul>
+									        <a href="#"> <li>Documentos importantes</li></a>
+									        <a href="#"> <li>Manuales</li></a>
+									         
+									     </ul>
+									 </div>
+								</div>
+								<div>
+								    <h3><a href="#">Planficacion</a></h3>
+								     <div>
+									   <ul>
+									        <a href="#"> <li>Planificacion estrategica 2006-2008</li></a>
+									     </ul>
+									 </div>
+								</div>
+								<div>
+								    <h3><a href="#">Reportes</a></h3>
+								    <div>
+									   <ul>
+									        <a href="#"> <li>Reportes de comunicacion</li></a>
+									        <a href="#"> <li>Reportes de manejo de informacion</li></a>
+									        <a href="#"> <li>Reportes de informatica</li></a>
+									        <a href="#"> <li>Coordinacion</li></a>
+									     </ul>
+									 </div>
+								</div>
+								<div>
+								    <h3><a href="#">Documentacion</a></h3>
+								      <div>
+									   <ul>
+									        <a href="#"> <li>Plan operativo anual</li></a>
+									        <a href="#"> <li>Informe de resultados</li></a>
+									        <a href="#"> <li>Organigrama institucional</li></a>
+									        <a href="#"> <li>Acta reuniones SIMAS-contrapartes</li></a>
+									        <a href="#"> <li>Linea de base</li></a>
+									     </ul>
+									 </div>
+								</div>
+								<div>
+								    <h3><a href="#">Acompanamiento Externo</a></h3>
+								        <div>
+									   <ul>
+									        <a href="#"> <li>Informe de acompanamiento externo</li></a>
+									        <a href="#"> <li>Informe de evaluaciones</li></a>
+									     </ul>
+									 </div>
+								</div>
+					    </div>
+					<div id="titulo_extra">Extra</div>
+							<div id="accordion2">
+								<div>
+									<h3><a href="#">Cumpleaneros del mes</a></h3>
+									<div>
+									     <div class="cumpleanero">
+                                             <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"</div>
+									           <div class="nombre_cumple"><b>Martha Olivera</b></div>
+									           <div class="fecha_cumple">30 Febrero</div>
+									     </div>
+									     <div class="cumpleanero">
+									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"</div>
+									           <div class="nombre_cumple"><b>Carlos Rocha</b></div>
+									           <div class="fecha_cumple">1 Mayo</div>
+									     </div>
+									     <div class="cumpleanero">
+									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"</div>
+									           <div class="nombre_cumple"><b>Adolfo Fitoria</b></div>
+									           <div class="fecha_cumple">8 Marzo</div>
+									     </div>
+									</div>
+								</div>
+								<div>
+									<h3><a href="#">Dias Feriados del mes</a></h3>
+									 <div><b>1 de Mayo</b><br> Dia de los trabajadores</div>
+								</div>
+					    </div>
+	     	   </div>
             <div class="separador" ></div>
          </div>
-
         <!-- Termina Contenido-->
         
         <!-- Comienza Footer-->

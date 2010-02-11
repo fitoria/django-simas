@@ -1,10 +1,9 @@
 {%extends "clean_base.html"%}
 {%block title%}Inicio{%endblock%}
-{% block content %}
 {%block left_colunm%}
 <!-- Esta es la parte de la noticias-->
 
-            <div id="bloque_index_noticia" class="izq" >
+     <div id="bloque_index_noticia" class="izq">
             <div id="titulo_noticia">Noticias</div>    
                 {% for noticia in noticias %}
                 <div class="contenido_noticia">
@@ -14,11 +13,12 @@
                     <div class="leermas der"><a href="#"> Leer +</a></div>
                 </div>
                 {% endfor %}
-
+      
+   </div>
 {%endblock%}
 {%block right_colunm%}
 <!--Esta es la parte de las actividades -->
-
+      <div id="bloque_index_actividad" class="izq">
             <div id="titulo_actividad">Actividades</div>
 
                 {% for actividad in actividades %}
@@ -36,7 +36,34 @@
                 </div>
                 {% endfor %}
 
-</div>
+       </div>
 
 {%endblock%}
+{%block moneda%}
+	
+				    <div class="separador" ></div>
+				    <!-- Comienza bloque de tasa de cambio-->
+				    <div id="bloque_index_tasa" >
+				    <div id="titulo_tasa">Tasa de Cambio Oficial</div>
+				    <div id="tabla_tasa">
+						<table cellspacing="0" cellpadding="0" border="0" width="220">
+							<tbody>
+							<tr>
+							<td valign="top">Fecha</td>
+							<td >Tasa C$ / $</td>
+							</tr>
+							<tr>
+							<td valign="top">01/01/2010</td>
+							<td >21.60</td>
+							</tr>
+							<tr>
+							<td valign="top">02/01/2010</td>
+							<td >21.62</td>
+							</tr>
+							</tbody>
+						</table>
+				    </div>
+				    </div>
+				    <!-- termina bloque de tasa de cambio-->
 {% endblock %}
+

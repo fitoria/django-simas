@@ -1,6 +1,7 @@
 from pagina.models import *
 from datetime import date
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ def index(request):
     noticias = Noticia.objects.all()[:3]
     actividades = Actividad.objects.all()[:3]
     dict = {'noticias': noticias, 'actividades': actividades}
-    return render_to_response('pagina/index.html', dict)
+    return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
     	
 def noticias(request):
     noticias = Noticia.objects.all()

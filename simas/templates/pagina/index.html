@@ -3,7 +3,7 @@
 {% block content %}
 {%block left_colunm%}
 <!-- Esta es la parte de la noticias-->
-<div id="colum_izq" class="izq">
+
             <div id="bloque_index_noticia" class="izq" >
             <div id="titulo_noticia">Noticias</div>    
                 {% for noticia in noticias %}
@@ -14,11 +14,11 @@
                     <div class="leermas der"><a href="#"> Leer +</a></div>
                 </div>
                 {% endfor %}
-</div>
+
 {%endblock%}
 {%block right_colunm%}
 <!--Esta es la parte de las actividades -->
-            <div id="bloque_index_actividad" class="izq">
+
             <div id="titulo_actividad">Actividades</div>
 
                 {% for actividad in actividades %}
@@ -37,6 +37,6 @@
                 {% endfor %}
 
 </div>
-</div>
+
 {%endblock%}
 {% endblock %}

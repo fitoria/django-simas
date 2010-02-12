@@ -50,10 +50,10 @@ class DiasFeriadosAdmin(admin.ModelAdmin):
     pass
     
 class SeccionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['nombre']
 
 class SubseccionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['nombre']
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Link, LinkAdmin)

@@ -52,6 +52,9 @@ class Seccion(models.Model):
     nombre = models.CharField(max_length=25, blank=True, null=True)
     slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
 
+    def __unicode__(self):
+        return self.nombre
+        
 class Subseccion(models.Model):
     nombre = models.CharField(max_length=25, blank=True, null=True)
     slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
@@ -61,7 +64,7 @@ class Subseccion(models.Model):
         verbose_name_plural = "Subsecciones"
         
     def __unicode__(self):
-        return "%s (%s)"% (self.nombre, self.seccion.nombre)
+        return self.nombre
        
 class Link(models.Model):
     nombre = models.CharField(max_length=50, unique=True)

@@ -1,11 +1,8 @@
-{% extends 'base.html' %}
-{% load pagination_tags %}
+
 {% block content %}
-{% autopaginate noti 3 %}
-    {% for n in noti %}
-        <li>{{n.titulo}}</li>
-        <li>{{n.texto|truncatewords:4|safe}}</li>
-    {% endfor %}
-{% paginate %}
+        <li>Fecha:{{noticias.fecha|date:"D, d -m-Y"}}</li>
+        <li>Titulo:{{noticias.titulo}}</li>
+        <li>{{noticias.texto|safe}}</li>
+        <li>Autor:{{noticias.autor}}</li>
 
 {% endblock %}

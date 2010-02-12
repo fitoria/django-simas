@@ -1,0 +1,11 @@
+{% block content %}
+        <li>Fecha:{{actividad.fecha|date:"D, d -m-Y"}}</li>
+        <li>Titulo:{{actividad.titulo}}</li>
+        <li>Descripcion:{{actividad.descripcion|safe}}</li>
+        <li>Lugar:{{actividad.lugar}}</li>
+        <li>Area:{{actividad.area}}</li>
+        <li>Particpantes:{% for x in actividad.participantes.all %}
+                            {{x.user.first_name}},
+                         {% endfor %}</li>
+
+{% endblock %}

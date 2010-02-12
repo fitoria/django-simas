@@ -1,5 +1,4 @@
  # -*- coding: UTF-8 -*-
-
 from pagina.models import *
 from datetime import date
 from django.shortcuts import render_to_response
@@ -8,7 +7,7 @@ from django.utils import simplejson
 from urllib2 import urlopen
 
 hoy = date.today()
-URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?mes=%s&ano=%s&formato=jsonvalido" % (hoy.month, hoy.year)
+URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?dia=%s&mes=%s&ano=%s&formato=jsonvalido" % (hoy.day, hoy.month, hoy.year)
 
 def handles_uploaded_file(f):
 	file_name = os.path.join(settings.ATTACHMENT_PATH, f.titulo)
@@ -22,9 +21,9 @@ def index(request):
     noticias = Noticia.objects.all()[:3]
     actividades = Actividad.objects.all()[:3]
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
-    #json = urlopen(foo = urlopen(URL).read()
-    #lista = simplejson.loads(json)['tipodecambioni']
-    tipos_de_cambios = None
+    #TODO: Fix this shit. Esperar que EPP de bien las fechas. :-)
+    json = urlopen(URL).read()
+    tipos_de_cambios= simplejson.loads(json)['tipodecambioni']
     seccion=Seccion.objects.all()
     subseccion=Subseccion.objects.all()
     dict = {'noticias': noticias, 'actividades': actividades,

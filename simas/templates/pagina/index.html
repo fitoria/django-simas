@@ -54,8 +54,8 @@
 							</tr>
                              {% for dato in tipos_de_cambios%}
 							<tr>
-                                <td valign="top">{{dato.fecha}}</td>
-                                <td >{{dato.valor}}</td>
+                                <td valign="top">{{dato.cambio.fecha}}</td>
+                                <td >{{dato.cambio.valor}}</td>
 							</tr>
                             {%endfor%}
 							</tbody>

@@ -2,10 +2,10 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 
 
-urlpatterns = patterns('simas.pagina.views',
+urlpatterns = patterns('pagina.views',
     (r'^index/$', 'index'),
-    #(r'^noticia/$', 'ver_noticia'),
-    #(r'^actividad/$', 'ver_actividad'),
-    #(r'^documentos/$', 'ver_documento'),
+    (r'^noticia/(?P<noti>[^/]+)/$', 'noticias'),
+    (r'^actividad/(?P<acti>[^/]+)/$', 'actividades'),
+    (r'^documentos/$', 'ver_documento'),
 
 )

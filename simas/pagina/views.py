@@ -19,16 +19,16 @@ def index(request):
     dict = {'noticias': noticias, 'actividades': actividades}
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
     	
-def noticias(request):
-    noticias = Noticia.objects.all()
+def noticias(request, noti):
+    noticias = Noticia.objects.get(id=noti)
     dict = {'noticias': noticias}
-    return render_to_response('pagina/noticias.html', dict)
+    return render_to_response('pagina/noticias.html', dict,context_instance=RequestContext(request))
 
-def actividades(request):
-    actividades = Actividad.objects.all()
-    dict = {'actividades': actividades}
-    render_to_response('pagina/actividades.html', dict) 
+def actividades(request, acti):
+    actividad = Actividad.objects.get(id=acti)
+    dict = {'actividad': actividad}
+    return render_to_response('pagina/actividades.html', dict,context_instance=RequestContext(request)) 
       
 def ver_documento(request):
-    docu=Archivo.objects.filter(subcategoria__nombre__icontains='formatos')
-    return render_to_response('pagina/documentos.html',locals())
+    docu=Archivo.objects.filter(subseccion__nombre__icontains='Formato_contrato')
+    return render_to_response('pagina/documentos.html',{'docu':docu},context_instance=RequestContext(request))

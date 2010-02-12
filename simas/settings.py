@@ -26,7 +26,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+#    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 
@@ -55,7 +55,7 @@ INSTALLED_APPS = (
     'django_evolution',
     'pagina',
     'pagination',
-    'debug_toolbar',
+#    'debug_toolbar',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)

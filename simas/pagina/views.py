@@ -1,3 +1,5 @@
+ # -*- coding: UTF-8 -*-
+
 from pagina.models import *
 from datetime import date
 from django.shortcuts import render_to_response
@@ -23,7 +25,10 @@ def index(request):
     #json = urlopen(foo = urlopen(URL).read()
     #lista = simplejson.loads(json)['tipodecambioni']
     tipos_de_cambios = None
-    dict = {'noticias': noticias, 'actividades': actividades, 
+    seccion=Seccion.objects.all()
+    subseccion=Subseccion.objects.all()
+    dict = {'noticias': noticias, 'actividades': actividades,
+            'seccion':seccion,'subseccion':subseccion,
             'tipos_de_cambios': tipos_de_cambios}
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
     	
@@ -38,9 +43,3 @@ def ver_actividad(request, id_actividad):
     dict = {'actividad': actividad}
     return render_to_response('pagina/actividad.html', dict,
                               context_instance=RequestContext(request)) 
-     
-#NEED FIX.
-def ver_documento(request):
-    docu=Archivo.objects.filter(subseccion__nombre__icontains='Formato_contrato')
-    return render_to_response('pagina/documentos.html',{'docu':docu},
-                              context_instance=RequestContext(request))

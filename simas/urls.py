@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     (r'^perfiles/', include('profiles.urls')),
     (r'^cuenta/login/$', 'django.contrib.auth.views.login', {'template_name': 'profiles/login.html'}),
     (r'^', include('pagina.urls')),
+    (r'^$', 'pagina.views.index'),
 )
 if settings.DEBUG:
     urlpatterns += patterns('',

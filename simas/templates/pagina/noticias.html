@@ -1,8 +1,10 @@
 
 {% block content %}
-        <li>Fecha:{{noticias.fecha|date:"D, d -m-Y"}}</li>
-        <li>Titulo:{{noticias.titulo}}</li>
-        <li>{{noticias.texto|safe}}</li>
-        <li>Autor:{{noticias.autor}}</li>
-
+<div id="popup_noticia">
+        <h1>{{noticias.titulo}}</h1>
+        <img src="{{MEDIA_URL}}imagen/calendar_small.png">{{noticias.fecha|date:"D, d-m-Y"}}
+        <hr>
+        {{noticias.texto|safe}}
+        <div class="campo_perfil"><b> Autor:</b> {{noticias.autor}}</div>
+</div>
 {% endblock %}

@@ -52,6 +52,20 @@ h2{
   margin-top:-10px;
 }
 
+#header li a, a:visited{
+color:#333;
+font-weight:bold;
+text-decoration:none;
+text-shadow:0px 1px 0px #fff;
+}
+
+#header li a:hover{
+color:#333;
+font-weight:bold;
+text-decoration:none;
+text-shadow:0px 0px 2px #4d4d4d;
+}
+
 #logo{
   width:250px;
   font-size:34px;
@@ -65,8 +79,8 @@ h2{
   width:80px;
   height:20px;
   text-align:center;
-  background:#fff;
-  opacity:0.2;
+  background:#368f4e;
+  font-size:12px;
   border-radius:3px;
   -moz-border-radius:3px; /* Firefox */
   -webkit-border-radius:3px; /* Safari y Chrome */ 
@@ -86,27 +100,29 @@ h2{
 
 #menu li {
 	margin-left:4px;
-	padding-left:8px;
+	padding-left:25px;
+	padding-right:20px;
 	padding-top:4px;
 	height:20px;
 	float:left;
 	text-align:center;
-	width:100px;
+
 	background-image:url(../imagen/separador.png);
 	background-repeat: no-repeat;
 	background-position:left;
 	}
 
-#sesion img{ float:left;margin-right:2px; }
+#sesion img{ margin-right:2px; }
 
 #sesion a{
-  color:#FFFFFF;
+  color:#f6f6cf;
   text-decoration:none;
+  text-shadow:none;
 }
 #sesion a:hover{
-   text-decoration:underline;
-  color:#eeeeee
-  
+   text-decoration:none;
+  color:#eeee96;
+  text-shadow:none;
 }
 
 
@@ -461,6 +477,52 @@ padding-left:5px;
 
 }
 
+#popup_actividad{
+ font-size:13px;
+}
+
+#popup_actividad h1{
+  margin-top:0px;
+  padding-left:10px;
+  padding-top:3px;
+  padding-bottom:3px;
+  font-size:16px;
+  background:#75b5db;
+  color:#fff;
+  text-shadow:0 1px 0 #246da5;
+  margin-bottom:2px;
+}
+
+#popup_actividad hr{
+  background-color:#75b5db;
+  color:#75b5db;
+  border:0px;
+  height:1px;
+}
+
+#popup_noticia{
+ font-size:13px;
+}
+
+#popup_noticia h1{
+  margin-top:0px;
+  padding-left:10px;
+  padding-top:3px;
+  padding-bottom:3px;
+  font-size:16px;
+  background:#719f43;
+  color:#fff;
+  text-shadow:0 1px 0 #315111;
+  margin-bottom:2px;
+}
+
+#popup_noticia hr{
+  background-color:#719f43;
+  color:#75b5db;
+  border:0px;
+  height:1px;
+}
+
 
 /* --------------Esto no va por el momento-------------- */
 #contenido_inferior{
@@ -476,12 +538,26 @@ padding-left:5px;
 /* --------------Comienza footer-------------- */
 
 #footer{
-  margin-top:15px;
-  width:960px;
-  height:30px;
+  margin-top:0px;
+  width:957px;
+  height:50px;
   margin-bottom:-8px;
   !margin-bottom:0px;
+  
   clear:both;
+  background:#d9d9d9;
+  border-top-color:#91a4af;
+  border-top-width:1px;
+  border-top-style:solid;
+  font-size:11px;
+}
+#derechos{
+margin-top:12px;
+margin-left:20px;
+}
+#logofooter{
+margin-top:5px;
+margin-right:20px;
 }
 
 #simas{

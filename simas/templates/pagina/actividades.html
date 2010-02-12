@@ -1,11 +1,15 @@
 {% block content %}
-        <li>Fecha:{{actividad.fecha|date:"D, d -m-Y"}}</li>
-        <li>Titulo:{{actividad.titulo}}</li>
-        <li>Descripcion:{{actividad.descripcion|safe}}</li>
-        <li>Lugar:{{actividad.lugar}}</li>
-        <li>Area:{{actividad.area}}</li>
-        <li>Particpantes:{% for x in actividad.participantes.all %}
-                            {{x.user.first_name}},
-                         {% endfor %}</li>
+        <div id="popup_actividad">
+        <h1>{{actividad.titulo}}</h1>
+		    <img src="{{MEDIA_URL}}imagen/calendar_small.png">{{actividad.fecha|date:"D, d-m-Y"}} | <img src="{{MEDIA_URL}}imagen/clock.png">{{actividad.fecha|time:'P'}}
+		    <hr>
+		    
+		    {{actividad.descripcion|safe}}
+	
+		   <div class="campo_perfil"> <b>Lugar:</b>{{actividad.lugar}} | <b>Area:</b>{{actividad.area}}</div>
+		   <b>Particpantes:</b>{% for x in actividad.participantes.all %}
+		                        {{x.user.first_name}},
+		                     {% endfor %}
+        </div>
 
 {% endblock %}

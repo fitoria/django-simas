@@ -1,10 +1,4 @@
-{%extends "base.html"%}
-{%block title%}Perfiles{%endblock%}
-{%block left_column%}
-<div id="actividades_lista" >
-        <div id="titulo_tasa">Iniciar Sesión</div>
-        <div id="resultado_actividades">
-            <div class="contenido_actividad">
+{% block content %}
                 <form action="." method= "POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
@@ -13,8 +7,4 @@
                     <input type = "submit" value = "Iniciar Sesión" />
                 </form>
 
-            </div>
-        </div>
-        </div>
-</div>
-{%endblock%}
+{% endblock %}

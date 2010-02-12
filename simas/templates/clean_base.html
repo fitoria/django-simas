@@ -43,17 +43,17 @@
         <!-- Comienza el header -->
         <div id="header">
           
-            <div id="sesion" class="centro">Entrar</div>
+            <div id="sesion" class="centro"><a href="/cuenta/login" rel="facebox"><img src="{{MEDIA_URL}}imagen/user.png"> Entrar</a></div>
            <div id="logo">INTRANET <small><small><em>beta</em></small></small></div>
            <div id="menu" class="izq">
-           <ul>
-                <li><a href=/noticia>Noticias</a></li>
-                <li>Actividades</li>
-                <li>Documentos</li>
-                <li>Funcionarios</li>
-                <li>Simas</li>
-                <li>Projekt</li>
-                <li>FAQ</li>
+           <ul> 
+                <li><a href="/"><img src="{{MEDIA_URL}}imagen/home.png" align="left"> Inicio</a></li>
+                <li><a href="#">Noticias</a></li>
+                <li><a href="#">Actividades</a></li>
+                <li><a href="/perfiles">Funcionarios</a></li>
+                <li><a href="http://www.simas.org.ni">Simas</a></li>
+                <li><a href="http://www.simas.org.ni/projekt">Projekt</a></li>
+                <li><a href="#">FAQ</a></li>
            </div>
                  
         </div>
@@ -142,17 +142,17 @@
 									<h3><a href="#">Cumpleaneros del mes</a></h3>
 									<div>
 									     <div class="cumpleanero">
-                                             <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"</div>
+                                             <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"></div>
 									           <div class="nombre_cumple"><b>Martha Olivera</b></div>
 									           <div class="fecha_cumple">30 Febrero</div>
 									     </div>
 									     <div class="cumpleanero">
-									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"</div>
+									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"></div>
 									           <div class="nombre_cumple"><b>Carlos Rocha</b></div>
 									           <div class="fecha_cumple">1 Mayo</div>
 									     </div>
 									     <div class="cumpleanero">
-									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"</div>
+									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"></div>
 									           <div class="nombre_cumple"><b>Adolfo Fitoria</b></div>
 									           <div class="fecha_cumple">8 Marzo</div>
 									     </div>
@@ -171,7 +171,8 @@
         <!-- Comienza Footer-->
         
         <div id="footer">
-             Desarrollado por SIMAS, 2009 usando Django framework. Pecera Software!</div>
+             <div id="derechos"class="izq">Desarrollado por SIMAS, 2010 <br> Plataforma Django framework. Pecera Software!</div>
+              <div id="logofooter" class="der"><img align="right" src="{{MEDIA_URL}}imagen/logofooter.png"></div>
         </div>
         <!-- Termina Footer-->
         

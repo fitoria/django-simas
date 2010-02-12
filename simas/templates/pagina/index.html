@@ -8,9 +8,10 @@
       $('a[rel*=facebox]').facebox({
         loading_image : '{{MEDIA_URL}}imagen/loading.gif',
         close_image   : '{{MEDIA_URL}}imagen/closelabel.gif'
-      }) 
-    })
-  </script>
+        });
+
+    });
+</script>
 {%endblock%}
 {%block left_colunm%}
 <!-- Esta es la parte de la noticias-->
@@ -64,14 +65,12 @@
 							<td valign="top">Fecha</td>
 							<td >Tasa C$ / $</td>
 							</tr>
+                             {% for dato in tipos_de_cambios%}
 							<tr>
-							<td valign="top">01/01/2010</td>
-							<td >21.60</td>
+                                <td valign="top">{{dato.fecha}}</td>
+                                <td >{{dato.valor}}</td>
 							</tr>
-							<tr>
-							<td valign="top">02/01/2010</td>
-							<td >21.62</td>
-							</tr>
+                            {%endfor%}
 							</tbody>
 						</table>
 				    </div>

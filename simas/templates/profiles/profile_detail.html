@@ -1,31 +1,31 @@
-{%extends "clean_base.html"%}
+{%extends "base.html"%}
 {%block title%}Perfiles{%endblock%}
-{%block content%}
+{%block left_column%}
+<!-- inicio profile_detail.html -->
 <div id="content_lista" >
-        <div id="titulo_content_lista">Equipo Simas</div>
-        <div id="resultado">
-            <div class="contenido_detalle">
-                
-                <div class="avatar_detalle">
-                <img src="{{profile.avatar.url_150x150}}"/>
-                <h1>{{profile.user.first_name}} {{profile.user.last_name}}</h1>
-                {{profile.cargo}}
-                </div>
-                <p>
-                    <div class="campo_perfil"><b>Área</b></div>
-                    <img src="{{MEDIA_URL}}imagen/area.png"> {{profile.area}}<br>
-                    <div class="campo_perfil"><b>Skype</b></div> 
-                    <br><img src="{{MEDIA_URL}}imagen/skype.png"> {{profile.skype}}<br>
-                    <div class="campo_perfil"><b>Extension</b></div>
-                    <br><img src="{{MEDIA_URL}}imagen/telephone.png"> {{profile.extension}}<br>
-                    <div class="campo_perfil"><b>Telefono casa</b></div> 
-                    <br><img src="{{MEDIA_URL}}imagen/home.png"> {{profile.casa}}<br>
-                    <div class="campo_perfil"><b>Telefono Celular</b></div> 
-                    <br><img src="{{MEDIA_URL}}imagen/phone.png"> {{profile.celular}}<br>
-                </p>
-                <br clear="both">
+    <div id="titulo_content_lista">Equipo Simas</div>
+    <div id="resultado">
+        <div class="contenido_detalle">
+            <div class="avatar_detalle">
+            <img src="{{profile.avatar.url_150x150}}"/>
+            <h1>{{profile.user.first_name}} {{profile.user.last_name}}</h1>
+            {{profile.cargo}}
             </div>
-        </div>
-        </div>
+            <p>
+                <div class="campo_perfil"><b>Área</b></div>
+                <img src="{{MEDIA_URL}}imagen/area.png"> {{profile.area}}<br>
+                <div class="campo_perfil"><b>Skype</b></div> 
+                <br><img src="{{MEDIA_URL}}imagen/skype.png"> {{profile.skype}}<br>
+                <div class="campo_perfil"><b>Extensión</b></div>
+                <br><img src="{{MEDIA_URL}}imagen/telephone.png"> {{profile.extension}}<br>
+                <div class="campo_perfil"><b>Teléfono casa</b></div> 
+                <br><img src="{{MEDIA_URL}}imagen/home.png"> {{profile.casa}}<br>
+                <div class="campo_perfil"><b>Teléfono Celular</b></div> 
+                <br><img src="{{MEDIA_URL}}imagen/phone.png"> {{profile.celular}}<br>
+            </p>
+            <br clear="both">
+    </div>
+    </div>
 </div>
+<!-- fin profile_detail.html -->
 {%endblock%}

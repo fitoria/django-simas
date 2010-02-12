@@ -201,6 +201,19 @@ h2{
   color:#333;
   text-shadow:0 1px 0 #fff
 }
+
+#titulo_content_lista{
+  width:590px;
+  height:28px;
+  background-image: url(../imagen/titulo_tasa.png);
+  background-repeat:no-repeat;
+  font-size:18px;
+  padding-left:10px;
+  padding-top:8px;
+  color:#333;
+  text-shadow:0 1px 0 #fff
+}
+
 .contenido_noticia{
   padding-left:10px;
   padding-right:10px;
@@ -362,7 +375,7 @@ margin-bottom:5px;
 }
 
 /* --------------Contenido para vistas detalle-------------- */
-#actividades_lista{
+#content_lista{
   width:590px;
   margin-bottom:15px;
   /*background: url(../imagen/fondotasa.png);
@@ -399,6 +412,55 @@ margin-bottom:5px;
   background:#eff6f2;
   padding-top:5px;
 }
+
+.contenido_detalle{
+  padding-left:10px;
+  padding-right:10px;
+  font-size:13px;
+  border-bottom-width:1px;
+  border-bottom-style:dotted;
+  border-bottom-color:#b3b3b3;
+
+}
+
+.contenido_detalle h1{
+  font-weight:bold;
+  font-size:14px;
+  color:#2496bf;
+  margin-bottom:0px;
+  text-shadow:0 1px 0 #fff
+}
+
+.contenido_detalle p{
+ margin-top:0px;
+ margin-bottom:3px;
+}
+.contenido_detalle .leermas{
+ text-align:right;
+}
+
+.avatar_lista{
+float:left;
+width:80px;
+height:75px;
+}
+
+.avatar_detalle{
+ height:195px;
+ width:165px;
+ float:left;
+
+}
+
+.campo_perfil{
+background:#f0eded;
+width:400px;
+height:20px;
+float:left;
+padding-left:5px;
+
+}
+
 
 /* --------------Esto no va por el momento-------------- */
 #contenido_inferior{

@@ -25,7 +25,7 @@ class UserProfile(models.Model):
     area = models.ForeignKey(Area)
     celular = models.CharField(max_length=20, blank=True) 
     skype = models.CharField(max_length=25, blank=True)
-    fecha = models.DateField('Fecha de nacimiento', blank=True, null=True) 
+    fecha = models.DateField('Fecha de nacimiento', blank=True, null=True, help_text="Año-Mes-Dia") 
     casa = models.CharField(max_length=20, blank=True) 
     avatar = ImageWithThumbsField(upload_to='profile/', sizes=PROFILE_SIZES)
 

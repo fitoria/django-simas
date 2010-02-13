@@ -18,6 +18,7 @@ def handles_uploaded_file(f):
 
 
 def index(request):
+    mes = str(hoy.month)
     noticias = Noticia.objects.all()[:3]
     actividades = Actividad.objects.all()[:3]
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
@@ -30,7 +31,7 @@ def index(request):
     dict = {'noticias': noticias, 'actividades': actividades,
             'secciones':secciones,'subsecciones':subsecciones,
             'tipos_de_cambios': tipos_de_cambios,
-            'cumpleano':cumpleano}
+            'cumpleano':cumpleano,'mes':mes}
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
     	
 def ver_noticia(request, id_noticia):

@@ -89,12 +89,14 @@
 									<h3><a href="#">Cumpleaneros del mes</a></h3>
 									<div>
 									{% for cumple in cumpleano %}
+									    {% if cumple.fecha|date:'n' == mes %}
 									     <div class="cumpleanero">
                                              <div class="foto_cumple"><img src="{{cumple.avatar.url_75x75}}"></div>
 									           <div class="nombre_cumple"><b>{{cumple.user.first_name}} {{cumple.user.last_name}}</b></div>	           
 									           <div class="fecha_cumple">{{cumple.fecha|date:'j F'}}</div>
 									     </div>
-									     {% endfor %}
+									     {% endif %}
+									 {% endfor %}
 									     </div>
 								<div>
 									<h3><a href="#">Dias Feriados del mes</a></h3>

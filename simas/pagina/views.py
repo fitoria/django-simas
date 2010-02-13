@@ -7,7 +7,7 @@ from django.utils import simplejson
 from urllib2 import urlopen
 
 hoy = date.today()
-URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?dia=%s&mes=%s&ano=%s&formato=jsonvalido" % (hoy.day, hoy.month, hoy.year)
+URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?mes=%s&ano=%s&formato=jsonvalido" % (hoy.month, hoy.year)
 
 def handles_uploaded_file(f):
 	file_name = os.path.join(settings.ATTACHMENT_PATH, f.titulo)
@@ -22,9 +22,15 @@ def index(request):
     noticias = Noticia.objects.all()[:3]
     actividades = Actividad.objects.all()[:3]
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
-    #TODO: Fix this shit. Esperar que EPP de bien las fechas. :-)
     json = urlopen(URL).read()
-    tipos_de_cambios= simplejson.loads(json)['tipodecambioni']
+    lista_cambios = simplejson.loads(json)['tipodecambioni']
+    #hacemos el calculo de los dias
+    dia_tope = hoy.day + 4 
+    if len(lista_cambios) > (hoy.day+5):
+        tipos_de_cambios = lista_cambios[hoy.day - 1:dia_tope]
+    else:
+        tipos_de_cambios = lista_cambios[hoy.day - 1:]
+
     secciones=Seccion.objects.all()
     subsecciones=Subseccion.objects.all()
     cumpleano=UserProfile.objects.all()

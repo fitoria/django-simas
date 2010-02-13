@@ -67,14 +67,14 @@
 {% block acordion%}
                         <div id="titulo_documento">Documentos</div>
 						<div id="accordion">
-								{% for k in seccion %}
+								{% for seccion in secciones %}
 								<div>
-									<h3><a href="#">{{k.nombre}}</a></h3>
+									<h3><a href="#">{{seccion.nombre}}</a></h3>
 									<div>
 									     <ul>
-									        {% for i in subseccion %}
-									            {% if i.seccion_id == k.id %}
-									         <li><a href="#">{{i.nombre}}</a></li>
+									        {% for subseccion in subsecciones %}
+									            {% if subseccion.seccion_id == seccion.id %}
+									         <li><a href="#">{{subseccion.nombre}}</a></li>
 									            {%endif%}
 								            {% endfor %}
 									     </ul>
@@ -88,23 +88,14 @@
 								<div>
 									<h3><a href="#">Cumpleaneros del mes</a></h3>
 									<div>
+									{% for cumple in cumpleano %}
 									     <div class="cumpleanero">
-                                             <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"></div>
-									           <div class="nombre_cumple"><b>Martha Olivera</b></div>
-									           <div class="fecha_cumple">30 Febrero</div>
+                                             <div class="foto_cumple"><img src="{{cumple.avatar.url_75x75}}"></div>
+									           <div class="nombre_cumple"><b>{{cumple.user.first_name}} {{cumple.user.last_name}}</b></div>	           
+									           <div class="fecha_cumple">{{cumple.fecha|date:'j F'}}</div>
 									     </div>
-									     <div class="cumpleanero">
-									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"></div>
-									           <div class="nombre_cumple"><b>Carlos Rocha</b></div>
-									           <div class="fecha_cumple">1 Mayo</div>
+									     {% endfor %}
 									     </div>
-									     <div class="cumpleanero">
-									           <div class="foto_cumple"><img src="{{MEDIA_URL}}imagen/carita.png"></div>
-									           <div class="nombre_cumple"><b>Adolfo Fitoria</b></div>
-									           <div class="fecha_cumple">8 Marzo</div>
-									     </div>
-									</div>
-								</div>
 								<div>
 									<h3><a href="#">Dias Feriados del mes</a></h3>
 									 <div><b>1 de Mayo</b><br> Dia de los trabajadores</div>

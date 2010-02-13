@@ -24,11 +24,13 @@ def index(request):
     #TODO: Fix this shit. Esperar que EPP de bien las fechas. :-)
     json = urlopen(URL).read()
     tipos_de_cambios= simplejson.loads(json)['tipodecambioni']
-    seccion=Seccion.objects.all()
-    subseccion=Subseccion.objects.all()
+    secciones=Seccion.objects.all()
+    subsecciones=Subseccion.objects.all()
+    cumpleano=UserProfile.objects.all()
     dict = {'noticias': noticias, 'actividades': actividades,
-            'seccion':seccion,'subseccion':subseccion,
-            'tipos_de_cambios': tipos_de_cambios}
+            'secciones':secciones,'subsecciones':subsecciones,
+            'tipos_de_cambios': tipos_de_cambios,
+            'cumpleano':cumpleano}
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
     	
 def ver_noticia(request, id_noticia):

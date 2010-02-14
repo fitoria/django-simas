@@ -78,29 +78,33 @@
 									            {%endif%}
 								            {% endfor %}
 									     </ul>
-									</div>
-								</div>
+									 </div>
+								 </div>
 								{% endfor %}
-						</div>
+						 </div>
 <!--				 El otro acordio-->
-					<div id="titulo_extra">Extra</div>
-							<div id="accordion2">
+				        <div id="titulo_extra">Extra</div>
+						<div id="accordion2">
+							<div>
+								<h3><a href="#">Cumpleañeros del mes</a></h3>
 								<div>
-									<h3><a href="#">Cumpleaneros del mes</a></h3>
-									<div>
-									{% for cumple in cumpleano %}
-									    {% if cumple.fecha|date:'n' == mes %}
-									     <div class="cumpleanero">
-                                             <div class="foto_cumple"><img src="{{cumple.avatar.url_75x75}}"></div>
-									           <div class="nombre_cumple"><b>{{cumple.user.first_name}} {{cumple.user.last_name}}</b></div>	           
-									           <div class="fecha_cumple">{{cumple.fecha|date:'j F'}}</div>
-									     </div>
-									     {% endif %}
-									 {% endfor %}
-									     </div>
-								<div>
-									<h3><a href="#">Dias Feriados del mes</a></h3>
-									 <div><b>1 de Mayo</b><br> Dia de los trabajadores</div>
-								</div>
-					    </div>
+								{% for cumple in cumpleano %}
+								    {% if cumple.fecha|date:'n' == mes %}
+								     <div class="cumpleanero">
+                                           <div class="foto_cumple"><img src="{{cumple.avatar.url_75x75}}"></div>
+								           <div class="nombre_cumple"><b>{{cumple.user.first_name}} {{cumple.user.last_name}}</b></div>	           
+								           <div class="fecha_cumple">{{cumple.fecha|date:'j F'}}</div>
+								     </div>
+								    {% endif %}
+								 {% endfor %}
+								 </div>
+							</div>
+							<div>
+								<h3><a href="#">Dias Feriados del mes</a></h3>
+								    {% for dia in dias %}
+								 <div><b>{{dia.fecha|date:'j F'}}</b><br>{{dia.descripcion}}</div>
+								    {% endfor %} 
+							</div>
+						</div>
+					      
 {% endblock %}

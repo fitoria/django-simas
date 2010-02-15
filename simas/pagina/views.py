@@ -36,9 +36,7 @@ def index(request):
     cumpleano=UserProfile.objects.all()
     dias=DiasFeriados.objects.all()
     dict = {'noticias': noticias, 'actividades': actividades,
-            'secciones':secciones,'subsecciones':subsecciones,
-            'tipos_de_cambios': tipos_de_cambios,
-            'cumpleano':cumpleano,'mes':mes,'dias':dias}
+            'tipos_de_cambios': tipos_de_cambios}
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
     	
 def ver_noticia(request, id_noticia):

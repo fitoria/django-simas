@@ -103,7 +103,7 @@
                         <div>
                             <h3><a href="#">Cumpleañeros del mes</a></h3>
                             <div>
-                            {% for cumple in cumpleano %}
+                            {% for cumple in cumpleanos %}
                                 {% if cumple.fecha|date:'n' == mes %}
                                  <div class="cumpleanero">
                                        <div class="foto_cumple"><img src="{{cumple.avatar.url_75x75}}"></div>

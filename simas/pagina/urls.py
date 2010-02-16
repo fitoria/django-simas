@@ -14,5 +14,12 @@ urlpatterns = patterns('pagina.views',
     (r'^actividades/(?P<ano>\d{4})/participante/(?P<participante>\w+)/$', 'actividades'),
     (r'^actividades/participante/(?P<participante>\w+)/$', 'actividades'),
     (r'^actividades/$', 'actividades'),
+    # Noticias
+    (r'^noticias/(?P<ano>\d{4})/(?P<mes>\d{2})/$', 'noticias'),
+    (r'^noticias/(?P<ano>\d{4})/$', 'noticias'),
+    (r'^noticias/(?P<ano>\d{4})/(?P<mes>\d{2})/autor/(?P<autor>\w+)/$', 'noticias'),
+    (r'^noticias/(?P<ano>\d{4})/autor/(?P<autor>\w+)/$', 'noticias'),
+    (r'^noticias/autor/(?P<autor>\w+)/$', 'noticias'),
+    (r'^noticias/$', 'noticias'),
                      
 )

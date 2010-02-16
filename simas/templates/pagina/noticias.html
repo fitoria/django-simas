@@ -1,0 +1,98 @@
+{%extends "clean_base.html"%}
+{%block title%}Noticias{%endblock%}
+{%block extra_js%}
+<script type="text/javascript">
+    function procesarFormulario(form){
+        var ano = form.ano.value;
+        var mes = form.mes.value;
+        var autor = form.autor.value;
+        if(ano && mes){
+            if (autor){
+                var url = "/noticias/" + ano+ "/" + mes + "/autor/" + autor;
+            }else {
+                var url = "/noticias/" + ano+ "/" + mes + "/";
+            }
+        }else if(ano){
+            if (autor){
+                var url = "/noticias/" + ano+ "/autor/" + autor;
+            }else {
+                var url = "/noticias/" + ano + "/";
+            }
+        }else
+        {
+            if (autor){
+                var url="/noticias/autor/" + autor;
+            }else
+            {
+                var url="/noticias/";
+            }
+        }
+
+        window.location = url;
+    }
+</script>
+{%endblock%}
+{%block content%}
+<div id="content_lista" >
+    <div id="titulo_content_lista">{{mensaje}}</div>
+        <div id="resultado">
+        <form name="formulario" action="" method="get">
+            Año: <select id="id_ano" name="ano" > - 
+                <option value="">-------</option>
+                {%for ano in anos%}
+                <option value="{{ano}}">{{ano}}</option>
+                {%endfor%}
+            </select> 
+           Mes:  
+            <select id="id_mes" name="mes" >
+                <option value="">-------</option>
+                <option value="01">Enero</option>
+                <option value="02">Febrero</option>
+                <option value="03">Marzo</option>
+                <option value="04">Abril</option>
+                <option value="05">Mayo</option>
+                <option value="06">Junio</option>
+                <option value="07">Julio</option>
+                <option value="08">Agosto</option>
+                <option value="09">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+            autor:
+            <select id="id_autor" name="autor" >
+                <option value="">-------</option>
+                {%for autor in autores%}
+                <option value="{{autor.user.username}}">{{autor.user.first_name}} {{autor.user.last_name}}</option>
+                {%endfor%}
+            </select>
+
+            <input type="button" name="boton" value="Filtrar" onClick="procesarFormulario(this.form)"/>
+        </form>
+        {% for noticia in noticias.object_list%}
+                <div class="contenido_noticia">
+                    <h1>{{noticia.titulo}}</h1>
+                    <p>{{noticia.texto|truncatewords:10|safe}}</p>
+                    <span class="autor"><b>Autor:</b> {{noticia.autor}}</span>
+                    <div class="leermas der"><a href="/noticia/{{noticia.id}}" rel="facebox"> Leer +</a></div>
+                </div>
+                {% endfor %}
+                <br clear="both">
+            </div>
+            <div class="pagination">
+                <span class="step-links">
+                {% if noticias.has_previous %}
+                <a href="?page={{ actividades.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                </span>
+
+                {% if noticias.has_next %}
+                    <a href="?page={{ noticias.next_page_number }}">next</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+{%endblock%}

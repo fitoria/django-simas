@@ -111,3 +111,66 @@ def actividades(request, ano=None, mes=None, dia=None, participante=None):
             'participantes': participantes}
     return render_to_response('pagina/actividades.html', dict,
                               context_instance=RequestContext(request))
+                              
+def noticias(request, ano=None, mes=None, autor=None):
+    if autor:
+        if ano and mes and dia:
+           try:
+               fecha = date(int(ano), int(mes),)
+           except:
+               raise Http404
+           lista_noticias = Noticia.objects.filter(fecha = fecha,
+                                                       autor__user__username = autor)
+           mensaje = "Noticias del dia de %s-%s" % (fecha.month, fecha.year)
+        elif ano and mes:
+            lista_noticias = Noticia.objects.filter(fecha__year = ano, fecha__month=mes,
+                                                           autor__user__username = autor)
+            mensaje = "Noticias del mes de %s, %s" % (mes, ano)
+        elif ano:
+            lista_noticias = Noticia.objects.filter(fecha__year = ano, 
+                                                    autor__user__username = autor)
+            mensaje = "Noticias de %s" % ano
+        else:
+            lista_noticias = Noticia.objects.filter(autor__user__username = autor)
+            mensaje = "Noticias de %s" % autor
+    else:
+        if ano and mes:
+            try:
+                fecha = date(int(ano), int(mes),)
+            except:
+                raise Http404
+            lista_noticias = Noticia.objects.filter(fecha = fecha)
+            mensaje = "Noticias del dia de %s-%s" % (fecha.month, fecha.year)
+        elif ano and mes:
+            lista_noticias = Noticia.objects.filter(fecha__year = ano, fecha__month=mes)
+            mensaje = "Noticias del mes de %s, %s" % (mes, ano)
+        elif ano:
+            lista_noticias = Noticia.objects.filter(fecha__year = ano)
+            mensaje = "Noticia %s" % ano
+        else:
+            lista_noticias = Noticia.objects.all()
+            mensaje = "Noticias"
+
+    paginator = Paginator(lista_noticias, 25)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        noticias = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        noticias = paginator.page(paginator.num_pages)
+
+    rango_anos = Noticia.objects.all().aggregate(ano_minimo = Min('fecha'),
+                                                    ano_maximo = Max('fecha'))
+
+    anos = range(rango_anos['ano_minimo'].year, rango_anos['ano_maximo'].year + 1)
+    autores = UserProfile.objects.all()
+
+    dict = {'noticias': noticias, 'mensaje': mensaje,
+            'dias': range(1,32), 'anos': anos, 
+            'autores': autores}
+    return render_to_response('pagina/noticias.html', dict,
+                                context_instance=RequestContext(request))

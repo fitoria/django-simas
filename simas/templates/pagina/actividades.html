@@ -1,9 +1,88 @@
 {%extends "clean_base.html"%}
 {%block title%}Actividades{%endblock%}
+{%block extra_js%}
+<script type="text/javascript">
+    function procesarFormulario(form){
+        var ano = form.ano.value;
+        var mes = form.mes.value;
+        var dia = form.dia.value;
+        var participante = form.participante.value;
+        if (ano && mes && dia){
+            if (participante){
+                var url = "/actividades/" + ano+ "/" + mes + "/" + dia + "/participante/" + participante;
+            }else{
+                var url = "/actividades/" + ano+ "/" + mes + "/" + dia;
+            }
+        }else if(ano && mes){
+            if (participante){
+                var url = "/actividades/" + ano+ "/" + mes + "/participante/" + participante;
+            }else {
+                var url = "/actividades/" + ano+ "/" + mes + "/";
+            }
+        }else if(ano){
+            if (participante){
+                var url = "/actividades/" + ano+ "/participante/" + participante;
+            }else {
+                var url = "/actividades/" + ano + "/";
+            }
+        }else
+        {
+            if (participante){
+                var url="/actividades/participante/" + participante;
+            }else
+            {
+                var url="/actividades/";
+            }
+        }
+
+        window.location = url;
+    }
+</script>
+{%endblock%}
 {%block content%}
 <div id="content_lista" >
     <div id="titulo_content_lista">{{mensaje}}</div>
         <div id="resultado">
+        <form name="formulario" action="" method="get">
+            Año: <select id="id_ano" name="ano" > - 
+                <option value="">-------</option>
+                {%for ano in anos%}
+                <option value="{{ano}}">{{ano}}</option>
+                {%endfor%}
+            </select> 
+           Mes:  
+            <select id="id_mes" name="mes" >
+                <option value="">-------</option>
+                <option value="01">Enero</option>
+                <option value="02">Febrero</option>
+                <option value="03">Marzo</option>
+                <option value="04">Abril</option>
+                <option value="05">Mayo</option>
+                <option value="06">Junio</option>
+                <option value="07">Julio</option>
+                <option value="08">Agosto</option>
+                <option value="09">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+            Día: 
+            <select id="id_dia" name="dia" >
+                <option value="">-------</option>
+                {%for dia in dias %}
+                <option value="{{dia}}">{{dia}}</option>
+                {%endfor%}
+            </select>
+            Participante:
+            <select id="id_participante" name="participante" >
+                <option value="">-------</option>
+                {%for participante in participantes%}
+                <option value="{{participante.user.username}}">{{participante.user.first_name}} {{participante.user.last_name}}</option>
+                {%endfor%}
+            </select>
+
+            <input type="button" name="boton" value="Filtrar" onClick="procesarFormulario(this.form)"/>
+        </form>
         {% for actividad in actividades.object_list%}
             <div class="contenido_detalle">
                 <h1>{{actividad.titulo}}</h1>

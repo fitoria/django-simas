@@ -1,6 +1,7 @@
  # -*- coding: UTF-8 -*-
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import Http404
+from django.db.models import Min, Max
 from pagina.models import *
 from datetime import date
 from django.shortcuts import render_to_response
@@ -99,6 +100,14 @@ def actividades(request, ano=None, mes=None, dia=None, participante=None):
     except (EmptyPage, InvalidPage):
         actividades = paginator.page(paginator.num_pages)
 
-    dict = {'actividades': actividades, 'mensaje': mensaje}
+    rango_anos = Actividad.objects.all().aggregate(ano_minimo = Min('fecha'),
+                                                   ano_maximo = Max('fecha'))
+
+    anos = range(rango_anos['ano_minimo'].year, rango_anos['ano_maximo'].year + 1)
+    participantes = UserProfile.objects.all()
+    
+    dict = {'actividades': actividades, 'mensaje': mensaje,
+            'dias': range(1,32), 'anos': anos, 
+            'participantes': participantes}
     return render_to_response('pagina/actividades.html', dict,
                               context_instance=RequestContext(request))

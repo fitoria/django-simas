@@ -71,9 +71,9 @@
         </form>
         {% for noticia in noticias.object_list%}
                 <div class="contenido_noticia">
-                    <h1>{{noticia.titulo}}</h1>
-                    <p>{{noticia.texto|truncatewords:10|safe}}</p>
-                    <span class="autor"><b>Autor:</b> {{noticia.autor}}</span>
+                    <h1>{{noticia.titulo}} </h1>
+                    <p>{{noticia.texto|truncatewords:150|safe}}</p>
+                    <span class="autor"><b>Autor:</b> {{noticia.autor}} <b>Publicado el:</b> {{noticia.fecha|date:"D d M Y"}}</span>
                     <div class="leermas der"><a href="/noticia/{{noticia.id}}" rel="facebox"> Leer +</a></div>
                 </div>
                 {% endfor %}

@@ -1,4 +1,6 @@
  # -*- coding: UTF-8 -*-
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.http import Http404
 from pagina.models import *
 from datetime import date
 from django.shortcuts import render_to_response
@@ -45,3 +47,58 @@ def ver_actividad(request, id_actividad):
     dict = {'actividad': actividad}
     return render_to_response('pagina/actividad.html', dict,
                               context_instance=RequestContext(request)) 
+
+def actividades(request, ano=None, mes=None, dia=None, participante=None):
+    if participante:
+        if ano and mes and dia:
+           try:
+               fecha = date(int(ano), int(mes), int(dia))
+           except:
+               raise Http404
+           lista_actividades = Actividad.objects.filter(fecha = fecha,
+                                                       participantes__user__username = participante)
+           mensaje = "Actividades del dia de %s-%s-%s" % (fecha.day, fecha.month, fecha.year)
+        elif ano and mes:
+           lista_actividades = Actividad.objects.filter(fecha__year = ano, fecha__month=mes,
+                                                       participantes__user__username = participante)
+           mensaje = "Actividades del mes de %s, %s" % (mes, ano)
+        elif ano:
+           lista_actividades = Actividad.objects.filter(fecha__year = ano, 
+                                                        participantes__user__username = participante)
+           mensaje = "Actividades de %s" % ano
+        else:
+            lista_actividades = Actividad.objects.filter(participantes__user__username = participante)
+            mensaje = "Actividades de %s" % participante
+    else:
+        if ano and mes and dia:
+           try:
+               fecha = date(int(ano), int(mes), int(dia))
+           except:
+               raise Http404
+           lista_actividades = Actividad.objects.filter(fecha = fecha)
+           mensaje = "Actividades del dia de %s-%s-%s" % (fecha.day, fecha.month, fecha.year)
+        elif ano and mes:
+           lista_actividades = Actividad.objects.filter(fecha__year = ano, fecha__month=mes)
+           mensaje = "Actividades del mes de %s, %s" % (mes, ano)
+        elif ano:
+           lista_actividades = Actividad.objects.filter(fecha__year = ano)
+           mensaje = "Actividades %s" % ano
+        else:
+            lista_actividades = Actividad.objects.all()
+            mensaje = "Actividades"
+    
+    paginator = Paginator(lista_actividades, 25)
+    
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        actividades = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        actividades = paginator.page(paginator.num_pages)
+
+    dict = {'actividades': actividades, 'mensaje': mensaje}
+    return render_to_response('pagina/actividades.html', dict,
+                              context_instance=RequestContext(request))

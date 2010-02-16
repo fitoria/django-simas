@@ -1,0 +1,39 @@
+{%extends "clean_base.html"%}
+{%block title%}Actividades{%endblock%}
+{%block content%}
+<div id="content_lista" >
+    <div id="titulo_content_lista">{{mensaje}}</div>
+        <div id="resultado">
+        {% for actividad in actividades.object_list%}
+            <div class="contenido_detalle">
+                <h1>{{actividad.titulo}}</h1>
+                    <div class="calendario">
+                        <div class="mes">{{actividad.fecha|date:'N'}}</div>
+                        <div class="dia">{{actividad.fecha|date:'j'}}</div>
+                    </div>
+                    <p>
+                        <b>Lugar:</b>{{actividad.lugar}}<br>
+                        <b>hora:</b>{{actividad.fecha|time:'P'}}
+                    </p>
+                    <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="/actividad/{{actividad.id}}" rel="facebox"> Leer +</a></div>
+                <br clear="both">
+            </div>
+        {%endfor%}
+            <div class="pagination">
+                <span class="step-links">
+                {% if actividades.has_previous %}
+                <a href="?page={{ actividades.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ actividades.number }} de {{ actividades.paginator.num_pages }}.
+                </span>
+
+                {% if actividades.has_next %}
+                    <a href="?page={{ actividades.next_page_number }}">next</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+</div>
+{%endblock%}

@@ -83,8 +83,8 @@
 
             <input type="button" name="boton" value="Filtrar" onClick="procesarFormulario(this.form)"/>
         </form>
+        <div class="contenido_detalle">
         {% for actividad in actividades.object_list%}
-            <div class="contenido_detalle">
                 <h1>{{actividad.titulo}}</h1>
                     <div class="calendario">
                         <div class="mes">{{actividad.fecha|date:'N'}}</div>
@@ -96,7 +96,6 @@
                     </p>
                     <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="/actividad/{{actividad.id}}" rel="facebox"> Leer +</a></div>
                 <br clear="both">
-            </div>
         {%endfor%}
             <div class="pagination">
                 <span class="step-links">
@@ -113,6 +112,7 @@
                 {% endif %}
                 </span>
             </div>
-        </div>
-</div>
+        </div> <!-- contenido detalle-->
+    </div> <!--resultado-->
+</div> <!--content lista-->
 {%endblock%}

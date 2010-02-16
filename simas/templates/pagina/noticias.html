@@ -72,8 +72,9 @@
         {% for noticia in noticias.object_list%}
                 <div class="contenido_noticia">
                     <h1>{{noticia.titulo}} </h1>
+                    <img src="{{MEDIA_URL}}imagen/calendar_small.png">{{noticia.fecha|date:"D, d-m-Y"}}
                     <p>{{noticia.texto|truncatewords:150|safe}}</p>
-                    <span class="autor"><b>Autor:</b> {{noticia.autor}} <b>Publicado el:</b> {{noticia.fecha|date:"D d M Y"}}</span>
+                    <span class="autor"><b>Autor:</b> {{noticia.autor}}</span>
                     <div class="leermas der"><a href="/noticia/{{noticia.id}}" rel="facebox"> Leer +</a></div>
                 </div>
                 {% endfor %}

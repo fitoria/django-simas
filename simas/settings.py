@@ -2,7 +2,7 @@
 
 from local_settings import *
 
-DEBUG = True
+DEBUG = True 
 TEMPLATE_DEBUG = DEBUG
 AUTH_PROFILE_MODULE = "pagina.UserProfile"
 DEFAULT_CHARSET = 'utf-8'
@@ -25,7 +25,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.doc.XViewMiddleware',
-    'pagination.middleware.PaginationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -52,10 +52,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.flatpages',
     'profiles',
     'django_evolution',
     'pagina',
-    'pagination',
     'debug_toolbar',
 )
 

@@ -534,6 +534,23 @@ padding-left:5px;
   
 }
 
+/*  ----- mensaje de error del formulario de login------ */
+.errorlist{
+  border-width:1px;
+  border-style:dashed;
+  border-color:#FF1B0B;
+  border-left:none;
+  border-right:none;
+  background-color:#FF7E87;
+  list-style: none;
+  background-image: url(../imagen/fallo1.png);
+  background-repeat: no-repeat;
+  background-position:center left;
+  padding:5px 5px 5px 40px;
+  color:#171721;
+}
+/* ----------- fin del formulario login error ------*/
+
 /* --------------Termina contenido-------------- */
 
 /* --------------Comienza footer-------------- */

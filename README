@@ -2,20 +2,10 @@
 
 Página Interna del Servicio de Información Mesoamericano sobre Agricultura Sostenible.
 
-Como parte de la renovación y el mejoramiento de los servicios internos para los usuarios de SIMAS, el equipo de informatica esta trabajando
-en la renovacion de la página interna. Pasando de una página estática a una plataforma que pueda ser administrada dinamicamente por cualquier miembro del equipo.
+Como parte de la renovación y el mejoramiento de los servicios internos para los usuarios de SIMAS, el equipo de informática esta trabajando
+en la renovacion de la página interna. Pasando de una página estática a una plataforma que pueda ser administrada dinámicamente por cualquier miembro del equipo.
 
-A continuacion detallo los elemento que posee actualmente el sitio y también los elementos que se están incorporando en esta nueva versión.
-
-Elementos actuales
-Menú superior de enlaces principales
--Noticias
--Dias Feriados
--Cumpleañeros
--Catalogo de documentos
--Faqs o ayuda
-
-Elementos que se agregaran a la nueva versión
+Funciones:
 
 -Perfiles de usuarios(capacidad de los usuarios de modificar su información personal y subir noticias, documentos, etc)
 -Mejoramiento de usabilidad de página principal para tener un mejor acceso a la información
@@ -23,5 +13,13 @@ Elementos que se agregaran a la nueva versión
 -Información de tasa de cambio monetaria actualizada dinamicamente a partir del sitio del banco central.
 -Noticias: tendra el equipo la capasidad de subir noticias importante internas
 -Actividades: El equipo podra poner las actividades mas importante en la cual los miembros del simas estan participando
-Sin mas que agregar me despido, esperando sus sugerencias y comentarios.
-Saludes
+-Cumpleañeros.
+-Días feriados.
+-Documentos: Link de descarga a los documentos internos, manuales, informes, etc
+
+Requerimientos de Instalación.
+
+- Django
+- Python Imaging Library (PIL)
+- Base de datos soportada por Django
+- Servidor web.

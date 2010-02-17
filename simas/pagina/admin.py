@@ -3,7 +3,8 @@ from pagina.models import *
 
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nombre']
-#	list_filter = ['nombre',]
+    list_filter = ['nombre']
+    prepopulated_fields = {'slug' : ('nombre',)}
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ['nombre','peso','categoria']
@@ -51,9 +52,11 @@ class DiasFeriadosAdmin(admin.ModelAdmin):
     
 class SeccionAdmin(admin.ModelAdmin):
     list_display = ['nombre']
+    prepopulated_fields = {'slug' : ('nombre',)}
 
 class SubseccionAdmin(admin.ModelAdmin):
     list_display = ['nombre']
+    prepopulated_fields = {'slug' : ('nombre',)}
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Link, LinkAdmin)

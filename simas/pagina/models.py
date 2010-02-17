@@ -40,7 +40,7 @@ class UserProfile(models.Model):
         verbose_name_plural = 'perfiles'
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=25)
+    nombre = models.CharField(max_length=25, unique=True)
     slug = models.SlugField(max_length=25, unique=True, help_text='Unico valor')
     
     class Meta:
@@ -50,14 +50,17 @@ class Categoria(models.Model):
         return self.nombre
 
 class Seccion(models.Model):
-    nombre = models.CharField(max_length=25, blank=True, null=True)
+    nombre = models.CharField(max_length=25,unique=True, blank=True, null=True)
     slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
 
+    class Meta:
+        verbose_name_plural = "Seccion"
+        
     def __unicode__(self):
         return self.nombre
         
 class Subseccion(models.Model):
-    nombre = models.CharField(max_length=25, blank=True, null=True)
+    nombre = models.CharField(max_length=25,unique=True, blank=True, null=True)
     slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
     seccion = models.ForeignKey(Seccion)
     

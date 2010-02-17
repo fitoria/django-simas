@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^perfiles/', include('profiles.urls')),
     (r'^cuenta/login/$', 'django.contrib.auth.views.login', {'template_name': 'profiles/login.html'}),
+    (r'^cuenta/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     (r'^', include('pagina.urls')),
     (r'^$', 'pagina.views.index'),
 )

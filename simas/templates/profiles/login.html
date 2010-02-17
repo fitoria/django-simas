@@ -1,4 +1,10 @@
+{%extends "clean_base.html"%}
+{%block title%}Perfiles{%endblock%}
 {% block content %}
+<div id="actividades_lista" >
+        <div id="titulo_tasa">Iniciar Sesión</div>
+        <div id="resultado_actividades">
+            <div class="contenido_actividad">
                 <form action="." method= "POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
@@ -6,5 +12,7 @@
                     </table> <br/>
                     <input type = "submit" value = "Iniciar Sesión" />
                 </form>
-
+        </div>
+        </div>
+</div>
 {% endblock %}

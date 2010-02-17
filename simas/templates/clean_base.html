@@ -53,7 +53,15 @@
         <!-- Comienza el header -->
         <div id="header">
           
-            <div id="sesion" class="centro"><a href="/cuenta/login" rel="facebox"><img src="{{MEDIA_URL}}imagen/user.png"> Entrar</a></div>
+            <div id="sesion" class="centro">
+            {% if user.is_authenticated %}
+                <a href="/perfiles/crear">Crear/Editar Perfil</a> |
+                <a href="/cuenta/logout"><img src="{{MEDIA_URL}}imagen/user.png"/> Salir</a>
+            {%else%}
+                <img src="{{MEDIA_URL}}imagen/user.png"/> 
+                <a href="/cuenta/login">Entrar</a>
+            {%endif%}
+            </div>
            <div id="logo">INTRANET <small><small><em>beta</em></small></small></div>
            <div id="menu" class="izq">
            <ul> 
@@ -63,7 +71,8 @@
                 <li><a href="/perfiles">Funcionarios</a></li>
                 <li><a href="http://www.simas.org.ni">Simas</a></li>
                 <li><a href="http://www.simas.org.ni/projekt">Projekt</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="/ayuda/">FAQ</a></li>
+            </ul>
            </div>
                  
         </div>
@@ -76,10 +85,11 @@
             {%block right_colunm%}{%endblock%}
             {%block moneda%}{%endblock%}
             {%block content%}{%endblock%}
-            </div>
+            </div><!-- colum_izq-->
             
 <!--         Comienza acordion-->
-          <div id="colum_der" class="der">
+         <div id="colum_der" class="der">
+                    <!--div titulo documento-->
                     <div id="titulo_documento">Documentos</div>
                     <div id="accordion">
                             {% for seccion in secciones %}
@@ -125,7 +135,7 @@
                     </div>
 		  </div>
             <div class="separador" ></div>
-         </div>
+         </div> 
         <!-- Termina Contenido-->
         
         <!-- Comienza Footer-->

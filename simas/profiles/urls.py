@@ -27,7 +27,7 @@ from django.conf.urls.defaults import *
 from profiles import views
 
 
-urlpatterns = patterns('profiles.views',
+urlpatterns = patterns('',
                        url(r'^crear/$',
                            views.create_profile,
                            name='profiles_create_profile'),
@@ -37,10 +37,12 @@ urlpatterns = patterns('profiles.views',
                        url(r'^(?P<username>\w+)/$',
                            views.profile_detail,
                            name='profiles_profile_detail'),
-                       url(r'^popup/(?P<username>\w+)/$',
-                           'profile_detail',
-                           {'template_name':'profiles/profile_detail_popup.html'}),
                        url(r'^$',
                            views.profile_list,
                            name='profiles_profile_list'),
                        )
+urlpatterns += patterns('profiles.views',
+                       url(r'^popup/(?P<username>\w+)/$',
+                           'profile_detail',
+                           {'template_name':'profiles/profile_detail_popup.html'}),
+                      )

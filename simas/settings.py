@@ -61,4 +61,4 @@ INSTALLED_APPS = (
 
 INTERNAL_IPS = ('127.0.0.1',)
 LOGIN_URL = '/cuenta/login/'
-LOGIN_REDIRECT_URL = '/perfiles/'
+LOGIN_REDIRECT_URL = '/'

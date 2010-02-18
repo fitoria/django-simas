@@ -12,7 +12,7 @@
 			$(function(){
 
 				// Accordion
-				$("#accordion").accordion({ header: "h3", active: 2, autoHeight: false });
+				$("#accordion").accordion({ header: "h3",collapsible: true, active: 2, autoHeight: false,icons: { 'header': 'ui-icon-plus', 'headerSelected': 'ui-icon-minus' } });
 				
 				//hover states on the static widgets
 				$('#dialog_link, ul#icons li').hover(
@@ -25,7 +25,7 @@
 				$(function(){
 
 				// Accordion
-				$("#accordion2").accordion({ header: "h3",autoHeight: false });
+				$("#accordion2").accordion({ header: "h3",collapsible: true ,autoHeight: false ,icons: { 'header': 'ui-icon-plus', 'headerSelected': 'ui-icon-minus' }});
 				
 				//hover states on the static widgets
 				$('#dialog_link, ul#icons li').hover(

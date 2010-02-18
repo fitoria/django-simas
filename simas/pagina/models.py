@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     skype = models.CharField(max_length=25, blank=True)
     fecha = models.DateField('Fecha de nacimiento', blank=True, null=True, help_text="Año-Mes-Dia") 
     casa = models.CharField("Telefono de casa", max_length=20, blank=True) 
-    avatar = ImageWithThumbsField("Foto", upload_to='profile/', sizes=PROFILE_SIZES)
+    avatar = ImageWithThumbsField('Foto', upload_to='profile/', sizes=PROFILE_SIZES, help_text="Subir su fotografia personal")
 
     def get_absolute_url(self):
         return '/perfiles/%s/' % self.user.username

@@ -7,5 +7,5 @@ def sidebar(request):
     dias = DiasFeriados.objects.filter(fecha__gte = date.today())
     cumpleanos = UserProfile.objects.all()
     dict = {'secciones': secciones, 'subsecciones': subsecciones,
-            'dias': dias, 'cumpleanos': cumpleanos, 'mes': str(date.today().month)}
+            'dias_sidebar': dias, 'cumpleanos': cumpleanos, 'mes': str(date.today().month)}
     return dict

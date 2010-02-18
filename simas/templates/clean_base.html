@@ -128,7 +128,7 @@
                         <div>
                             <h3><a href="#">Dias Feriados del mes</a></h3>
                             <div>
-                                {% for dia in dias %}
+                                {% for dia in dias_sidebar %}
                              <b><br><img src="{{MEDIA_URL}}imagen/calendar_small.png" align="left"> {{dia.fecha|date:'j F'}}</b><br>{{dia.descripcion}}
                                 {% endfor %} 
                             </div>

@@ -1,5 +1,22 @@
 {%extends "clean_base.html"%}
 {% block title %}Inicio{% endblock %}
+{%block extra_js%}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.getJSON('/ajax/moneda/',
+        function(data){
+            var tope = data.length;        
+            var i = 0;
+            for(i=0; i<tope; i++){
+                    //agregar fila a la tabla 
+                var html_tabla = '<tr><td>' + data[i].cambio.fecha +
+                '</td><td>' + data[i].cambio.valor + '</td></tr>';
+                $('#tabla_cambio tr:last').after(html_tabla);
+                }
+            });
+        });
+</script>    
+{%endblock%}
 {%block left_colunm%}
 <!-- Esta es la parte de la noticias-->
 
@@ -46,18 +63,12 @@
 				    <div id="bloque_index_tasa" >
 				    <div id="titulo_tasa">Tasa de Cambio Oficial</div>
 				    <div id="tabla_tasa">
-						<table cellspacing="0" cellpadding="0" border="0" width="220">
+						<table cellspacing="0" cellpadding="0" border="0" width="220" id="tabla_cambio">
 							<tbody>
 							<tr>
 							<td valign="top">Fecha</td>
 							<td >Tasa C$ / $</td>
 							</tr>
-                             {% for dato in tipos_de_cambios%}
-							<tr>
-                                <td valign="top">{{dato.cambio.fecha}}</td>
-                                <td >{{dato.cambio.valor}}</td>
-							</tr>
-                            {%endfor%}
 							</tbody>
 						</table>
 				    </div>

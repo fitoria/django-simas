@@ -1,6 +1,6 @@
  # -*- coding: UTF-8 -*-
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.db.models import Min, Max
 from pagina.models import *
 from datetime import date
@@ -11,19 +11,16 @@ from urllib2 import urlopen
 from django.conf import settings
 
 hoy = date.today()
-URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?mes=%s&ano=%s&formato=jsonvalido" % (hoy.month, hoy.year)
-
-#def handles_uploaded_file(f):
-#	file_name = os.path.join(settings.ATTACHMENT_PATH, f.titulo)
-#	destination = open(file_name, 'wb+')
-#	for chunk in f.chunk():
-#		destination.write(chunk)
-#	destination.close()
-
+URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&formato=jsonvalido" % (hoy.year, hoy.month)
 
 def index(request):
     noticias = Noticia.objects.all()[:3]
     actividades = Actividad.objects.all()[:3]
+    dict = {'noticias': noticias, 'actividades': actividades}
+            
+    return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
+
+def moneda_ajax(request):
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
     json = urlopen(URL).read()
     lista_cambios = simplejson.loads(json)['tipodecambioni']
@@ -34,9 +31,7 @@ def index(request):
     else:
         tipos_de_cambios = lista_cambios[hoy.day - 1:]
 
-    dict = {'noticias': noticias, 'actividades': actividades,
-            'tipos_de_cambios': tipos_de_cambios}
-    return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
+    return HttpResponse(simplejson.dumps(tipos_de_cambios), mimetype="application/javascript")
     	
 def ver_noticia(request, id_noticia):
     noticia = Noticia.objects.get(id=id_noticia)

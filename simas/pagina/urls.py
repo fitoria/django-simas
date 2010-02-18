@@ -4,6 +4,7 @@ from django.conf import settings
 
 urlpatterns = patterns('pagina.views',
     (r'^index/$', 'index'),
+    (r'^ajax/moneda/$', 'moneda_ajax'),
     (r'^noticia/(?P<id_noticia>\d+)/$', 'ver_noticia'),
     (r'^actividad/(?P<id_actividad>\d+)/$', 'ver_actividad'),
     (r'^actividades/(?P<ano>\d{4})/(?P<mes>\d{2})/(?P<dia>\d{1,2})/$', 'actividades'),

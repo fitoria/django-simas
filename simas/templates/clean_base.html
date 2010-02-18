@@ -12,19 +12,20 @@
 			$(function(){
 
 				// Accordion
-				$("#accordion").accordion({ header: "h3" });
+				$("#accordion").accordion({ header: "h3", active: 2, autoHeight: false });
 				
 				//hover states on the static widgets
 				$('#dialog_link, ul#icons li').hover(
 					function() { $(this).addClass('ui-state-hover'); }, 
 					function() { $(this).removeClass('ui-state-hover'); }
 				);
+		
 				
 			});
 				$(function(){
 
 				// Accordion
-				$("#accordion2").accordion({ header: "h3" });
+				$("#accordion2").accordion({ header: "h3",autoHeight: false });
 				
 				//hover states on the static widgets
 				$('#dialog_link, ul#icons li').hover(

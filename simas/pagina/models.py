@@ -67,6 +67,7 @@ class Subseccion(models.Model):
     
     class Meta:
         verbose_name_plural = "Subsecciones"
+        ordering = ['seccion']
         
     def __unicode__(self):
         return "%s - %s" % (self.nombre, self.seccion.nombre)

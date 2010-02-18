@@ -56,7 +56,8 @@
             <div id="sesion" class="centro">
             {% if user.is_authenticated %}
                 <a href="/perfiles/crear">Crear/Editar Perfil</a> |
-                <a href="/cuenta/logout"><img src="{{MEDIA_URL}}imagen/user.png"/> Salir</a>
+                <a href="/cuenta/logout"><img src="{{MEDIA_URL}}imagen/user.png"/> Salir</a> |
+                <a href="/admin">Entrar Admin</a>
             {%else%}
                 <img src="{{MEDIA_URL}}imagen/user.png"/> 
                 <a href="/cuenta/login">Entrar</a>
@@ -127,7 +128,7 @@
                         <div>
                             <h3><a href="#">Dias Feriados del mes</a></h3>
                             <div>
-                                {% for dia in dias %}
+                                {% for dia in dias_sidebar %}
                              <b><br><img src="{{MEDIA_URL}}imagen/calendar_small.png" align="left"> {{dia.fecha|date:'j F'}}</b><br>{{dia.descripcion}}
                                 {% endfor %} 
                             </div>

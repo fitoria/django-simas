@@ -1,10 +1,9 @@
-{%extends "clean_base.html"%}
+<div class="contenido_detalle">
 {%block title%}Perfiles{%endblock%}
 </div>
 {%block content%}
 <!-- inicio profile_detail.html -->
 <div id="content_lista" >
-    <div id="titulo_content_lista">Perfil de {{profile.user.first_name}} {{profile.user.last_name}}</div>
         <div class="contenido_detalle">
             <div class="avatar_detalle">
             <img src="{{profile.avatar.url_150x150}}"/>
@@ -24,6 +23,7 @@
                 <br><img src="{{MEDIA_URL}}imagen/phone.png"> {{profile.celular}}<br>
             </p>
             <br clear="both">
+    </div>
     </div>
 </div>
 <!-- fin profile_detail.html -->

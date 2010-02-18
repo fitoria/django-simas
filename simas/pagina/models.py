@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from thumbs import ImageWithThumbsField
+from django.conf import settings
 
 PROFILE_SIZES = ((100, 100),
          (150, 150),

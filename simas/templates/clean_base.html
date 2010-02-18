@@ -100,7 +100,7 @@
                                      <ul>
                                         {% for subseccion in subsecciones %}
                                             {% if subseccion.seccion_id == seccion.id %}
-                                         <li><a href="#">{{subseccion.nombre}}</a></li>
+                                            <li><a href="/documentos/{{subseccion.slug}}/">{{subseccion.nombre}}</a></li>
                                             {%endif%}
                                         {% endfor %}
                                      </ul>

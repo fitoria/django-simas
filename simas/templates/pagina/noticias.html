@@ -83,7 +83,7 @@
             <div class="pagination">
                 <span class="step-links">
                 {% if noticias.has_previous %}
-                <a href="?page={{ actividades.previous_page_number }}">Anterior</a>
+                <a href="?page={{ noticias.previous_page_number }}">Anterior</a>
                 {% endif %}
 
                 <span class="current">
@@ -91,7 +91,7 @@
                 </span>
 
                 {% if noticias.has_next %}
-                    <a href="?page={{ noticias.next_page_number }}">next</a>
+                    <a href="?page={{ noticias.next_page_number }}">Siguiente</a>
                 {% endif %}
                 </span>
             </div>

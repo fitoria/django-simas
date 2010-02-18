@@ -21,5 +21,6 @@ urlpatterns = patterns('pagina.views',
     (r'^noticias/(?P<ano>\d{4})/autor/(?P<autor>\w+)/$', 'noticias'),
     (r'^noticias/autor/(?P<autor>\w+)/$', 'noticias'),
     (r'^noticias/$', 'noticias'),
-                     
+    #Documentos
+    (r'^documentos/(?P<subseccion>[\w-]+)/$', 'documentos'),
 )

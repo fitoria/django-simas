@@ -4,20 +4,21 @@ from django.http import Http404
 from django.db.models import Min, Max
 from pagina.models import *
 from datetime import date
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import simplejson
 from urllib2 import urlopen
+from django.conf import settings
 
 hoy = date.today()
 URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?mes=%s&ano=%s&formato=jsonvalido" % (hoy.month, hoy.year)
 
-def handles_uploaded_file(f):
-	file_name = os.path.join(settings.ATTACHMENT_PATH, f.titulo)
-	destination = open(file_name, 'wb+')
-	for chunk in f.chunk():
-		destination.write(chunk)
-	destination.close()
+#def handles_uploaded_file(f):
+#	file_name = os.path.join(settings.ATTACHMENT_PATH, f.titulo)
+#	destination = open(file_name, 'wb+')
+#	for chunk in f.chunk():
+#		destination.write(chunk)
+#	destination.close()
 
 
 def index(request):
@@ -158,4 +159,24 @@ def noticias(request, ano=None, mes=None, autor=None):
             'dias': range(1,32), 'anos': anos, 
             'autores': autores}
     return render_to_response('pagina/noticias.html', dict,
+                                context_instance=RequestContext(request))
+
+def documentos(request, subseccion):
+    subseccion = get_object_or_404(Subseccion, slug=subseccion) 
+    lista_documentos = Archivo.objects.filter(subseccion = subseccion)
+
+    paginator = Paginator(lista_documentos, 25)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        documentos = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        documentos = paginator.page(paginator.num_pages)
+
+    dict = {"documentos": documentos, "subseccion": subseccion}
+    return render_to_response('pagina/documentos.html', dict,
                                 context_instance=RequestContext(request))

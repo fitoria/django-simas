@@ -11,7 +11,7 @@ from urllib2 import urlopen
 from django.conf import settings
 
 hoy = date.today()
-URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&formato=jsonvalido" % (hoy.year, hoy.month)
+URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month)
 
 def index(request):
     noticias = Noticia.objects.all()[:3]
@@ -23,14 +23,16 @@ def index(request):
 def moneda_ajax(request):
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
     json = urlopen(URL).read()
-    lista_cambios = simplejson.loads(json)['tipodecambioni']
+    tipos_de_cambios = simplejson.loads(json)['tipodecambioni']
+    #####OLD WAY####
+    #lista_cambios = simplejson.loads(json)['tipodecambioni']
     #hacemos el calculo de los dias
-    dia_tope = hoy.day + 4 
-    if len(lista_cambios) > (hoy.day+5):
-        tipos_de_cambios = lista_cambios[hoy.day - 1:dia_tope]
-    else:
-        tipos_de_cambios = lista_cambios[hoy.day - 1:]
-
+    #dia_tope = hoy.day + 4 
+    #if len(lista_cambios) > (hoy.day+5):
+    #    tipos_de_cambios = lista_cambios[hoy.day - 1:dia_tope]
+    #else:
+    #    tipos_de_cambios = lista_cambios[hoy.day - 1:]
+    
     return HttpResponse(simplejson.dumps(tipos_de_cambios), mimetype="application/javascript")
     	
 def ver_noticia(request, id_noticia):

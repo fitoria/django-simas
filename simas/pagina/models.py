@@ -27,7 +27,7 @@ class UserProfile(models.Model):
     celular = models.CharField(max_length=20, blank=True) 
     skype = models.CharField(max_length=25, blank=True)
     fecha = models.DateField('Fecha de nacimiento', blank=True, null=True, help_text="Año-Mes-Dia") 
-    casa = models.CharField(max_length=20, blank=True) 
+    casa = models.CharField("Telefono de casa", max_length=20, blank=True) 
     avatar = ImageWithThumbsField(upload_to='profile/', sizes=PROFILE_SIZES)
 
     def get_absolute_url(self):
@@ -69,7 +69,7 @@ class Subseccion(models.Model):
         verbose_name_plural = "Subsecciones"
         
     def __unicode__(self):
-        return self.nombre
+        return "%s - %s" % (self.nombre, self.seccion.nombre)
        
 class Link(models.Model):
     nombre = models.CharField(max_length=50, unique=True)

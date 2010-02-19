@@ -14,8 +14,8 @@ hoy = date.today()
 URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month)
 
 def index(request):
-    noticias = Noticia.objects.all()[:3]
-    actividades = Actividad.objects.all()[:3]
+    noticias = Noticia.objects.order_by('-fecha')[:3]
+    actividades = Actividad.objects.order_by('-fecha')[:3]
     dict = {'noticias': noticias, 'actividades': actividades}
             
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))

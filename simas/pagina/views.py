@@ -16,7 +16,10 @@ URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&fo
 def index(request):
     noticias = Noticia.objects.order_by('-fecha')[:3]
     actividades = Actividad.objects.order_by('-fecha')[:3]
-    dict = {'noticias': noticias, 'actividades': actividades}
+    categorias = Categoria.objects.all()
+    enlaces = Link.objects.all()
+    dict = {'noticias': noticias, 'actividades': actividades,
+            'categorias': categorias, 'enlaces': enlaces}
             
     return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
 

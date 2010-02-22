@@ -138,9 +138,10 @@ text-shadow:0px 0px 2px #4d4d4d;
 #contenido{
   width:956px;
   !width:916px;
-  min-height:900px;
+
   background:#fff;
   color:#5d5d5d;
+
  }
 
 #colum_izq{
@@ -151,7 +152,7 @@ text-shadow:0px 0px 2px #4d4d4d;
 }
 #colum_der{
   width:320px;
-  height:100%;
+  margin-top:15px;
   margin-right:15px;
  /* padding-left:10px;*/
    /*background:#ccc;*/
@@ -179,13 +180,19 @@ text-shadow:0px 0px 2px #4d4d4d;
 }
 #bloque_index_tasa{
   width:590px;
-  height:400px;
+  height:200px;
   margin-bottom:15px;
   background:#eee;
   background: url(../imagen/fondotasa.png);
   background-repeat:no-repeat;
 }
+#bloque_index_enlaces{
+  width:590px;
 
+  margin-bottom:15px;
+  background:#fff;
+  background-repeat:no-repeat;
+}
 #titulo_noticia{
   width:275px;
   height:28px;
@@ -218,7 +225,17 @@ text-shadow:0px 0px 2px #4d4d4d;
   color:#333;
   text-shadow:0 1px 0 #fff
 }
-
+#titulo_enlaces{
+  width:590px;
+  height:28px;
+  background-image: url(../imagen/titulo_tasa.png);
+  background-repeat:no-repeat;
+  font-size:18px;
+  padding-left:10px;
+  padding-top:8px;
+  color:#333;
+  text-shadow:0 1px 0 #fff
+}
 #titulo_content_lista{
   width:590px;
   height:28px;
@@ -257,6 +274,7 @@ text-shadow:0px 0px 2px #4d4d4d;
 .leermas{
   font-size:11px;
   margin-top:0px;
+  margin-left:4px;
 }
 
 .leermas a, a:visited{
@@ -324,7 +342,11 @@ text-shadow:0px 0px 2px #4d4d4d;
 #tabla_tasa{
 float:right;
 margin-top:15px;
+}
 
+#tabla_tasa table{
+font-size:13px;
+color:#333;
 }
 #titulo_documento{
   width:310px;
@@ -352,6 +374,51 @@ margin-top:15px;
   height:160px;
   margin-bottom:15px;
 }
+
+.enlaces{
+ float:left;
+ width:110px;
+  background-image: url(../imagen/fondoenlace.png);
+  background-repeat:no-repeat;
+ margin-right:8px;
+ margin-bottom:10px;
+}
+
+.enlaces h1{
+ font-size:13px;
+ text-align:center; 
+
+}
+
+.enlaces ul{
+list-style:none;
+padding:5px;
+margin:0px;
+}
+
+.enlaces li{
+padding-bottom:5px;
+padding-top:5px;
+border-bottom-color:#eee;
+border-bottom-width:1px;
+border-bottom-style:solid;
+text-shadow:0 1px 0 #FFFFFF;
+font-size:12px;
+/*
+border-bottom-style:solid;
+border-bottom-width:1px;
+border-bottom-color:#d38d5f;
+border-top-style:solid;
+border-top-width:1px;
+border-top-color:#fff;*/
+}
+.enlaces  li:hover{
+background:#eee;
+}
+.enlaces li a, a:hover,a:visited{
+text-decoration:none;
+}
+
 
 #accordion ul{
 list-style:square;

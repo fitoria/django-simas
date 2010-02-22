@@ -66,15 +66,32 @@
 						<table cellspacing="0" cellpadding="0" border="0" width="220" id="tabla_cambio">
 							<tbody>
 							<tr>
-							<td valign="top">Fecha</td>
-							<td >Tasa C$ / $</td>
+							<td valign="top"><b>Fecha</b></td>
+							<td ><b>Tasa C$ / $</b></td>
 							</tr>
 							</tbody>
 						</table>
 						<br>
-						<small>Datos dinamicos cortesia de <a href="http://elpueblopresidente.com">www.elpueblopresidente.com</a></small>
+						<small>Datos dinamicos cortesia de <div class="leermas der"><a href="http://elpueblopresidente.com"> www.elpueblopresidente.com</a></div></small>
 				    </div>
 				    </div>
+
 				    <!-- termina bloque de tasa de cambio-->
+				    <div id="bloque_index_enlaces">
+				    <div id="titulo_enlaces">Enlaces de interes</div>
+				   	    {% for categoria in categorias %}
+				   	    <div class="enlaces">
+				   	          <h1>{{categoria.nombre}}</h1>
+				   	          
+				   	          <ul>
+				   	          {% for enlace in enlaces %}
+				   	              {% if categoria.id == enlace.categoria.id %}
+				   	              <li><a href="{{enlace.direccion}}">{{enlace.nombre}}</a></li>
+				   	              {% endif %}
+				   	          {% endfor %}
+				   	          </ul> 
+				        </div>
+				   	    {% endfor %}
+				    </div>
 {% endblock %}
 

@@ -80,6 +80,7 @@ class Link(models.Model):
 
     class Meta:
         verbose_name_plural = "Links"
+        ordering = ['peso']
         
     def __unicode__(self):
         return self.nombre

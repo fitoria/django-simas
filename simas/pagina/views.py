@@ -165,7 +165,7 @@ def documentos(request, subseccion):
     subseccion = get_object_or_404(Subseccion, slug=subseccion) 
     lista_documentos = Archivo.objects.filter(subseccion = subseccion)
 
-    paginator = Paginator(lista_documentos, 25)
+    paginator = Paginator(lista_documentos, 12)
 
     try:
         page = int(request.GET.get('page', '1'))

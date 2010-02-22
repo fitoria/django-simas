@@ -11,7 +11,7 @@ from urllib2 import urlopen
 from django.conf import settings
 
 hoy = date.today()
-URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month)
+URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&dia=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month, hoy.day)
 
 def index(request):
     noticias = Noticia.objects.order_by('-fecha')[:3]

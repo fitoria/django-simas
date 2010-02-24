@@ -86,7 +86,7 @@
 				   	          <ul>
 				   	          {% for enlace in enlaces %}
 				   	              {% if categoria.id == enlace.categoria.id %}
-				   	              <li><a href="{{enlace.direccion}}">{{enlace.nombre}}</a></li>
+				   	              <li><a href="{{enlace.direccion}}" target="blank" title="{{enlace.nombre}}">{{enlace.nombre}}</a></li>
 				   	              {% endif %}
 				   	          {% endfor %}
 				   	          </ul> 

@@ -14,14 +14,14 @@
 		</div>
 		<div id="resultado">
 			{% if results %}
-				{% for a in results %} 
+				{% for contacto in results %} 
 			<ul>
-				<li>Nombre:{{ a.nombres }} {{ a.apellidos }}</li>
-				<li>Telefono 1: {{ a.tel1 }}</li>
-				<li>Telefono 2: {{ a.tel2 }}</li>
-				<li>Telefono 3: {{ a.tel3 }}</li>
-				<li>Organizacion: {{ a.organizacion }}</li>
-				<li>Direccion : {{ a.dir1 }}</li>
+				<li>Nombre:{{ contacto.nombres }} {{ contacto.apellidos }}</li>
+				<li>Telefono 1: {{ contacto.tel1 }}</li>
+				<li>Telefono 2: {{ contacto.tel2 }}</li>
+				<li>Telefono 3: {{ contacto.tel3 }}</li>
+				<li>Organizacion: {{ contacto.organizacion }}</li>
+				<li>Direccion : {{ contacto.dir1|safe }}</li>
 			</ul>
 				{% endfor %}
 			{% else %} 

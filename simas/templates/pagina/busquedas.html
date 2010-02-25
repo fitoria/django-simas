@@ -1,0 +1,34 @@
+{%extends "clean_base.html"%}
+{%block title%}Busquedas{%endblock%}
+{%block content%}
+<div id="busqueda">
+	<div id="buscador">
+		<form id="searchform" action="." method="GET">
+			<input type="text" id="searchfield" name="q" value="{{ query|escape }}">
+			<input type="submit" value="Consultar">
+		</form>
+		</div>
+		<div id="mensaje">
+		{% if query %}
+				Se encontraron {{c}} resultados para: "{{ query|escape }}":
+		</div>
+		<div id="resultado">
+			{% if results %}
+				{% for a in results %} 
+			<ul>
+				<li>Nombre:{{ a.nombres }} {{ a.apellidos }}</li>
+				<li>Telefono 1: {{ a.tel1 }}</li>
+				<li>Telefono 2: {{ a.tel2 }}</li>
+				<li>Telefono 3: {{ a.tel3 }}</li>
+				<li>Organizacion: {{ a.organizacion }}</li>
+				<li>Direccion : {{ a.dir1 }}</li>
+			</ul>
+				{% endfor %}
+			{% else %} 
+					<p>Contacto NO encontrado</p> 
+			{% endif %} 
+		{% endif %}
+
+	</div>
+	</div>
+{% endblock %}

@@ -141,4 +141,61 @@ class Actividad(models.Model):
         ordering = ('fecha', 'titulo')
         
     def __unicode__(self):
-        return self.titulo  
+        return self.titulo
+        
+class Organizacion(models.Model):
+    nombre = models.CharField(max_length=50, unique=True)
+    descripcion = models.TextField(blank=True,null=True)
+    
+    class Meta:
+        verbose_name_plural = "Organizaciones"
+        
+    def __unicode__(self):
+        return self.nombre
+            
+class TipoContacto(models.Model):
+    nombre = models.CharField(max_length=50)
+    
+    class Meta:
+        verbose_name_plural = "Tipos de Contactos"
+    
+    def __unicode__(self):
+        return self.nombre
+        
+class Pais(models.Model):
+    nombre = models.CharField(max_length=25, unique=True)
+    
+    class Meta:
+        verbose_name_plural = "Paises"
+        
+    def __unicode__(self):
+        return self.nombre
+        
+class Contacto(models.Model):
+    profesion = models.CharField(max_length=50,blank=True,null=True)
+    nombres = models.CharField(max_length=25)
+    apellidos = models.CharField(max_length=25)
+    organizacion = models.ForeignKey(Organizacion)
+    email1 = models.EmailField(blank=True,null=True)
+    email2   = models.EmailField(blank=True,null=True)
+    tel1 = models.IntegerField('Telefono 1')
+    tel2 = models.IntegerField('Telefono 2', blank=True, null=True)
+    tel3 = models.IntegerField('Telefono 3', blank=True, null=True)
+    fax = models.IntegerField('Fax', blank=True,null=True)
+    cel1 = models.IntegerField('Celular 1',blank=True,null=True)
+    cel2 = models.IntegerField('Celular 2',blank=True,null=True)
+    dir1 = models.TextField('Direccion 1',blank=True,null=True)
+    dir2 = models.TextField('Direccion 2',blank=True,null=True)
+    ciudad = models.CharField(max_length=25, blank=True,null=True)
+    codigo = models.CharField('Codigo Postal', max_length=30, blank=True,null=True)
+    pais = models.ForeignKey(Pais,blank=True,null=True)
+    tipo = models.ForeignKey(TipoContacto, blank=True, null=True)
+    comentario = models.TextField(blank=True,null=True)
+    sitio = models.URLField('Sitio Web', blank=True,null=True)
+    
+    
+    class Meta:
+        verbose_name_plural = "Contactos"
+    
+    def __unicode__(self):
+        return self.nombres

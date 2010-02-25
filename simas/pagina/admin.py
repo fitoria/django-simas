@@ -58,6 +58,25 @@ class SubseccionAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     prepopulated_fields = {'slug' : ('nombre',)}
 
+class TipoContactoAdmin(admin.ModelAdmin):
+    pass
+    
+class ContactosAdmin(admin.ModelAdmin):
+    list_display = ['nombres','apellidos','tel1','tel2','tel3','organizacion','tipo','dir1','dir2',]
+    search_fields = ['nombres','apellidos','organizacion__nombre','tipo__nombre',]
+    class Media:
+        js = ['../archivos/js/tiny_mce/tiny_mce.js',
+              '../archivos/js/editores/textareas.js']
+              
+class OrganizacionAdmin(admin.ModelAdmin):
+    list_display = ['nombre',]
+    class Media:
+        js = ['../archivos/js/tiny_mce/tiny_mce.js',
+              '../archivos/js/editores/textareas.js']
+
+class PaisAdmin(admin.ModelAdmin):
+    list_display = ['nombre',]
+
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Link, LinkAdmin)
 admin.site.register(DiasFeriados, DiasFeriadosAdmin)
@@ -68,3 +87,7 @@ admin.site.register(Area, AreaAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Seccion, SeccionAdmin)
 admin.site.register(Subseccion, SubseccionAdmin)
+admin.site.register(TipoContacto, TipoContactoAdmin)
+admin.site.register(Contacto, ContactosAdmin)
+admin.site.register(Organizacion, OrganizacionAdmin)
+admin.site.register(Pais, PaisAdmin)

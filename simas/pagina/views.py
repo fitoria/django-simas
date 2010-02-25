@@ -9,6 +9,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from urllib2 import urlopen
 from django.conf import settings
+from django.db.models import Q
 
 hoy = date.today()
 URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&dia=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month, hoy.day)
@@ -180,3 +181,23 @@ def documentos(request, subseccion):
     dict = {"documentos": documentos, "subseccion": subseccion}
     return render_to_response('pagina/documentos.html', dict,
                                 context_instance=RequestContext(request))
+                                
+def buscar(request):
+    count = 0
+    query = request.GET.get('q', '')
+    query = query.replace(",","")
+    if query:
+    	qset = (
+    		Q(nombres__icontains=query)|
+    		Q(apellidos__icontains=query)|
+    		Q(organizacion__nombre__icontains=query)|
+    		Q(tipo__nombre__icontains=query)
+    			)
+        results = Contacto.objects.filter(qset).distinct()
+        for b in results:
+            count += 1
+    else:
+        results = []
+    dict = {"results":results,"query":query,"c":count}
+    return render_to_response("pagina/busquedas.html", dict,
+                               context_instance=RequestContext(request))

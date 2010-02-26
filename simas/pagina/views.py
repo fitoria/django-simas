@@ -8,24 +8,26 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import simplejson
 from urllib2 import urlopen
-from django.conf import settings
 from django.db.models import Q
 
 hoy = date.today()
 URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&dia=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month, hoy.day)
 
 def index(request):
+    '''Vista inicial'''
     noticias = Noticia.objects.order_by('-fecha')[:3]
     actividades = Actividad.objects.order_by('-fecha')[:3]
     categorias = Categoria.objects.all()
     enlaces = Link.objects.all()
-    dict = {'noticias': noticias, 'actividades': actividades,
+    dicc = {'noticias': noticias, 'actividades': actividades,
             'categorias': categorias, 'enlaces': enlaces}
             
-    return render_to_response('pagina/index.html', dict, 
+    return render_to_response('pagina/index.html', dicc, 
                               context_instance=RequestContext(request))
 
 def moneda_ajax(request):
+    '''vista que retorna json de los prox 5 dias
+    de moneda. Info gracias a elpueblopresidente.com'''
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
     json = urlopen(URL).read()
     tipos_de_cambios = simplejson.loads(json)['tipodecambioni']
@@ -42,18 +44,21 @@ def moneda_ajax(request):
                         mimetype="application/javascript")
     	
 def ver_noticia(request, id_noticia):
+    '''vista de una noticia. Parametro url ID'''
     noticia = Noticia.objects.get(id=id_noticia)
-    dict = {'noticias': noticia}
-    return render_to_response('pagina/noticia.html', dict,
+    dicc = {'noticias': noticia}
+    return render_to_response('pagina/noticia.html', dicc,
                               context_instance=RequestContext(request))
 
 def ver_actividad(request, id_actividad):
+    '''vista de una actividad. Parametro url ID'''
     actividad = Actividad.objects.get(id=id_actividad)
-    dict = {'actividad': actividad}
-    return render_to_response('pagina/actividad.html', dict,
+    dicc = {'actividad': actividad}
+    return render_to_response('pagina/actividad.html', dicc, 
                               context_instance=RequestContext(request)) 
 
 def actividades(request, ano=None, mes=None, dia=None, participante=None):
+    '''vista de lista de Actividades'''
     if participante:
         if ano and mes and dia:
             try:
@@ -113,13 +118,14 @@ def actividades(request, ano=None, mes=None, dia=None, participante=None):
                  rango_anos['ano_maximo'].year + 1)
     participantes = UserProfile.objects.all()
     
-    dict = {'actividades': actividades, 'mensaje': mensaje,
+    dicc = {'actividades': actividades, 'mensaje': mensaje,
             'dias': range(1,32), 'anos': anos, 
             'participantes': participantes}
-    return render_to_response('pagina/actividades.html', dict,
+    return render_to_response('pagina/actividades.html', dicc,
                               context_instance=RequestContext(request))
                               
 def noticias(request, ano=None, mes=None, autor=None):
+    '''Vista de lista de noticias'''
     if autor:
         if ano and mes:
             lista_noticias = Noticia.objects.filter(fecha__year = ano, fecha__month=mes,
@@ -161,13 +167,15 @@ def noticias(request, ano=None, mes=None, autor=None):
     anos = range(rango_anos['ano_minimo'].year, rango_anos['ano_maximo'].year + 1)
     autores = UserProfile.objects.all()
 
-    dict = {'noticias': noticias, 'mensaje': mensaje,
+    dicc = {'noticias': noticias, 'mensaje': mensaje,
             'dias': range(1,32), 'anos': anos, 
             'autores': autores}
-    return render_to_response('pagina/noticias.html', dict,
+    return render_to_response('pagina/noticias.html', dicc,
                                 context_instance=RequestContext(request))
 
 def documentos(request, subseccion):
+    '''Vista de lista de documentos, paginados.
+    Parametros url: subseccion'''
     subseccion = get_object_or_404(Subseccion, slug=subseccion) 
     lista_documentos = Archivo.objects.filter(subseccion = subseccion)
 
@@ -183,12 +191,12 @@ def documentos(request, subseccion):
     except (EmptyPage, InvalidPage):
         documentos = paginator.page(paginator.num_pages)
 
-    dict = {"documentos": documentos, "subseccion": subseccion}
-    return render_to_response('pagina/documentos.html', dict,
+    dicc = {"documentos": documentos, "subseccion": subseccion}
+    return render_to_response('pagina/documentos.html', dicc,
                                 context_instance=RequestContext(request))
                                 
 def buscar(request):
-    count = 0
+    '''vista de busqueda de contactos'''
     query = request.GET.get('q', '')
     query = query.replace(",","")
     if query:
@@ -199,10 +207,48 @@ def buscar(request):
     		Q(tipo__nombre__icontains=query)
     			)
         results = Contacto.objects.filter(qset).distinct()
-        for b in results:
-            count += 1
     else:
         results = []
-    dict = {"results": results, "query": query, "c": count}
-    return render_to_response("pagina/busquedas.html", dict,
-                               context_instance=RequestContext(request))
+    dicc = {"results": results, "query": query, "c": len(results)}
+    return render_to_response("pagina/busquedas.html", dicc,
+                               context_instance = RequestContext(request))
+
+def contactos(request, organizacion = None, pais = None,
+              tipo = None):
+    '''Vista general de contactos.
+    Parametros de url:
+    contactos/organizacion/<id>
+    contactos/pais/<slug>
+    contactos/tipo/<id>'''
+
+    if organizacion:
+        lista_contactos = Contacto.objects.filter(organizacion__id = organizacion)
+    elif pais:
+        lista_contactos = Contacto.objects.filter(pais__slug = pais)
+    elif tipo:
+        lista_contactos = Contacto.objects.filter(tipo__id = tipo)
+    else:
+        lista_contactos = Contacto.objects.all()
+
+    paginator = Paginator(lista_contactos, 20)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        contactos = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        contactos = paginator.page(paginator.num_pages)
+
+    dicc = {"contactos": contactos}
+    return render_to_response('pagina/contactos.html', dicc,
+                                context_instance = RequestContext(request))
+
+def ver_contacto(request, id):
+    '''Vista para ver un contacto especifico'''
+    contacto  = get_object_or_404(Contacto, id=id)
+    return render_to_response('pagina/ver_contacto.html', 
+                              {'contacto': contacto},
+                              context_instance = RequestContext(request))

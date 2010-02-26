@@ -4,16 +4,16 @@ from pagina.models import *
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     list_filter = ['nombre']
-    prepopulated_fields = {'slug' : ('nombre',)}
+    prepopulated_fields = {'slug': ('nombre', )}
 
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ['nombre','peso','categoria']
+    list_display = ['nombre', 'peso', 'categoria']
     list_filter = ['nombre']
     search_fields = ['nombre']
     
 class ArchivoAdmin(admin.ModelAdmin):
-    list_display = ['titulo','fecha','usuario']
-    list_filter = ['titulo','usuario']
+    list_display = ['titulo', 'fecha', 'usuario']
+    list_filter = ['titulo', 'usuario']
     search_fields = ['titulo']
     
     class Media:
@@ -21,17 +21,17 @@ class ArchivoAdmin(admin.ModelAdmin):
               '../archivos/js/editores/textareas.js']
 
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ['titulo','fecha','autor']
+    list_display = ['titulo', 'fecha', 'autor']
     list_filter = ['autor']
-    search_fields = ['autor','titulo']
+    search_fields = ['autor', 'titulo']
     
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js']
     
 class ActividadAdmin(admin.ModelAdmin):
-    list_display = ['titulo','fecha','lugar']
-    list_filter = ['fecha','area']
+    list_display = ['titulo', 'fecha', 'lugar']
+    list_filter = ['fecha', 'area']
     search_fields = ['area']
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
@@ -52,30 +52,34 @@ class DiasFeriadosAdmin(admin.ModelAdmin):
     
 class SeccionAdmin(admin.ModelAdmin):
     list_display = ['nombre']
-    prepopulated_fields = {'slug' : ('nombre',)}
+    prepopulated_fields = {'slug': ('nombre',)}
 
 class SubseccionAdmin(admin.ModelAdmin):
     list_display = ['nombre']
-    prepopulated_fields = {'slug' : ('nombre',)}
+    prepopulated_fields = {'slug': ('nombre',)}
 
 class TipoContactoAdmin(admin.ModelAdmin):
     pass
     
 class ContactosAdmin(admin.ModelAdmin):
-    list_display = ['nombres','apellidos','tel1','tel2','tel3','organizacion','tipo','dir1','dir2',]
-    search_fields = ['nombres','apellidos','organizacion__nombre','tipo__nombre',]
+    list_display = ['nombres', 'apellidos', 
+                    'tel1', 'tel2', 'tel3', 
+                    'organizacion', 'tipo', 
+                    'dir1', 'dir2']
+    search_fields = ['nombres', 'apellidos', 
+                     'organizacion__nombre', 'tipo__nombre',]
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js']
               
 class OrganizacionAdmin(admin.ModelAdmin):
-    list_display = ['nombre',]
+    list_display = ['nombre']
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js']
 
 class PaisAdmin(admin.ModelAdmin):
-    list_display = ['nombre',]
+    list_display = ['nombre']
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Link, LinkAdmin)

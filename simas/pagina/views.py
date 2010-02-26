@@ -22,7 +22,8 @@ def index(request):
     dict = {'noticias': noticias, 'actividades': actividades,
             'categorias': categorias, 'enlaces': enlaces}
             
-    return render_to_response('pagina/index.html', dict,context_instance=RequestContext(request))
+    return render_to_response('pagina/index.html', dict, 
+                              context_instance=RequestContext(request))
 
 def moneda_ajax(request):
     #Tipo de cambio. Powered By El Pueblo Presidente \m/
@@ -37,7 +38,8 @@ def moneda_ajax(request):
     #else:
     #    tipos_de_cambios = lista_cambios[hoy.day - 1:]
     
-    return HttpResponse(simplejson.dumps(tipos_de_cambios), mimetype="application/javascript")
+    return HttpResponse(simplejson.dumps(tipos_de_cambios), 
+                        mimetype="application/javascript")
     	
 def ver_noticia(request, id_noticia):
     noticia = Noticia.objects.get(id=id_noticia)
@@ -54,38 +56,40 @@ def ver_actividad(request, id_actividad):
 def actividades(request, ano=None, mes=None, dia=None, participante=None):
     if participante:
         if ano and mes and dia:
-           try:
-               fecha = date(int(ano), int(mes), int(dia))
-           except:
-               raise Http404
-           lista_actividades = Actividad.objects.filter(fecha = fecha,
-                                                       participantes__user__username = participante)
-           mensaje = "Actividades del dia de %s-%s-%s" % (fecha.day, fecha.month, fecha.year)
+            try:
+                fecha = date(int(ano), int(mes), int(dia))
+            except:
+                raise Http404
+            
+            lista_actividades = Actividad.objects.filter(fecha = fecha, 
+                                                         participantes__user__username = participante)
+            mensaje = "Actividades del dia de %s-%s-%s" % (fecha.day, 
+                                                           fecha.month, fecha.year)
         elif ano and mes:
-           lista_actividades = Actividad.objects.filter(fecha__year = ano, fecha__month=mes,
+            lista_actividades = Actividad.objects.filter(fecha__year = ano, fecha__month=mes,
                                                        participantes__user__username = participante)
-           mensaje = "Actividades del mes de %s, %s" % (mes, ano)
+            mensaje = "Actividades del mes de %s, %s" % (mes, ano)
         elif ano:
-           lista_actividades = Actividad.objects.filter(fecha__year = ano, 
+            lista_actividades = Actividad.objects.filter(fecha__year = ano, 
                                                         participantes__user__username = participante)
-           mensaje = "Actividades de %s" % ano
+            mensaje = "Actividades de %s" % ano
         else:
             lista_actividades = Actividad.objects.filter(participantes__user__username = participante)
             mensaje = "Actividades de %s" % participante
     else:
         if ano and mes and dia:
-           try:
-               fecha = date(int(ano), int(mes), int(dia))
-           except:
-               raise Http404
-           lista_actividades = Actividad.objects.filter(fecha = fecha)
-           mensaje = "Actividades del dia de %s-%s-%s" % (fecha.day, fecha.month, fecha.year)
+            try:
+                fecha = date(int(ano), int(mes), int(dia))
+            except:
+                raise Http404
+            lista_actividades = Actividad.objects.filter(fecha = fecha)
+            mensaje = "Actividades del dia de %s-%s-%s" % (fecha.day, fecha.month, fecha.year)
         elif ano and mes:
-           lista_actividades = Actividad.objects.filter(fecha__year = ano, fecha__month=mes)
-           mensaje = "Actividades del mes de %s, %s" % (mes, ano)
+            lista_actividades = Actividad.objects.filter(fecha__year = ano, fecha__month=mes)
+            mensaje = "Actividades del mes de %s, %s" % (mes, ano)
         elif ano:
-           lista_actividades = Actividad.objects.filter(fecha__year = ano)
-           mensaje = "Actividades %s" % ano
+            lista_actividades = Actividad.objects.filter(fecha__year = ano)
+            mensaje = "Actividades %s" % ano
         else:
             lista_actividades = Actividad.objects.all()
             mensaje = "Actividades"
@@ -105,7 +109,8 @@ def actividades(request, ano=None, mes=None, dia=None, participante=None):
     rango_anos = Actividad.objects.all().aggregate(ano_minimo = Min('fecha'),
                                                    ano_maximo = Max('fecha'))
 
-    anos = range(rango_anos['ano_minimo'].year, rango_anos['ano_maximo'].year + 1)
+    anos = range(rango_anos['ano_minimo'].year, 
+                 rango_anos['ano_maximo'].year + 1)
     participantes = UserProfile.objects.all()
     
     dict = {'actividades': actividades, 'mensaje': mensaje,
@@ -187,7 +192,7 @@ def buscar(request):
     query = request.GET.get('q', '')
     query = query.replace(",","")
     if query:
-    	qset = (
+        qset = (
     		Q(nombres__icontains=query)|
     		Q(apellidos__icontains=query)|
     		Q(organizacion__nombre__icontains=query)|
@@ -198,6 +203,6 @@ def buscar(request):
             count += 1
     else:
         results = []
-    dict = {"results":results,"query":query,"c":count}
+    dict = {"results": results, "query": query, "c": count}
     return render_to_response("pagina/busquedas.html", dict,
                                context_instance=RequestContext(request))

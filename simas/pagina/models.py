@@ -11,7 +11,7 @@ PROFILE_SIZES = ((100, 100),
         )
 
 class Area(models.Model):
-    nombre = models.CharField(max_length=25, unique=True)
+    nombre = models.CharField(max_length = 25, unique = True)
     
     class Meta:
         verbose_name_plural = "Areas"
@@ -22,13 +22,16 @@ class Area(models.Model):
 class UserProfile(models.Model):
     user = models.ForeignKey(User, verbose_name = "Usuario")
     cargo = models.CharField(max_length = 50)
-    extension = models.PositiveIntegerField(max_length=3)
+    extension = models.PositiveIntegerField(max_length = 3)
     area = models.ForeignKey(Area)
-    celular = models.CharField(max_length=20, blank=True) 
-    skype = models.CharField(max_length=25, blank=True)
-    fecha = models.DateField('Fecha de nacimiento', blank=True, null=True, help_text="Año-Mes-Dia") 
-    casa = models.CharField("Telefono de casa", max_length=20, blank=True) 
-    avatar = ImageWithThumbsField('Foto', upload_to='profile/', sizes=PROFILE_SIZES, help_text="Subir su fotografia personal")
+    celular = models.CharField(max_length = 20, blank = True) 
+    skype = models.CharField(max_length = 25, blank=True)
+    fecha = models.DateField('Fecha de nacimiento', blank = True, 
+                             null = True, help_text = "Año-Mes-Dia") 
+    casa = models.CharField("Telefono de casa", max_length = 20, blank = True) 
+    avatar = ImageWithThumbsField('Foto', upload_to = 'profile/', 
+                                  sizes = PROFILE_SIZES,
+                                  help_text = "Subir su fotografia personal")
 
     def get_absolute_url(self):
         return '/perfiles/%s/' % self.user.username
@@ -41,8 +44,9 @@ class UserProfile(models.Model):
         verbose_name_plural = 'perfiles'
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=25, unique=True)
-    slug = models.SlugField(max_length=25, unique=True, help_text='Unico valor')
+    nombre = models.CharField(max_length = 25, unique = True)
+    slug = models.SlugField(max_length = 25, unique = True, 
+                            help_text = 'Unico valor')
     
     class Meta:
         verbose_name_plural = "Categorias"
@@ -51,8 +55,10 @@ class Categoria(models.Model):
         return self.nombre
 
 class Seccion(models.Model):
-    nombre = models.CharField(max_length=25,unique=True, blank=True, null=True)
-    slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
+    nombre = models.CharField(max_length = 25, unique = True, 
+                              blank = True, null=True)
+    slug = models.SlugField(max_length = 25, unique = True, 
+                            help_text = 'unico Valor')
 
     class Meta:
         verbose_name_plural = "Seccion"
@@ -61,8 +67,10 @@ class Seccion(models.Model):
         return self.nombre
         
 class Subseccion(models.Model):
-    nombre = models.CharField(max_length=25,unique=True, blank=True, null=True)
-    slug = models.SlugField(max_length=25, unique=True, help_text='unico Valor')
+    nombre = models.CharField(max_length = 25, unique = True, 
+                              blank = True, null = True)
+    slug = models.SlugField(max_length = 25, unique = True, 
+                            help_text = 'unico Valor')
     seccion = models.ForeignKey(Seccion)
     
     class Meta:
@@ -73,7 +81,7 @@ class Subseccion(models.Model):
         return "%s - %s" % (self.nombre, self.seccion.nombre)
        
 class Link(models.Model):
-    nombre = models.CharField(max_length=50, unique=True)
+    nombre = models.CharField(max_length = 50, unique = True)
     direccion = models.URLField()
     peso = models.IntegerField()
     categoria = models.ForeignKey(Categoria)
@@ -86,53 +94,53 @@ class Link(models.Model):
         return self.nombre
 
 class Archivo(models.Model):
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length = 200)
     fecha = models.DateField()
-    descripcion = models.TextField(blank=True, null=True)
-    adjunto = models.FileField(upload_to='attachments/documentos')
+    descripcion = models.TextField(blank = True, null=True)
+    adjunto = models.FileField(upload_to = 'attachments/documentos')
     subseccion = models.ForeignKey(Subseccion) 
     usuario = models.ForeignKey(UserProfile)
 	
     def get_absolute_url(self):
-    	return '%s%s/%s' % (settings.MEDIA_URL, settings.ATTACHMENT_FOLDER, self.id)
-
+        return '%s%s/%s' % (settings.MEDIA_URL, 
+                         settings.ATTACHMENT_FOLDER, self.id)
     def get_download_url(self):
-    	return '%s%s' % (settings.MEDIA_URL, self.adjunto)
-
-    class Meta:
-    	verbose_name_plural = "Subir Archivos"
+        return '%s%s' % (settings.MEDIA_URL, self.adjunto)
 
     def __unicode__(self):
-    	return self.titulo
-		
+        return self.titulo
+
+    class Meta:
+        verbose_name_plural = "Subir Archivos"
+
 class DiasFeriados(models.Model):
     fecha = models.DateField()
-    descripcion = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length = 50)
     
     class Meta:
-        verbose_name_plural="Dias Feriados"
+        verbose_name_plural = "Dias Feriados"
         
     def __unicode__(self):
         return self.descripcion
         
 class Noticia(models.Model):
     fecha = models.DateField()
-    titulo = models.CharField(max_length=50)
-    texto = models.TextField(default=" ")
+    titulo = models.CharField(max_length = 50)
+    texto = models.TextField(default = " ")
     autor = models.ForeignKey(UserProfile)
     
     class Meta:
         verbose_name_plural = "Noticias"
-        ordering = ('-fecha','-id',)
+        ordering = ('-fecha', '-id',)
         
     def __unicode__(self):
         return self.titulo
         
 class Actividad(models.Model):
     fecha = models.DateTimeField()
-    titulo = models.CharField(max_length=150)
-    descripcion = models.TextField(default="")
-    lugar = models.CharField(max_length=50)
+    titulo = models.CharField(max_length = 150)
+    descripcion = models.TextField(default = "")
+    lugar = models.CharField(max_length = 50)
     area = models.ForeignKey(Area)
     participantes = models.ManyToManyField(UserProfile)
     
@@ -144,8 +152,8 @@ class Actividad(models.Model):
         return self.titulo
         
 class Organizacion(models.Model):
-    nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.TextField(blank=True,null=True)
+    nombre = models.CharField(max_length = 50, unique = True)
+    descripcion = models.TextField(blank = True, null = True)
     
     class Meta:
         verbose_name_plural = "Organizaciones"
@@ -154,7 +162,7 @@ class Organizacion(models.Model):
         return self.nombre
             
 class TipoContacto(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length = 50)
     
     class Meta:
         verbose_name_plural = "Tipos de Contactos"
@@ -163,35 +171,36 @@ class TipoContacto(models.Model):
         return self.nombre
         
 class Pais(models.Model):
-    nombre = models.CharField(max_length=25, unique=True)
+    nombre = models.CharField(max_length = 25, unique=True)
     
     class Meta:
         verbose_name_plural = "Paises"
         
     def __unicode__(self):
-        return self.nombre
+        return self.nombre  
         
 class Contacto(models.Model):
-    profesion = models.CharField(max_length=50,blank=True,null=True)
-    nombres = models.CharField(max_length=25)
-    apellidos = models.CharField(max_length=25)
+    profesion = models.CharField(max_length = 50, blank=True, null=True)
+    nombres = models.CharField(max_length = 25)
+    apellidos = models.CharField(max_length = 25)
     organizacion = models.ForeignKey(Organizacion)
-    email1 = models.EmailField(blank=True,null=True)
-    email2   = models.EmailField(blank=True,null=True)
+    email1 = models.EmailField(blank = True, null = True)
+    email2 = models.EmailField(blank = True, null = True)
     tel1 = models.IntegerField('Telefono 1')
-    tel2 = models.IntegerField('Telefono 2', blank=True, null=True)
-    tel3 = models.IntegerField('Telefono 3', blank=True, null=True)
-    fax = models.IntegerField('Fax', blank=True,null=True)
-    cel1 = models.IntegerField('Celular 1',blank=True,null=True)
-    cel2 = models.IntegerField('Celular 2',blank=True,null=True)
-    dir1 = models.TextField('Direccion 1',blank=True,null=True)
-    dir2 = models.TextField('Direccion 2',blank=True,null=True)
-    ciudad = models.CharField(max_length=25, blank=True,null=True)
-    codigo = models.CharField('Codigo Postal', max_length=30, blank=True,null=True)
-    pais = models.ForeignKey(Pais,blank=True,null=True)
-    tipo = models.ForeignKey(TipoContacto, blank=True, null=True)
-    comentario = models.TextField(blank=True,null=True)
-    sitio = models.URLField('Sitio Web', blank=True,null=True)
+    tel2 = models.IntegerField('Telefono 2', blank = True, null = True)
+    tel3 = models.IntegerField('Telefono 3', blank = True, null = True)
+    fax = models.IntegerField('Fax', blank = True, null = True)
+    cel1 = models.IntegerField('Celular 1', blank = True, null = True)
+    cel2 = models.IntegerField('Celular 2', blank = True, null = True)
+    dir1 = models.TextField('Direccion 1', blank = True, null = True)
+    dir2 = models.TextField('Direccion 2', blank = True, null = True)
+    ciudad = models.CharField(max_length=25, blank = True, null = True)
+    codigo = models.CharField('Codigo Postal', 
+                              max_length = 30, blank = True, null = True)
+    pais = models.ForeignKey(Pais, blank=True, null = True)
+    tipo = models.ForeignKey(TipoContacto, blank = True, null = True)
+    comentario = models.TextField(blank = True, null = True)
+    sitio = models.URLField('Sitio Web', blank = True, null = True)
     
     
     class Meta:

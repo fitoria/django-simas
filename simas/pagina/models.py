@@ -25,7 +25,7 @@ class UserProfile(models.Model):
     extension = models.PositiveIntegerField(max_length = 3)
     area = models.ForeignKey(Area)
     celular = models.CharField(max_length = 20, blank = True) 
-    skype = models.CharField(max_length = 25, blank=True)
+    skype = models.CharField(max_length = 25, blank = True)
     fecha = models.DateField('Fecha de nacimiento', blank = True, 
                              null = True, help_text = "Año-Mes-Dia (2010-12-28)") 
     casa = models.CharField("Telefono de casa", max_length = 20, blank = True) 
@@ -56,7 +56,7 @@ class Categoria(models.Model):
 
 class Seccion(models.Model):
     nombre = models.CharField(max_length = 25, unique = True, 
-                              blank = True, null=True)
+                              blank = True, null = True)
     slug = models.SlugField(max_length = 25, unique = True, 
                             help_text = 'unico Valor')
 
@@ -96,7 +96,7 @@ class Link(models.Model):
 class Archivo(models.Model):
     titulo = models.CharField(max_length = 200)
     fecha = models.DateField()
-    descripcion = models.TextField(blank = True, null=True)
+    descripcion = models.TextField(blank = True, null = True)
     adjunto = models.FileField(upload_to = 'attachments/documentos')
     subseccion = models.ForeignKey(Subseccion) 
     usuario = models.ForeignKey(UserProfile)
@@ -172,7 +172,7 @@ class TipoContacto(models.Model):
         
 class Pais(models.Model):
     nombre = models.CharField(max_length = 25, unique = True)
-    slug = models.SlugField(max_length=25, unique=True)
+    slug = models.SlugField(max_length = 25, unique = True)
     
     class Meta:
         verbose_name_plural = "Paises"
@@ -181,28 +181,40 @@ class Pais(models.Model):
         return self.nombre  
         
 class Contacto(models.Model):
-    profesion = models.CharField(max_length = 50, blank=True, null=True)
+    profesion = models.CharField(max_length = 50, blank = True, 
+                                 null = True)
     nombres = models.CharField(max_length = 25)
     apellidos = models.CharField(max_length = 25)
     organizacion = models.ForeignKey(Organizacion)
     email1 = models.EmailField(blank = True, null = True)
     email2 = models.EmailField(blank = True, null = True)
-    skype = models.CharField(max_length=50, blank = True, null = True)
+    skype = models.CharField(max_length=50, blank = True, 
+                             null = True)
     tel1 = models.IntegerField('Telefono 1')
-    tel2 = models.IntegerField('Telefono 2', blank = True, null = True)
-    tel3 = models.IntegerField('Telefono 3', blank = True, null = True)
+    tel2 = models.IntegerField('Telefono 2', blank = True, 
+                               null = True)
+    tel3 = models.IntegerField('Telefono 3', blank = True, 
+                               null = True)
     fax = models.IntegerField('Fax', blank = True, null = True)
-    cel1 = models.IntegerField('Celular 1', blank = True, null = True)
-    cel2 = models.IntegerField('Celular 2', blank = True, null = True)
-    dir1 = models.TextField('Direccion 1', blank = True, null = True)
-    dir2 = models.TextField('Direccion 2', blank = True, null = True)
-    ciudad = models.CharField(max_length=25, blank = True, null = True)
+    cel1 = models.IntegerField('Celular 1', blank = True, 
+                               null = True)
+    cel2 = models.IntegerField('Celular 2', blank = True, 
+                               null = True)
+    dir1 = models.TextField('Direccion 1', blank = True, 
+                            null = True)
+    dir2 = models.TextField('Direccion 2', blank = True, 
+                            null = True)
+    ciudad = models.CharField(max_length=25, blank = True, 
+                              null = True)
     codigo = models.CharField('Codigo Postal', 
-                              max_length = 30, blank = True, null = True)
+                              max_length = 30, blank = True, 
+                              null = True)
     pais = models.ForeignKey(Pais, blank=True, null = True)
-    tipo = models.ForeignKey(TipoContacto, blank = True, null = True)
+    tipo = models.ForeignKey(TipoContacto, blank = True, 
+                             null = True)
     comentario = models.TextField(blank = True, null = True)
-    sitio = models.URLField('Sitio Web', blank = True, null = True)
+    sitio = models.URLField('Sitio Web', blank = True, 
+                            null = True)
     
     
     class Meta:

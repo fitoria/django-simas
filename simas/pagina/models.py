@@ -190,10 +190,10 @@ class Contacto(models.Model):
     email2 = models.EmailField(blank = True, null = True)
     skype = models.CharField(max_length=50, blank = True, 
                              null = True)
-    tel1 = models.IntegerField('Telefono 1')
-    tel2 = models.IntegerField('Telefono 2', blank = True, 
+    tel1 = models.CharField('Telefono 1', max_length = 50)
+    tel2 = models.CharField('Telefono 2', max_length = 50, blank = True, 
                                null = True)
-    tel3 = models.IntegerField('Telefono 3', blank = True, 
+    tel3 = models.CharField('Telefono 3', max_length = 50, blank = True, 
                                null = True)
     fax = models.IntegerField('Fax', blank = True, null = True)
     cel1 = models.IntegerField('Celular 1', blank = True, 

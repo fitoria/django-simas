@@ -80,6 +80,7 @@ class OrganizacionAdmin(admin.ModelAdmin):
 
 class PaisAdmin(admin.ModelAdmin):
     list_display = ['nombre']
+    prepopulated_fields = {'slug': ('nombre',)}
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Link, LinkAdmin)

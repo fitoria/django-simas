@@ -172,7 +172,7 @@ class TipoContacto(models.Model):
         
 class Pais(models.Model):
     nombre = models.CharField(max_length = 25, unique = True)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=25, unique=True)
     
     class Meta:
         verbose_name_plural = "Paises"

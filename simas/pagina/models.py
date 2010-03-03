@@ -27,7 +27,7 @@ class UserProfile(models.Model):
     celular = models.CharField(max_length = 20, blank = True) 
     skype = models.CharField(max_length = 25, blank=True)
     fecha = models.DateField('Fecha de nacimiento', blank = True, 
-                             null = True, help_text = "Año-Mes-Dia") 
+                             null = True, help_text = "Año-Mes-Dia (2010-12-28)") 
     casa = models.CharField("Telefono de casa", max_length = 20, blank = True) 
     avatar = ImageWithThumbsField('Foto', upload_to = 'profile/', 
                                   sizes = PROFILE_SIZES,
@@ -171,7 +171,7 @@ class TipoContacto(models.Model):
         return self.nombre
         
 class Pais(models.Model):
-    nombre = models.CharField(max_length = 25, unique=True)
+    nombre = models.CharField(max_length = 25, unique = True)
     slug = models.SlugField(unique=True)
     
     class Meta:
@@ -187,6 +187,7 @@ class Contacto(models.Model):
     organizacion = models.ForeignKey(Organizacion)
     email1 = models.EmailField(blank = True, null = True)
     email2 = models.EmailField(blank = True, null = True)
+    skype = models.CharField(max_length=50, blank = True, null = True)
     tel1 = models.IntegerField('Telefono 1')
     tel2 = models.IntegerField('Telefono 2', blank = True, null = True)
     tel3 = models.IntegerField('Telefono 3', blank = True, null = True)

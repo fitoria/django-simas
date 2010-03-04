@@ -146,7 +146,7 @@ class Actividad(models.Model):
     
     class Meta:
         verbose_name_plural = "Actividades diarias"
-        ordering = ('fecha', 'titulo')
+        ordering = ('-fecha', 'titulo')
         
     def __unicode__(self):
         return self.titulo

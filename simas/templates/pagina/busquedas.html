@@ -16,7 +16,7 @@
 			{% if results %}
 				{% for contacto in results %} 
 			<ul>
-				<li>Nombre:{{ contacto.nombres }} {{ contacto.apellidos }}</li>
+			    <li>Nombre:<a href="/contactos/ver/{{contacto.id}}/" rel="facebox"> {{ contacto.nombres }} {{ contacto.apellidos }}</a></li>
 				<li>Telefono 1: {{ contacto.tel1 }}</li>
 				<li>Telefono 2: {{ contacto.tel2 }}</li>
 				<li>Telefono 3: {{ contacto.tel3 }}</li>

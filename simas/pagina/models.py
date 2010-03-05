@@ -171,7 +171,7 @@ class TipoContacto(models.Model):
         return self.nombre
         
 class Pais(models.Model):
-    nombre = models.CharField(max_length = 25, unique = True)
+    nombre = models.CharField(max_length = 45, unique = True)
     slug = models.SlugField(max_length = 25, unique = True)
     
     class Meta:
@@ -183,22 +183,22 @@ class Pais(models.Model):
 class Contacto(models.Model):
     profesion = models.CharField(max_length = 50, blank = True, 
                                  null = True)
-    nombres = models.CharField(max_length = 25)
-    apellidos = models.CharField(max_length = 25)
+    nombres = models.CharField(max_length = 75)
+    apellidos = models.CharField(max_length = 75)
     organizacion = models.ForeignKey(Organizacion)
     email1 = models.EmailField(blank = True, null = True)
     email2 = models.EmailField(blank = True, null = True)
-    skype = models.CharField(max_length=50, blank = True, 
+    skype = models.CharField(max_length=30, blank = True, 
                              null = True)
-    tel1 = models.CharField('Telefono 1', max_length = 50)
-    tel2 = models.CharField('Telefono 2', max_length = 50, blank = True, 
+    tel1 = models.CharField('Telefono 1', max_length = 40)
+    tel2 = models.CharField('Telefono 2', max_length = 40, blank = True, 
                                null = True)
-    tel3 = models.CharField('Telefono 3', max_length = 50, blank = True, 
+    tel3 = models.CharField('Telefono 3', max_length = 40, blank = True, 
                                null = True)
-    fax = models.IntegerField('Fax', blank = True, null = True)
-    cel1 = models.IntegerField('Celular 1', blank = True, 
+    fax = models.CharField('Fax', max_length = 40, blank = True, null = True)
+    cel1 = models.CharField('Celular 1', max_length = 40,blank = True, 
                                null = True)
-    cel2 = models.IntegerField('Celular 2', blank = True, 
+    cel2 = models.CharField('Celular 2', max_length = 40, blank = True, 
                                null = True)
     dir1 = models.TextField('Direccion 1', blank = True, 
                             null = True)
@@ -207,7 +207,7 @@ class Contacto(models.Model):
     ciudad = models.CharField(max_length=25, blank = True, 
                               null = True)
     codigo = models.CharField('Codigo Postal', 
-                              max_length = 30, blank = True, 
+                              max_length = 40, blank = True, 
                               null = True)
     pais = models.ForeignKey(Pais, blank=True, null = True)
     tipo = models.ForeignKey(TipoContacto, blank = True, 

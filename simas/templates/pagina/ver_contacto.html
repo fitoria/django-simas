@@ -1,0 +1,70 @@
+{%extends "clean_base.html"%}
+{%block title%}{{contacto.nombres}} {{contacto.apellidos}}{%endblock%}
+{%block content%}
+<div id="content_lista" >
+        <div id="titulo_content_lista">Contactos</div>
+        <div id="resultado">
+            <div class="contenido_detalle">
+                <h1>{{contacto.nombres}} {{contacto.apellidos}}</h1>
+                <p>
+                    <b>Teléfono:</b> {{contacto.tel1}}<br>
+                    {% if contacto.email1%}
+                    <b>Correo Electrónico:</b> {{contacto.email1}}<br>
+                    {%endif%}
+                    {% if contacto.email2%}
+                    <b>Correo Electrónico 2:</b> {{contacto.email2}}<br>
+                    {%endif%}
+                    {% if contacto.organizacion%}
+                    <b>Organización:</b> {{contacto.organizacion}}<br>
+                    {%endif%}
+                    {% if contacto.profesion%}
+                    <b>Profesión:</b> {{contacto.profesion}}<br>
+                    {%endif%}
+                    {% if contacto.skype%}
+                    <b>Skype:</b> {{contacto.skype}}<br>
+                    {%endif%}
+                    {% if contacto.tel2%}
+                    <b>Teléfono 2:</b> {{contacto.tel2}}<br>
+                    {%endif%}
+                    {% if contacto.tel3%}
+                    <b>Teléfono 3:</b> {{contacto.tel3}}<br>
+                    {%endif%}
+                    {% if contacto.fax%}
+                    <b>Fax:</b> {{contacto.fax}}<br>
+                    {%endif%}
+                    {% if contacto.cel1%}
+                    <b>Celular:</b> {{contacto.cel1}}<br>
+                    {%endif%}
+                    {% if contacto.cel2%}
+                    <b>Celular 2:</b> {{contacto.cel2}}<br>
+                    {%endif%}
+                    {% if contacto.dir1%}
+                    <b>Dirección:</b> {{contacto.dir1|safe}}<br>
+                    {%endif%}
+                    {% if contacto.dir2%}
+                    <b>Dirección 2:</b> {{contacto.dir2|safe}}<br>
+                    {%endif%}
+                    {% if contacto.ciudad%}
+                    <b>Ciudad:</b> {{contacto.ciudad}}<br>
+                    {%endif%}
+                    {% if contacto.codigo%}
+                    <b>Código Postal:</b> {{contacto.codigo}}<br>
+                    {%endif%}
+                    {% if contacto.pais%}
+                    <b>País:</b> {{contacto.pais}}<br>
+                    {%endif%}
+                    {% if contacto.tipo%}
+                    <b>Tipo:</b> {{contacto.tipo.nombre}}<br>
+                    {%endif%}
+                    {% if contacto.comentario%}
+                    <b>Comentario:</b> {{contacto.comentario|safe}}<br>
+                    {%endif%}
+                    {% if contacto.sitio%}
+                    <b>Sitio:</b> <a href="{{contacto.sitio}}" >{{contacto.sitio}}</a><br>
+                    {%endif%}
+                </p>
+                <br clear="both">
+            </div>
+        </div>
+</div>
+{%endblock%}

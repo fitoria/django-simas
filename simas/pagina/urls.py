@@ -30,5 +30,6 @@ urlpatterns = patterns('pagina.views',
     (r'^contactos/organizacion/(?P<organizacion>\d+)/$', 'contactos'),
     (r'^contactos/pais/(?P<pais>[\w-]+)/$', 'contactos'),
     (r'^contactos/tipo/(?P<tipo>\d+)/$', 'contactos'),
+    (r'^contactos/$', 'contactos'),
     (r'^contactos/ver/(?P<id>\d+)/$', 'ver_contacto'),
 )

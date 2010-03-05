@@ -1,0 +1,41 @@
+{%extends "clean_base.html"%}
+{%block title%}Contactos{%endblock%}
+{%block content%}
+<div id="content_lista" >
+        <div id="titulo_content_lista">Contactos</div>
+        <div id="resultado">
+        {% for contacto in contactos.object_list%}
+            <div class="contenido_detalle">
+                <h1>{{contacto.nombres}} {{contacto.apellidos}}</h1>
+                <p>
+                    <b>Teléfono:</b> {{contacto.tel1}}<br>
+                    {% if contacto.email1%}
+                    <b>Correo Electrónico:</b> {{contacto.email1}}<br>
+                    {%endif%}
+                    {% if contacto.organizacion%}
+                    <b>Organización:</b> {{contacto.organizacion}}<br>
+                    {%endif%}
+                </p>
+                <br clear="both">
+                <div class="leermas"><a href="/contactos/ver/{{contacto.id}}/" > Leer +</a></div>
+                
+            </div>
+        {%endfor%}
+        <div class="pagination">
+                <span class="step-links">
+                {% if contactos.has_previous %}
+                <a href="?page={{ contactos.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ contactos.number }} de {{ contactos.paginator.num_pages }}.
+                </span>
+
+                {% if contactos.has_next %}
+                    <a href="?page={{ contactos.next_page_number }}">next</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+</div>
+{%endblock%}

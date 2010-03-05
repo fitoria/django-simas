@@ -9,3 +9,4 @@ local_settings.py
 *.xls
 *.doc
 *.odt
+*.svn/*.*

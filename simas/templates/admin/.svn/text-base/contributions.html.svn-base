@@ -1,0 +1,63 @@
+
+{# 12/8/9 mikele: this template/page is not used anymore #}
+
+
+{% extends "admin/base_site.html" %} 
+{% block title %}List of recent changes{% endblock %} 
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="/admin/ltbapp/">Back to the admin</a></div>{% endblock %}
+
+{# I disabled this block cause it was giving bad paths for the login/out URLs #}
+{% block userlinks %}From here you can see all the changes on the db{% endblock %}
+
+
+{% block content %} 
+<div id="content-main"> 
+	<h1>List of recent changes by users:</h1> 
+	
+	<div class="module">
+
+	{% if list %}
+	
+	{% regroup list by user as user_list %}
+		
+	
+	<ul>
+	{% for usr in user_list %}
+	
+	    <br /><p><h2>{{ usr.grouper }}</h2></p><br />
+	
+	    <table id="change-history">
+	        <thead>
+	        <tr>
+	            <th scope="col">Date/time</th>
+	            <th scope="col">Template</th>
+	            <th scope="col">Action</th>
+	            <th scope="col">Item</th>
+		        <th scope="col">User</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        {% for action in usr.list %}
+	        <tr class="{% cycle 'row1' 'row2' %}">
+	            <th scope="row">{{ action.action_time|date:_("DATETIME_FORMAT") }}</th>
+	            <td>{{ action.content_type.name|capfirst }}</td>
+	            <td>{{ action.change_message }}</td>
+	            <td><a href="/admin/{{ action.get_admin_url }}">{{ action.object_repr|truncatewords:50 }}</a></td>
+		        <td>{{ action.user.username }}{% if action.user.first_name %} ({{ action.user.first_name }} {{ action.user.last_name }}){% endif %}</td>
+	        </tr>
+	        {% endfor %}
+	        </tbody>
+	    </table>
+	{% endfor %}
+	</ul>
+	
+	
+	
+	{% else %}
+	    <p>There is no changes history to display %}</p>
+	{% endif %}
+	</div>	
+	
+</div> 
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from pagina.models import *
+from simas.pagina.autocomplete_admin import FkAutocompleteAdmin
 
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nombre']
@@ -61,7 +62,8 @@ class SubseccionAdmin(admin.ModelAdmin):
 class TipoContactoAdmin(admin.ModelAdmin):
     pass
     
-class ContactosAdmin(admin.ModelAdmin):
+class ContactosAdmin(FkAutocompleteAdmin):
+    related_search_fields = { 'organizacion': ('nombre',)}
     list_display = ['nombres', 'apellidos', 
                     'tel1', 'tel2', 'tel3', 
                     'organizacion', 'tipo', 

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repositories/poms-python/!svn/ver/22/trunk/mytemplates/admin
+END
+base_site.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repositories/poms-python/!svn/ver/2/trunk/mytemplates/admin/base_site.html
+END
+contributions.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repositories/poms-python/!svn/ver/11/trunk/mytemplates/admin/contributions.html
+END
+app_index.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repositories/poms-python/!svn/ver/11/trunk/mytemplates/admin/app_index.html
+END
+change_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repositories/poms-python/!svn/ver/29/trunk/mytemplates/admin/change_form.html
+END
+base.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repositories/poms-python/!svn/ver/27/trunk/mytemplates/admin/base.html
+END

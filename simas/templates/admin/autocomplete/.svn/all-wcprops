@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repositories/poms-python/!svn/ver/29/trunk/mytemplates/admin/autocomplete
+END
+nolookups_foreignkey_searchinput.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repositories/poms-python/!svn/ver/29/trunk/mytemplates/admin/autocomplete/nolookups_foreignkey_searchinput.html
+END
+inline_searchinput.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repositories/poms-python/!svn/ver/29/trunk/mytemplates/admin/autocomplete/inline_searchinput.html
+END
+fk_searchinput.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repositories/poms-python/!svn/ver/29/trunk/mytemplates/admin/autocomplete/fk_searchinput.html
+END

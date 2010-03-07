@@ -356,7 +356,7 @@ class FkAutocompleteAdmin(admin.ModelAdmin):
 				'model_name': model_name,
 				'field_list': get_text_list(searchable_fields, _('and')),
 			}
-			return _('Use the left field to do %(model_name)s lookups in the fields %(field_list)s.') % help_kwargs
+			return _('Use el campo de la izquierda para buscar en %(model_name)s el %(field_list)s.') % help_kwargs
 		return ''
 
 

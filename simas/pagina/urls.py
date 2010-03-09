@@ -26,7 +26,7 @@ urlpatterns = patterns('pagina.views',
     (r'^documentos/(?P<subseccion>[\w-]+)/$', 'documentos'),
     #Buscar contacto. REVISAR!
     #URL deberia de ser: /contactos/buscar/
-    (r'^busqueda/$', 'buscar'),
+    (r'^contactos/busqueda/$', 'buscar'),
     (r'^contactos/organizacion/(?P<organizacion>\d+)/$', 'contactos'),
     (r'^contactos/pais/(?P<pais>[\w-]+)/$', 'contactos'),
     (r'^contactos/tipo/(?P<tipo>\d+)/$', 'contactos'),

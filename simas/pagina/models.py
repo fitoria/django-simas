@@ -152,7 +152,7 @@ class Actividad(models.Model):
         return self.titulo
         
 class Organizacion(models.Model):
-    nombre = models.CharField(max_length = 50, unique = True)
+    nombre = models.CharField(max_length = 100, unique = True)
     descripcion = models.TextField(blank = True, null = True)
     
     class Meta:
@@ -204,7 +204,7 @@ class Contacto(models.Model):
                             null = True)
     dir2 = models.TextField('Direccion 2', blank = True, 
                             null = True)
-    ciudad = models.CharField(max_length=25, blank = True, 
+    ciudad = models.CharField(max_length=60, blank = True, 
                               null = True)
     codigo = models.CharField('Codigo Postal', 
                               max_length = 40, blank = True, 

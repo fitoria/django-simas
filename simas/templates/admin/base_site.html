@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'SIMAS sitio admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><img src="/media/imagen/logofooter.png">{% trans 'SIMAS administración' %}</h1>
+{% endblock %}
+
+{% block nav-global %} <a href="/"><img src="/media/imagen/home.png">Inicio</a> | <a href="http://www.simas.org.ni">Ver Sitio</a> | <a href="/busqueda"><img src="/media/imagen/user.png">Contacto</a> {% endblock %}
+

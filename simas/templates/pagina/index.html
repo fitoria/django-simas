@@ -27,7 +27,7 @@
                     <h1>{{noticia.titulo}}</h1>
                     <p>{{noticia.texto|truncatewords:10|safe}}</p>
                     <span class="autor"><b>Autor:</b> {{noticia.autor}}</span>
-                    <div class="leermas der"><a href="/noticia/{{noticia.id}}" rel="facebox"> Leer +</a></div>
+                    <div class="leermas der"><a href="/noticia/{{noticia.id}}" rel="facebox"><img src="{{MEDIA_URL}}imagen/mas.png"></a></div>
                 </div>
                 {% endfor %}
       
@@ -49,7 +49,7 @@
                         <b>Lugar:</b>{{actividad.lugar}}<br>
                         <b>hora:</b>{{actividad.fecha|time:'P'}}
                     </p>
-                    <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="/actividad/{{actividad.id}}" rel="facebox"> Leer +</a></div>
+                    <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="/actividad/{{actividad.id}}" rel="facebox"><img src="{{MEDIA_URL}}imagen/mas.png"></a></div>
                 </div>
                 {% endfor %}
 

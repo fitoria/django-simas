@@ -1,28 +1,43 @@
 {%extends "clean_base.html"%}
 {%block title%}Busquedas{%endblock%}
 {%block content%}
+<div id="titulo_content_lista">Busqueda de Contactos</div>
 <div id="busqueda">
+   <div id="filtros_actividades">
+   <div class="boton_filtro"><a href="/contactos/">Lista Completa</a></div>
 	<div id="buscador">
+	 <img src="{{MEDIA_URL}}imagen/search.png" align="left">
 		<form id="searchform" action="." method="GET">
 			<input type="text" id="searchfield" name="q" value="{{ query|escape }}">
 			<input type="submit" value="Consultar">
 		</form>
-		</div>
-		<div id="mensaje">
+	</div>
+	
+   </div>
+   <div id="seleccion_actividades">
+		
 		{% if query %}
 				Se encontraron {{c}} resultados para: "{{ query|escape }}":
-		</div>
+		
+   </div>
 		<div id="resultado">
 			{% if results %}
-				{% for contacto in results %} 
-			<ul>
-			    <li>Nombre:<a href="/contactos/ver/{{contacto.id}}/" rel="facebox"> {{ contacto.nombres }} {{ contacto.apellidos }}</a></li>
-				<li>Telefono 1: {{ contacto.tel1 }}</li>
-				<li>Telefono 2: {{ contacto.tel2 }}</li>
-				<li>Telefono 3: {{ contacto.tel3 }}</li>
-				<li>Organizacion: {{ contacto.organizacion }}</li>
-				<li>Direccion : {{ contacto.dir1|safe }}</li>
-			</ul>
+				{% for contacto in results %}
+				<div class="contenido_detalle"> 
+						<h1><a href="/contactos/ver/{{contacto.id}}/" rel="facebox">Nombre: {{ contacto.nombres }} {{ contacto.apellidos }}</a></h1>
+						<b>Telefono 1:</b> {{ contacto.tel1 }} <br>
+						{% if contacto.telefono2%}
+						<b>Telefono 2:</b> {{ contacto.tel2 }} <br>
+						{%endif%}
+						{% if contacto.organizacion%}
+						<b>Organizacion:</b> {{ contacto.organizacion }}<br>
+						{%endif%}
+						{% if contacto.email1%}
+						<b>Correo Electrónico:</b> {{contacto.email1}}<br>
+						{%endif%}
+						<div class="leermas"><a href="/contactos/ver/{{contacto.id}}/" rel="facebox"><img src="{{MEDIA_URL}}imagen/mas.png"></a></div>
+           
+				</div>
 				{% endfor %}
 			{% else %} 
 					<p>Contacto NO encontrado</p> 

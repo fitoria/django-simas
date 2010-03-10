@@ -43,6 +43,7 @@
 <div id="content_lista" >
     <div id="titulo_content_lista">{{mensaje}}</div>
         <div id="resultado">
+        <div id="filtros_actividades">
         <form name="formulario" action="" method="get">
             Año: <select id="id_ano" name="ano" > - 
                 <option value="">-------</option>
@@ -74,17 +75,19 @@
                 {%endfor%}
             </select>
             Participante:
-            <select id="id_participante" name="participante" >
+            <select id="id_participante" name="participante">
                 <option value="">-------</option>
                 {%for participante in participantes%}
                 <option value="{{participante.user.username}}">{{participante.user.first_name}} {{participante.user.last_name}}</option>
                 {%endfor%}
             </select>
 
-            <input type="button" name="boton" value="Filtrar" onClick="procesarFormulario(this.form)"/>
+            <input type="button" name="boton" value="Ir" onClick="procesarFormulario(this.form)"/>
         </form>
-        <div class="contenido_detalle">
+        </div>
+        
         {% for actividad in actividades.object_list%}
+        <div class="contenido_detalle">
                 <h1>{{actividad.titulo}}</h1>
                     <div class="calendario">
                         <div class="mes">{{actividad.fecha|date:'N'}}</div>
@@ -94,8 +97,9 @@
                         <b>Lugar:</b>{{actividad.lugar}}<br>
                         <b>hora:</b>{{actividad.fecha|time:'P'}}
                     </p>
-                    <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="/actividad/{{actividad.id}}" rel="facebox"> Leer +</a></div>
+                    <span class="participantes"><b>Participan:</b> {%for participante in actividad.participantes.all %}{{participante.user.first_name}}, {% endfor %}</span><div class="leermas der"><a href="/actividad/{{actividad.id}}" rel="facebox"><img src="{{MEDIA_URL}}imagen/mas.png"></a></div>
                 <br clear="both">
+              </div> <!-- contenido detalle-->
         {%endfor%}
             <div class="pagination">
                 <span class="step-links">
@@ -112,7 +116,7 @@
                 {% endif %}
                 </span>
             </div>
-        </div> <!-- contenido detalle-->
+       
     </div> <!--resultado-->
 </div> <!--content lista-->
 {%endblock%}

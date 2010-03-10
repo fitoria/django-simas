@@ -6,60 +6,80 @@
             <div class="contenido_detalle">
                 <h1>{{contacto.nombres}} {{contacto.apellidos}}</h1>
                 <p>
-                    <b>Teléfono:</b> {{contacto.tel1}}<br>
-                    {% if contacto.email1%}
-                    <b>Correo Electrónico:</b> {{contacto.email1}}<br>
+                     {% if contacto.profesion%}
+                    <div class="campo_contacto"><b>Profesión:</b></div>
+                     <img src="{{MEDIA_URL}}imagen/user.png"> {{contacto.profesion}}<br>
                     {%endif%}
-                    {% if contacto.email2%}
-                    <b>Correo Electrónico 2:</b> {{contacto.email2}}<br>
-                    {%endif%}
-                    {% if contacto.organizacion%}
-                    <b>Organización:</b> {{contacto.organizacion}}<br>
-                    {%endif%}
-                    {% if contacto.profesion%}
-                    <b>Profesión:</b> {{contacto.profesion}}<br>
-                    {%endif%}
-                    {% if contacto.skype%}
-                    <b>Skype:</b> {{contacto.skype}}<br>
-                    {%endif%}
+                    <div class="campo_contacto"><b>Teléfono:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/telephone.png"> {{contacto.tel1}}<br>
                     {% if contacto.tel2%}
-                    <b>Teléfono 2:</b> {{contacto.tel2}}<br>
+                    <div class="campo_contacto"><b>Teléfono 2:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/telephone.png"> {{contacto.tel2}}<br>
                     {%endif%}
                     {% if contacto.tel3%}
-                    <b>Teléfono 3:</b> {{contacto.tel3}}<br>
+                    <div class="campo_contacto"><b>Teléfono 3:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/telephone.png"> {{contacto.tel3}}<br>
                     {%endif%}
+                    {% if contacto.email1%}
+                    <div class="campo_contacto"><b>Correo Electrónico:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/email.png"> {{contacto.email1}}<br>
+                    {%endif%}
+                    {% if contacto.email2%}
+                    <div class="campo_contacto"><b>Correo Electrónico 2:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/email.png"> {{contacto.email2}}<br>
+                    {%endif%}
+                    {% if contacto.organizacion%}
+                    <div class="campo_contacto"><b>Organización:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/organizacion2.png"> {{contacto.organizacion}}<br>
+                    {%endif%}
+                    {% if contacto.skype%}
+                    <div class="campo_contacto"><b>Skype:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/skype.png">{{contacto.skype}}<br>
+                    {%endif%}
+                  
                     {% if contacto.fax%}
-                    <b>Fax:</b> {{contacto.fax}}<br>
+                    <div class="campo_contacto"><b>Fax:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/telephone.png"> {{contacto.fax}}<br>
                     {%endif%}
                     {% if contacto.cel1%}
-                    <b>Celular:</b> {{contacto.cel1}}<br>
+                    <div class="campo_contacto"><b>Celular:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/phone.png">  {{contacto.cel1}}<br>
                     {%endif%}
                     {% if contacto.cel2%}
-                    <b>Celular 2:</b> {{contacto.cel2}}<br>
+                    <div class="campo_contacto"><b>Celular 2:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/phone.png"> {{contacto.cel2}}<br>
                     {%endif%}
                     {% if contacto.dir1%}
-                    <b>Dirección:</b> {{contacto.dir1|safe}}<br>
+                    <div class="campo_contacto"><b>Dirección:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/direccion.png"> {{contacto.dir1|safe}}<br>
                     {%endif%}
                     {% if contacto.dir2%}
-                    <b>Dirección 2:</b> {{contacto.dir2|safe}}<br>
+                    <div class="campo_contacto"><b>Dirección 2:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/direccion.png"> {{contacto.dir2|safe}}<br>
                     {%endif%}
                     {% if contacto.ciudad%}
-                    <b>Ciudad:</b> {{contacto.ciudad}}<br>
+                    <div class="campo_contacto"><b>Ciudad:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/ciudad.png"> {{contacto.ciudad}}<br>
                     {%endif%}
                     {% if contacto.codigo%}
-                    <b>Código Postal:</b> {{contacto.codigo}}<br>
+                    <div class="campo_contacto"><b>Código Postal:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/postal.png"> {{contacto.codigo}}<br>
                     {%endif%}
                     {% if contacto.pais%}
-                    <b>País:</b> {{contacto.pais}}<br>
+                    <div class="campo_contacto"><b>País:</b> </div>
+                    <img src="{{MEDIA_URL}}imagen/pais.png"> {{contacto.pais}}<br>
                     {%endif%}
                     {% if contacto.tipo%}
-                    <b>Tipo:</b> {{contacto.tipo.nombre}}<br>
+                    <div class="campo_contacto"><b>Tipo:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/area.png"> {{contacto.tipo.nombre}}<br>
                     {%endif%}
                     {% if contacto.comentario%}
-                    <b>Comentario:</b> {{contacto.comentario|safe}}<br>
+                    <div class="campo_contacto"><b>Comentario:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/comment.png"> {{contacto.comentario|safe}}<br>
                     {%endif%}
                     {% if contacto.sitio%}
-                    <b>Sitio:</b> <a href="{{contacto.sitio}}" >{{contacto.sitio}}</a><br>
+                    <div class="campo_contacto"><b>Sitio:</b></div>
+                    <img src="{{MEDIA_URL}}imagen/web.png"> <a href="{{contacto.sitio}}" >{{contacto.sitio}}</a><br>
                     {%endif%}
                 </p>
                 <br clear="both">

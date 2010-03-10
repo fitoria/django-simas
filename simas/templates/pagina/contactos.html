@@ -3,6 +3,9 @@
 {%block content%}
 <div id="content_lista" >
         <div id="titulo_content_lista">Contactos</div>
+           <div id="filtros_actividades">
+   <div class="boton_filtro"><a href="/contactos/busqueda/">Buscar Contacto</a></div>
+ </div>
         <div id="resultado">
         {% for contacto in contactos.object_list%}
             <div class="contenido_detalle">
@@ -16,8 +19,7 @@
                     <b>Organización:</b> {{contacto.organizacion}}<br>
                     {%endif%}
                 </p>
-                <br clear="both">
-                <div class="leermas"><a href="/contactos/ver/{{contacto.id}}/" rel="facebox"> Leer +</a></div>
+                <div class="leermas"><a href="/contactos/ver/{{contacto.id}}/" rel="facebox"><img src="{{MEDIA_URL}}imagen/mas.png"></a></div>
                 
             </div>
         {%endfor%}

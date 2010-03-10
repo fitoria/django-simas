@@ -188,7 +188,6 @@ text-shadow:0px 0px 2px #4d4d4d;
 }
 #bloque_index_enlaces{
   width:590px;
-
   margin-bottom:15px;
   background:#fff;
   background-repeat:no-repeat;
@@ -255,6 +254,7 @@ text-shadow:0px 0px 2px #4d4d4d;
   border-bottom-width:1px;
   border-bottom-style:dotted;
   border-bottom-color:#b3b3b3;
+  padding-bottom:5px;
 }
 
 .contenido_noticia h1{
@@ -262,7 +262,8 @@ text-shadow:0px 0px 2px #4d4d4d;
   font-size:14px;
   color:#7d9300;
   margin-bottom:0px;
-  text-shadow:0 1px 0 #fff
+  text-shadow:0 1px 0 #fff;
+  
 }
 .contenido_noticia p{
  margin-top:0px;
@@ -275,6 +276,7 @@ text-shadow:0px 0px 2px #4d4d4d;
   font-size:11px;
   margin-top:0px;
   margin-left:4px;
+  margin-bottom:5px;
 }
 
 .leermas a, a:visited{
@@ -415,8 +417,11 @@ border-top-color:#fff;*/
 .enlaces  li:hover{
 background:#eee;
 }
-.enlaces li a, a:hover,a:visited{
+.enlaces li a, .enlaces li a:hover, .enlaces li a:visited{
 text-decoration:none;
+color:#757575;
+font-weight: normal;
+
 }
 
 
@@ -482,7 +487,7 @@ margin-bottom:5px;
 	padding-left:5px;
 	min-width:50px;
 	height:20px;
-	float:left;
+	float:right;
 	margin-right:5px;
 	border:1px solid #69b1de;
 	-moz-border-radius:3px; /* Firefox */
@@ -490,11 +495,16 @@ margin-bottom:5px;
 	background: #e2efed;
 	background-repeat: no-repeat;
 }
+.boton_filtro a, .boton_filtro a:hover, .boton_filtro a:visited {
+	color:#475765;
+}
 #seleccion_actividades{
-  width:590px;
-  height:25px;
+  width:585px;
+
   background:#eff6f2;
-  padding-top:5px;
+  padding-left:5px;
+  padding-top:2px;
+  padding-botom:2px;
 }
 
 .contenido_detalle{
@@ -511,8 +521,16 @@ margin-bottom:5px;
   font-weight:bold;
   font-size:14px;
   color:#2496bf;
-  margin-bottom:0px;
+  margin-bottom:4px;
   text-shadow:0 1px 0 #fff
+}
+.contenido_detalle h1 a, .contenido_detalle h1 a:visited, .contenido_detalle h1 a:hover{
+  font-weight:bold;
+  font-size:14px;
+  color:#2496bf;
+  margin-bottom:0px;
+  text-shadow:0 1px 0 #fff;
+  text-decoration:none;
 }
 
 .contenido_detalle p{
@@ -521,6 +539,7 @@ margin-bottom:5px;
 }
 .contenido_detalle .leermas{
  text-align:right;
+ margin-bottom:5px;
 }
 
 .avatar_lista{
@@ -541,6 +560,14 @@ background:#f0eded;
 width:400px;
 height:20px;
 float:left;
+padding-left:5px;
+}
+
+.campo_contacto{
+background:#f0eded;
+
+height:20px;
+
 padding-left:5px;
 
 }
@@ -623,20 +650,20 @@ input:focus {
 }
 
 .avatar_lista img {
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  -moz-box-shadow: 0px 0px 10px #000028;
-  -webkit-box-shadow: 0px 0px 10px #000028;
-  box-shadow: 0px 0px 10px #000028;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-shadow: 0px 0px 7px #7f7f7f;
+  -webkit-box-shadow: 0px 0px 7px #7f7f7f;
+  box-shadow: 0px 0px 7px #7f7f7f;
 }
 .foto_cumple img {
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  -moz-box-shadow: 0px 0px 10px #000008;
-  -webkit-box-shadow: 0px 0px 10px #000008;
-  box-shadow: 0px 0px 10px #000008;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-shadow: 0px 0px 7px #7f7f7f;
+  -webkit-box-shadow: 0px 0px 7px #7f7f7f;
+  box-shadow: 0px 0px 7px #7f7f7f;
 } 
 
 /* ----------- fin del formulario login error ------*/

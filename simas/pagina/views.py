@@ -204,7 +204,14 @@ def buscar(request):
     		Q(nombres__icontains=query)|
     		Q(apellidos__icontains=query)|
     		Q(organizacion__nombre__icontains=query)|
-    		Q(tipo__nombre__icontains=query)
+    		Q(tipo__nombre__icontains=query)|
+    		Q(tel1__contains=query)|
+    		Q(tel2__contains=query)|
+    		Q(tel3__contains=query)|
+    		Q(cel1__contains=query)|
+    		Q(cel2__contains=query)|
+    		Q(email1__contains=query)|
+    		Q(email1__contains=query)
     			)
         results = Contacto.objects.filter(qset).distinct()
     else:

@@ -69,7 +69,9 @@ class ContactosAdmin(FkAutocompleteAdmin):
                     'organizacion', 'tipo', 
                     'dir1', 'dir2']
     search_fields = ['nombres', 'apellidos', 
-                     'organizacion__nombre', 'tipo__nombre',]
+                     'organizacion__nombre', 'tipo__nombre',
+                     'tel1', 'tel2', 'tel3','cel1','cel2',
+                     'email1','email2']
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js']

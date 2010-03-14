@@ -211,7 +211,7 @@ def buscar(request):
     		Q(cel1__contains=query)|
     		Q(cel2__contains=query)|
     		Q(email1__contains=query)|
-    		Q(email1__contains=query)
+    		Q(email2__contains=query)
     			)
         results = Contacto.objects.filter(qset).distinct()
     else:

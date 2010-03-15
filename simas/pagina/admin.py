@@ -65,9 +65,8 @@ class TipoContactoAdmin(admin.ModelAdmin):
 class ContactosAdmin(FkAutocompleteAdmin):
     related_search_fields = { 'organizacion': ('nombre',)}
     list_display = ['nombres', 'apellidos', 
-                    'tel1', 'tel2', 'tel3', 
-                    'organizacion', 'tipo', 
-                    'dir1', 'dir2']
+                    'tel1', 'cel1', 'organizacion',
+                    'dir1']
     search_fields = ['nombres', 'apellidos', 
                      'organizacion__nombre', 'tipo__nombre',
                      'tel1', 'tel2', 'tel3','cel1','cel2',

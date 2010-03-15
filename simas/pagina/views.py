@@ -205,13 +205,13 @@ def buscar(request):
     		Q(apellidos__icontains=query)|
     		Q(organizacion__nombre__icontains=query)|
     		Q(tipo__nombre__icontains=query)|
-    		Q(tel1__contains=query)|
-    		Q(tel2__contains=query)|
-    		Q(tel3__contains=query)|
-    		Q(cel1__contains=query)|
-    		Q(cel2__contains=query)|
-    		Q(email1__contains=query)|
-    		Q(email2__contains=query)
+    		Q(tel1__icontains=query)|
+    		Q(tel2__icontains=query)|
+    		Q(tel3__icontains=query)|
+    		Q(cel1__icontains=query)|
+    		Q(cel2__icontains=query)|
+    		Q(email1__icontains=query)|
+    		Q(email2__icontains=query)
     			)
         results = Contacto.objects.filter(qset).distinct()
     else:

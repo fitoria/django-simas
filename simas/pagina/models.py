@@ -214,7 +214,7 @@ class Contacto(models.Model):
                              null = True)
     comentario = models.TextField(blank = True, null = True)
     sitio = models.URLField('Sitio Web', blank = True, 
-                            null = True)
+                            null = True, help_text = "Introduzca el sitio asi: http://www.sitio.com")
     
     
     class Meta:

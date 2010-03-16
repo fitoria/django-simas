@@ -25,7 +25,12 @@
 				{% for contacto in results %}
 				<div class="contenido_detalle"> 
 						<h1><a href="/contactos/ver/{{contacto.id}}/" rel="facebox">Nombre: {{ contacto.nombres }} {{ contacto.apellidos }}</a></h1>
+						{% if contacto.tel1 %}
 						<b>Telefono 1:</b> {{ contacto.tel1 }} <br>
+						{% endif %}
+						{% if contacto.cel1 %}
+                        <b>Celular 1:</b> {{ contacto.cel1 }}<br>
+                        {% endif %}
 						{% if contacto.telefono2%}
 						<b>Telefono 2:</b> {{ contacto.tel2 }} <br>
 						{%endif%}

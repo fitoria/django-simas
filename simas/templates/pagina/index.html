@@ -25,7 +25,7 @@
                 {% for noticia in noticias %}
                 <div class="contenido_noticia">
                     <h1>{{noticia.titulo}}</h1>
-                    <p>{{noticia.texto|truncatewords:10|safe}}</p>
+                    <p>{{noticia.texto|truncatewords_html:15|safe}}</p>
                     <span class="autor"><b>Autor:</b> {{noticia.autor}}</span>
                     <div class="leermas der"><a href="/noticia/{{noticia.id}}" rel="facebox"><img src="{{MEDIA_URL}}imagen/mas.png"></a></div>
                 </div>

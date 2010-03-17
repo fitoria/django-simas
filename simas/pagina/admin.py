@@ -32,6 +32,7 @@ class NoticiaAdmin(admin.ModelAdmin):
     
 class ActividadAdmin(admin.ModelAdmin):
     list_display = ['titulo', 'fecha', 'lugar']
+    filter_horizontal = ('participantes',)
     list_filter = ['fecha', 'area']
     search_fields = ['area']
     class Media:

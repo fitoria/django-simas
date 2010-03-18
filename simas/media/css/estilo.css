@@ -13,7 +13,11 @@ p {
 a img{
   border-style:none;
 }
-
+a,a:hover,a:visited{
+  color:#598f48;
+  text-decoration:none;
+  
+}
 
 
 h2{

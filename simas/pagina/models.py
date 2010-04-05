@@ -98,6 +98,10 @@ class Archivo(models.Model):
     fecha = models.DateField()
     descripcion = models.TextField(blank = True, null = True)
     adjunto = models.FileField(upload_to = 'attachments/documentos')
+    adjunto1 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
+    adjunto2 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
+    adjunto3 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
+    adjunto4 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
     subseccion = models.ForeignKey(Subseccion) 
     usuario = models.ForeignKey(UserProfile)
 	

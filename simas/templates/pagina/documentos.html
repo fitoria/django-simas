@@ -11,7 +11,21 @@
                 Fecha: {{documento.fecha}}<br/>
                 Subido por: <a href="/perfiles/{{documento.usuario.user.username}}/">{{documento.usuario.user.first_name}} {{documento.usuario.user.last_name}}</a><br/>
                 Descripcion: {{documento.descripcion|safe}}<br/>
-                Descargar: <a href="{{documento.get_download_url}}">{{documento.titulo}}</a><br/> 
+                {% if documento.adjunto %}
+                Descargar: <a href="{{MEDIA_URL}}{{documento.adjunto}}">{{documento.titulo}}</a><br/>
+                {% endif %} 
+                {% if documento.adjunto1 %}
+                Descargar: <a href="{{MEDIA_URL}}{{documento.adjunto1}}">{{documento.titulo}}</a><br/>
+                {% endif %} 
+                {% if documento.adjunto2 %}
+                Descargar: <a href="{{MEDIA_URL}}{{documento.adjunto2}}">{{documento.titulo}}</a><br/>
+                {% endif %} 
+                {% if documento.adjunto3 %}
+                Descargar: <a href="{{MEDIA_URL}}{{documento.adjunto3}}">{{documento.titulo}}</a><br/>
+                {% endif %}
+                {% if documento.adjunto4 %}
+                Descargar: <a href="{{MEDIA_URL}}{{documento.adjunto4}}">{{documento.titulo}}</a><br/>
+                {% endif %}  
                 </p>
             </div>
         {%endfor%}

@@ -23,5 +23,5 @@ Requerimientos de Instalación.
 - Django trunk (requerido o 1.2 beta 1)
 - Python Imaging Library (PIL)
 - Base de datos soportada por Django
-- Servidor web.
+- Servidor web compatible.
 

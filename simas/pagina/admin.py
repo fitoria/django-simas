@@ -72,12 +72,14 @@ class ContactosAdmin(FkAutocompleteAdmin):
                      'organizacion__nombre', 'tipo__nombre',
                      'tel1', 'tel2', 'tel3','cel1','cel2',
                      'email1','email2']
+    list_display_links = ('nombres','apellidos', 'tel1')
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js']
               
 class OrganizacionAdmin(admin.ModelAdmin):
     list_display = ['nombre']
+    search_fields = ['nombre']
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js']

@@ -16,7 +16,7 @@ URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&di
 def index(request):
     '''Vista inicial'''
     noticias = Noticia.objects.order_by('-fecha')[:3]
-    actividades = Actividad.objects.order_by('-fecha')[:3]
+    actividades = Actividad.objects.order_by('-fecha')[:4]
     categorias = Categoria.objects.all()
     enlaces = Link.objects.all()
     dicc = {'noticias': noticias, 'actividades': actividades,

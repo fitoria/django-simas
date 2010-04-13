@@ -96,10 +96,10 @@
   z-index:-100;
 }
 
-.facebox_overlayBG {
-  background-color: #000;
-  z-index: 99;
-}
+/*.facebox_overlayBG {*/
+/*  background-color: #fff;*/
+/*  z-index: 99;*/
+/*}*/
 
 * html #facebox_overlay { /* ie6 hack */
   position: absolute;

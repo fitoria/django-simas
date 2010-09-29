@@ -330,7 +330,7 @@ def profile_list(request, public_profile_field=None,
     
     """
     profile_model = utils.get_profile_model()
-    queryset = profile_model._default_manager.all()
+    queryset = profile_model._default_manager.all().order_by('-id')
     if public_profile_field is not None:
         queryset = queryset.filter(**{ public_profile_field: True })
     kwargs['queryset'] = queryset

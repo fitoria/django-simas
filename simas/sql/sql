@@ -1,0 +1,11 @@
+Bueno para crear en modo produccion algunos campos y modificar algunos:
+
+crear campos:
+ALTER TABLE pagina_actividad ADD COLUMN fecha1 datetime;
+
+modificar un campo:
+ALTER TABLE pagina_seccion CHANGE nombre nombre varchar(50);
+ALTER TABLE pagina_seccion CHANGE slug slug varchar(50);
+
+ALTER TABLE pagina_subseccion CHANGE nombre nombre varchar(50);
+ALTER TABLE pagina_subseccion CHANGE nombre nombre varchar(50);

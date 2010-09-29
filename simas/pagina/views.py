@@ -177,7 +177,7 @@ def documentos(request, subseccion):
     '''Vista de lista de documentos, paginados.
     Parametros url: subseccion'''
     subseccion = get_object_or_404(Subseccion, slug=subseccion) 
-    lista_documentos = Archivo.objects.filter(subseccion = subseccion)
+    lista_documentos = Archivo.objects.filter(subseccion = subseccion).order_by('-id')
 
     paginator = Paginator(lista_documentos, 12)
 

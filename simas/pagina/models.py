@@ -55,9 +55,9 @@ class Categoria(models.Model):
         return self.nombre
 
 class Seccion(models.Model):
-    nombre = models.CharField(max_length = 25, unique = True, 
+    nombre = models.CharField(max_length = 50, unique = True, 
                               blank = True, null = True)
-    slug = models.SlugField(max_length = 25, unique = True, 
+    slug = models.SlugField(max_length = 50, unique = True, 
                             help_text = 'unico Valor')
 
     class Meta:
@@ -67,15 +67,16 @@ class Seccion(models.Model):
         return self.nombre
         
 class Subseccion(models.Model):
-    nombre = models.CharField(max_length = 25, unique = True, 
+    nombre = models.CharField(max_length = 50, unique = True, 
                               blank = True, null = True)
-    slug = models.SlugField(max_length = 25, unique = True, 
+    slug = models.SlugField(max_length = 50, unique = True, 
                             help_text = 'unico Valor')
     seccion = models.ForeignKey(Seccion)
     
     class Meta:
         verbose_name_plural = "Subsecciones"
-        ordering = ['seccion']
+        ordering = ['nombre']
+        #ordering = ['seccion']
         
     def __unicode__(self):
         return "%s - %s" % (self.nombre, self.seccion.nombre)
@@ -141,7 +142,8 @@ class Noticia(models.Model):
         return self.titulo
         
 class Actividad(models.Model):
-    fecha = models.DateTimeField()
+    fecha = models.DateTimeField('Fecha inicio')
+    fecha1 = models.DateTimeField('Fecha final', null=True, blank=True)
     titulo = models.CharField(max_length = 150)
     descripcion = models.TextField(default = "")
     lugar = models.CharField(max_length = 50)

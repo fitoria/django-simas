@@ -132,8 +132,15 @@ class Noticia(models.Model):
     fecha = models.DateField()
     titulo = models.CharField(max_length = 50)
     texto = models.TextField(default = " ")
+    adjunto = models.FileField(upload_to = 'attachments/documentos/noticias',blank = True, null = True)
     autor = models.ForeignKey(UserProfile)
     
+    def get_absolute_url(self):
+        return '%s%s/%s' % (settings.MEDIA_URL, 
+                         settings.ATTACHMENT_FOLDER, self.id)
+    def get_download_url(self):
+        return '%s%s' % (settings.MEDIA_URL, self.adjunto)
+        
     class Meta:
         verbose_name_plural = "Noticias"
         ordering = ('-fecha', '-id',)
@@ -147,8 +154,15 @@ class Actividad(models.Model):
     titulo = models.CharField(max_length = 150)
     descripcion = models.TextField(default = "")
     lugar = models.CharField(max_length = 50)
+    adjunto = models.FileField(upload_to = 'attachments/documentos/actividad', blank = True, null = True)
     area = models.ForeignKey(Area)
     participantes = models.ManyToManyField(UserProfile)
+    
+    def get_absolute_url(self):
+        return '%s%s/%s' % (settings.MEDIA_URL, 
+                         settings.ATTACHMENT_FOLDER, self.id)
+    def get_download_url(self):
+        return '%s%s' % (settings.MEDIA_URL, self.adjunto)
     
     class Meta:
         verbose_name_plural = "Actividades diarias"

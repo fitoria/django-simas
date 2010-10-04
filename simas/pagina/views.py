@@ -9,6 +9,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from urllib2 import urlopen
 from django.db.models import Q
+import re
 
 hoy = date.today()
 URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&dia=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month, hoy.day)
@@ -200,11 +201,14 @@ def buscar(request):
     query = request.GET.get('q', '')
     query = query.replace(",","")
     if query:
-        qset = (
-    		Q(nombres__icontains=query)|
-    		Q(apellidos__icontains=query)|
-    		Q(organizacion__nombre__icontains=query)|
-    		Q(tipo__nombre__icontains=query)|
+        separacion = re.split('\W+', query)
+        qsets = []
+        for palabra in separacion:
+            qsets.append((Q(nombres__icontains=palabra) | Q(apellidos__icontains=palabra)))
+        qsets = [reduce(lambda x,y: x&y, qsets, Q())]
+        qdata = (
+            #No muy seguro de hacer esto, pero bueno
+    		#Q(tipo__nombre__icontains=query)|
     		Q(tel1__icontains=query)|
     		Q(tel2__icontains=query)|
     		Q(tel3__icontains=query)|
@@ -213,7 +217,9 @@ def buscar(request):
     		Q(email1__icontains=query)|
     		Q(email2__icontains=query)
     			)
-        results = Contacto.objects.filter(qset).distinct()
+        qsets.append(qdata)
+        q = reduce(lambda x,y: x|y, qsets, Q()) 
+        results = Contacto.objects.filter(q).distinct()
     else:
         results = []
     dicc = {"results": results, "query": query, "c": len(results)}

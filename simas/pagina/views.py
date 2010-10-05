@@ -243,7 +243,7 @@ def contactos(request, organizacion = None, pais = None,
     else:
         lista_contactos = Contacto.objects.all()
 
-    paginator = Paginator(lista_contactos, 20)
+    paginator = Paginator(lista_contactos, 10)
 
     try:
         page = int(request.GET.get('page', '1'))

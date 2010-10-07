@@ -50,6 +50,7 @@ class Categoria(models.Model):
     
     class Meta:
         verbose_name_plural = "Categorias"
+        app_label = 'Enlaces de Interes' 
         
     def __unicode__(self):
         return self.nombre
@@ -62,6 +63,7 @@ class Seccion(models.Model):
 
     class Meta:
         verbose_name_plural = "Seccion"
+        app_label = 'Seccion Archivos' 
         
     def __unicode__(self):
         return self.nombre
@@ -76,6 +78,7 @@ class Subseccion(models.Model):
     class Meta:
         verbose_name_plural = "Subsecciones"
         ordering = ['nombre']
+        app_label = 'Seccion Archivos' 
         #ordering = ['seccion']
         
     def __unicode__(self):
@@ -88,8 +91,10 @@ class Link(models.Model):
     categoria = models.ForeignKey(Categoria)
 
     class Meta:
-        verbose_name_plural = "Links"
+        verbose_name_plural = "Enlaces"
+        verbose_name = "Enlace"
         ordering = ['peso']
+        app_label = 'Enlaces de Interes' 
         
     def __unicode__(self):
         return self.nombre
@@ -117,6 +122,7 @@ class Archivo(models.Model):
 
     class Meta:
         verbose_name_plural = "Subir Archivos"
+        app_label = 'Seccion Archivos' 
 
 class DiasFeriados(models.Model):
     fecha = models.DateField()
@@ -177,6 +183,7 @@ class Organizacion(models.Model):
     
     class Meta:
         verbose_name_plural = "Organizaciones"
+        app_label = 'Contactos' 
         
     def __unicode__(self):
         return self.nombre
@@ -186,6 +193,7 @@ class TipoContacto(models.Model):
     
     class Meta:
         verbose_name_plural = "Tipos de Contactos"
+        app_label = 'Contactos' 
     
     def __unicode__(self):
         return self.nombre
@@ -196,6 +204,7 @@ class Pais(models.Model):
     
     class Meta:
         verbose_name_plural = "Paises"
+        app_label = 'Contactos' 
         
     def __unicode__(self):
         return self.nombre  
@@ -239,6 +248,7 @@ class Contacto(models.Model):
     
     class Meta:
         verbose_name_plural = "Contactos"
+        app_label = 'Contactos' 
     
     def __unicode__(self):
         return self.nombres

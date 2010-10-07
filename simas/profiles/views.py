@@ -13,10 +13,11 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic.list_detail import object_list
+from django.contrib.auth.decorators import login_required
 
 from profiles import utils
 
-
+@login_required
 def create_profile(request, form_class=None, success_url=None,
                    template_name='profiles/create_profile.html',
                    extra_context=None):
@@ -119,6 +120,7 @@ def create_profile(request, form_class=None, success_url=None,
                               context_instance=context)
 create_profile = login_required(create_profile)
 
+@login_required
 def edit_profile(request, form_class=None, success_url=None,
                  template_name='profiles/edit_profile.html',
                  extra_context=None):
@@ -211,6 +213,7 @@ def edit_profile(request, form_class=None, success_url=None,
                               context_instance=context)
 edit_profile = login_required(edit_profile)
 
+@login_required
 def profile_detail(request, username, public_profile_field=None,
                    template_name='profiles/profile_detail.html',
                    extra_context=None):
@@ -284,6 +287,7 @@ def profile_detail(request, username, public_profile_field=None,
                               { 'profile': profile_obj },
                               context_instance=context)
 
+@login_required
 def profile_list(request, public_profile_field=None,
                  template_name='profiles/profile_list.html', **kwargs):
     """

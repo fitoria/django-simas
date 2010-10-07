@@ -6,6 +6,7 @@ from pagina.models import *
 from datetime import date
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
 from urllib2 import urlopen
 from django.db.models import Q
@@ -14,6 +15,7 @@ import re
 hoy = date.today()
 URL = "http://www.elpueblopresidente.com/servicios/wsmoneda.php?ano=%s&mes=%s&dia=%s&formato=jsonvalido&limite=5" % (hoy.year, hoy.month, hoy.day)
 
+@login_required
 def index(request):
     '''Vista inicial'''
     noticias = Noticia.objects.order_by('-fecha')[:3]
@@ -26,6 +28,7 @@ def index(request):
     return render_to_response('pagina/index.html', dicc, 
                               context_instance=RequestContext(request))
 
+@login_required
 def moneda_ajax(request):
     '''vista que retorna json de los prox 5 dias
     de moneda. Info gracias a elpueblopresidente.com'''
@@ -44,6 +47,7 @@ def moneda_ajax(request):
     return HttpResponse(simplejson.dumps(tipos_de_cambios), 
                         mimetype="application/javascript")
     	
+@login_required
 def ver_noticia(request, id_noticia):
     '''vista de una noticia. Parametro url ID'''
     noticia = Noticia.objects.get(id=id_noticia)
@@ -51,6 +55,7 @@ def ver_noticia(request, id_noticia):
     return render_to_response('pagina/noticia.html', dicc,
                               context_instance=RequestContext(request))
 
+@login_required
 def ver_actividad(request, id_actividad):
     '''vista de una actividad. Parametro url ID'''
     actividad = Actividad.objects.get(id=id_actividad)
@@ -58,6 +63,7 @@ def ver_actividad(request, id_actividad):
     return render_to_response('pagina/actividad.html', dicc, 
                               context_instance=RequestContext(request)) 
 
+@login_required
 def actividades(request, ano=None, mes=None, dia=None, participante=None):
     '''vista de lista de Actividades'''
     if participante:
@@ -125,6 +131,7 @@ def actividades(request, ano=None, mes=None, dia=None, participante=None):
     return render_to_response('pagina/actividades.html', dicc,
                               context_instance=RequestContext(request))
                               
+@login_required
 def noticias(request, ano=None, mes=None, autor=None):
     '''Vista de lista de noticias'''
     if autor:
@@ -174,6 +181,7 @@ def noticias(request, ano=None, mes=None, autor=None):
     return render_to_response('pagina/noticias.html', dicc,
                                 context_instance=RequestContext(request))
 
+@login_required
 def documentos(request, subseccion):
     '''Vista de lista de documentos, paginados.
     Parametros url: subseccion'''
@@ -196,6 +204,7 @@ def documentos(request, subseccion):
     return render_to_response('pagina/documentos.html', dicc,
                                 context_instance=RequestContext(request))
                                 
+@login_required
 def buscar(request):
     '''vista de busqueda de contactos'''
     query = request.GET.get('q', '')
@@ -226,6 +235,7 @@ def buscar(request):
     return render_to_response("pagina/busquedas.html", dicc,
                                context_instance = RequestContext(request))
 
+@login_required
 def contactos(request, organizacion = None, pais = None,
               tipo = None):
     '''Vista general de contactos.
@@ -259,6 +269,7 @@ def contactos(request, organizacion = None, pais = None,
     return render_to_response('pagina/contactos.html', dicc,
                                 context_instance = RequestContext(request))
 
+@login_required
 def ver_contacto(request, id):
     '''Vista para ver un contacto especifico'''
     contacto  = get_object_or_404(Contacto, id=id)

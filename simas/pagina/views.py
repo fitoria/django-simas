@@ -224,7 +224,8 @@ def buscar(request):
     		Q(cel1__icontains=query)|
     		Q(cel2__icontains=query)|
     		Q(email1__icontains=query)|
-    		Q(email2__icontains=query)
+    		Q(email2__icontains=query)|
+    		Q(organizacion__nombre__icontains=query)
     			)
         qsets.append(qdata)
         q = reduce(lambda x,y: x|y, qsets, Q()) 

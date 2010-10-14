@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from thumbs import ImageWithThumbsField
 from django.conf import settings
+from django.utils.encoding import smart_unicode
 
 PROFILE_SIZES = ((100, 100),
          (150, 150),
@@ -118,8 +119,8 @@ class Archivo(models.Model):
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 
                          settings.ATTACHMENT_FOLDER, self.id)
-    def get_download_url(self):
-        return '%s%s' % (settings.MEDIA_URL, self.adjunto)
+    #def get_download_url(self):
+    #    return '%s%s' % (settings.MEDIA_URL, self.adjunto)
 
     def __unicode__(self):
         return self.titulo

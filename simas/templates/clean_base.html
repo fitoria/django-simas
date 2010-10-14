@@ -94,6 +94,7 @@
             </div><!-- colum_izq-->
             
 <!--         Comienza acordion-->
+{% if user.is_authenticated %}
          <div id="colum_der" class="der">
                     <!--div titulo documento-->
                     <div id="titulo_documento">Documentos</div>
@@ -140,6 +141,7 @@
                         </div>
                     </div>
 		  </div>
+{% endif %}
             <div class="separador" ></div>
          </div> 
         <!-- Termina Contenido-->

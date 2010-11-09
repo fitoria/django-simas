@@ -2,7 +2,7 @@
 
 from local_settings import *
 
-DEBUG = True 
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 AUTH_PROFILE_MODULE = "pagina.UserProfile"
 DEFAULT_CHARSET = 'utf-8'
@@ -31,6 +31,10 @@ MIDDLEWARE_CLASSES = (
 
 MEDIA_ROOT = os.path.join(SITE_ROOT,'media')
 MEDIA_URL = '/archivos/'
+
+attachment_folder='attachments'
+ATTACHMENT_PATH = os.path.join(MEDIA_ROOT,attachment_folder)
+
 TEMPLATE_DIRS = (
 SITE_ROOT+"/templates",
 )

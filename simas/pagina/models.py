@@ -103,27 +103,32 @@ class Link(models.Model):
         
     def __unicode__(self):
         return self.nombre
+        
+from simas.utils import get_file_path
 
 class Archivo(models.Model):
     titulo = models.CharField(max_length = 200)
     fecha = models.DateField()
     descripcion = models.TextField(blank = True, null = True)
-    adjunto = models.FileField(upload_to = 'attachments/documentos')
-    adjunto1 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
-    adjunto2 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
-    adjunto3 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
-    adjunto4 = models.FileField(upload_to = 'attachments/documentos',blank = True, null = True)
+    fileDir = 'attachments/documentos'
+    adjunto = models.FileField(upload_to = get_file_path)
+    adjunto1 = models.FileField(upload_to = get_file_path,blank = True, null = True)
+    adjunto2 = models.FileField(upload_to = get_file_path,blank = True, null = True)
+    adjunto3 = models.FileField(upload_to = get_file_path,blank = True, null = True)
+    adjunto4 = models.FileField(upload_to = get_file_path,blank = True, null = True)
     subseccion = models.ForeignKey(Subseccion) 
     usuario = models.ForeignKey(UserProfile)
 	
     def get_absolute_url(self):
-        return '%s%s/%s' % (settings.MEDIA_URL, 
-                         settings.ATTACHMENT_FOLDER, smart_str(self.id))
+        urla = u'%s%s/%s' % (settings.MEDIA_URL, 
+                         settings.ATTACHMENT_FOLDER, urlquote(self.id))
+        return iri_to_uri(urla)
     def get_download_url(self):
-        return '%s%s' % (settings.MEDIA_URL, smart_str(self.adjunto))
+        urle = u'%s%s' % (settings.MEDIA_URL, urlquote(self.adjunto))
+        return iri_to_uri(urle)
 
     def __unicode__(self):
-        return self.titulo
+        return u"%s" % self.titulo
 
     class Meta:
         verbose_name_plural = "Subir Archivos"
@@ -144,7 +149,8 @@ class Noticia(models.Model):
     fecha = models.DateField()
     titulo = models.CharField(max_length = 50)
     texto = models.TextField(default = " ")
-    adjunto = models.FileField(upload_to = 'attachments/documentos/noticias',blank = True, null = True)
+    fileDir = 'attachments/documentos/noticias'
+    adjunto = models.FileField(upload_to = get_file_path, blank = True, null = True)
     autor = models.ForeignKey(UserProfile)
     
     def get_absolute_url(self):
@@ -166,7 +172,8 @@ class Actividad(models.Model):
     titulo = models.CharField(max_length = 150)
     descripcion = models.TextField(default = "")
     lugar = models.CharField(max_length = 50)
-    adjunto = models.FileField(upload_to = 'attachments/documentos/actividad', blank = True, null = True)
+    fileDir = 'attachments/documentos/actividad'
+    adjunto = models.FileField(upload_to = get_file_path, blank = True, null = True)
     area = models.ForeignKey(Area)
     participantes = models.ManyToManyField(UserProfile)
     

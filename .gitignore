@@ -1,9 +1,11 @@
+nbproject/
 *.pyc
 *.pyo
 *.py~
 local_settings.py
 *.sqlite3
 *.swp
+simas/media/profile/
 /media/profile/*.*
 *.pdf
 *.xls

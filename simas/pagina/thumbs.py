@@ -9,6 +9,9 @@ from PIL import Image
 from django.core.files.base import ContentFile
 import cStringIO
 
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^pagina\.thumbs\.ImageWithThumbsField"])
+
 def generate_thumb(img, thumb_size, format):
     """
     Generates a thumbnail image and returns a ContentFile object with the thumbnail

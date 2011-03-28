@@ -51,8 +51,8 @@ class Categoria(models.Model):
     
     class Meta:
         verbose_name_plural = "Categorias"
-#        app_label = 'Enlaces de Interes'
-#        db_table = 'pagina_categoria'
+        app_label = 'Enlaces de Interes'
+        db_table = 'pagina_categoria'
         
     def __unicode__(self):
         return self.nombre
@@ -65,8 +65,8 @@ class Seccion(models.Model):
 
     class Meta:
         verbose_name_plural = "Seccion"
-#        app_label = 'Seccion Archivos'
-#        db_table = 'pagina_seccion'
+        app_label = 'Seccion Archivos'
+        db_table = 'pagina_seccion'
         
     def __unicode__(self):
         return self.nombre
@@ -81,8 +81,8 @@ class Subseccion(models.Model):
     class Meta:
         verbose_name_plural = "Subsecciones"
         ordering = ['nombre']
-#        app_label = 'Seccion Archivos'
-#        db_table = 'pagina_subseccion'
+        app_label = 'Seccion Archivos'
+        db_table = 'pagina_subseccion'
         #ordering = ['seccion']
         
     def __unicode__(self):
@@ -98,8 +98,8 @@ class Link(models.Model):
         verbose_name_plural = "Enlaces"
         verbose_name = "Enlace"
         ordering = ['peso']
-#        app_label = 'Enlaces de Interes'
-#        db_table = 'pagina_link'
+        app_label = 'Enlaces de Interes'
+        db_table = 'pagina_link'
         
     def __unicode__(self):
         return self.nombre
@@ -132,8 +132,8 @@ class Archivo(models.Model):
 
     class Meta:
         verbose_name_plural = "Subir Archivos"
-#        app_label = 'Seccion Archivos'
-#        db_table = 'pagina_archivo'
+        app_label = 'Seccion Archivos'
+        db_table = 'pagina_archivo'
 
 class DiasFeriados(models.Model):
     fecha = models.DateField()
@@ -196,8 +196,8 @@ class Organizacion(models.Model):
     
     class Meta:
         verbose_name_plural = "Organizaciones"
-#        app_label = 'Contactos'
-#        db_table = 'pagina_organizacion'
+        app_label = 'Contactos'
+        db_table = 'pagina_organizacion'
         
     def __unicode__(self):
         return self.nombre
@@ -207,8 +207,8 @@ class TipoContacto(models.Model):
     
     class Meta:
         verbose_name_plural = "Tipos de Contactos"
-#        app_label = 'Contactos'
-#        db_table = 'pagina_tipocontacto'
+        app_label = 'Contactos'
+        db_table = 'pagina_tipocontacto'
     
     def __unicode__(self):
         return self.nombre
@@ -219,8 +219,8 @@ class Pais(models.Model):
     
     class Meta:
         verbose_name_plural = "Paises"
-#        app_label = 'Contactos'
-#        db_table = 'pagina_pais'
+        app_label = 'Contactos'
+        db_table = 'pagina_pais'
         
     def __unicode__(self):
         return self.nombre  
@@ -264,8 +264,8 @@ class Contacto(models.Model):
     
     class Meta:
         verbose_name_plural = "Contactos"
-#        app_label = 'Contactos'
-#        db_table = 'pagina_contacto'
+        app_label = 'Contactos'
+        db_table = 'pagina_contacto'
     
     def __unicode__(self):
         return self.nombres
